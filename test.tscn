@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ctnw1dr66hfws"]
+
+[ext_resource type="Texture2D" uid="uid://bc7p33lktricv" path="res://UI/Music/sfx.png" id="1_8uh7m"]
+[ext_resource type="Texture2D" uid="uid://cu34gh5gpj1gi" path="res://UI/Music/music.png" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://ccib0b3vi3r0o" path="res://Assets/Textures/Fence/stylized_picket_fence_all.glb" id="3_6uqi0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6uqi0"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Node3D" type="Node3D" unique_id=1229771927]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1338109843]
+texture_filter = 0
+texture = SubResource("ViewportTexture_6uqi0")
+region_enabled = true
+region_rect = Rect2(13, 31, 47, 60)
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1847286493]
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1333737241]
+scale = Vector2(8, 8)
+texture = ExtResource("1_8uh7m")
+
+[node name="Panel" type="Panel" parent="SubViewport" unique_id=2050979948]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport" unique_id=1340649056]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_37kl0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewport" unique_id=735227996]
+
+[node name="stylized_picket_fence_all" parent="." unique_id=1051790328 instance=ExtResource("3_6uqi0")]

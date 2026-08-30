@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://xmhff1nen7j7"]
+
+[ext_resource type="PackedScene" uid="uid://cqdj0y3t1707j" path="res://Assets/Textures/Road/Brick/brick_a.tscn" id="1_ree3t"]
+[ext_resource type="PackedScene" uid="uid://c8h4enproq2xc" path="res://Assets/Textures/Road/Brick/brick_b.tscn" id="2_jd0nj"]
+[ext_resource type="PackedScene" uid="uid://wr4r0ikjt7ep" path="res://Assets/Textures/Road/Brick/brick_c.tscn" id="3_5typ0"]
+[ext_resource type="PackedScene" uid="uid://de3frqru6se13" path="res://Assets/Textures/Road/Brick/brick_d.tscn" id="4_x5cc1"]
+[ext_resource type="PackedScene" uid="uid://mgflaii7kihk" path="res://Assets/Textures/Road/Brick/brick_e.tscn" id="5_tubuh"]
+
+[node name="brick_stone_cream_limestone" type="Node3D" unique_id=942923628]
+
+[node name="Brick_A" parent="." unique_id=75788972 instance=ExtResource("1_ree3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, -2.04, 0)
+
+[node name="Brick_B" parent="." unique_id=2018085197 instance=ExtResource("2_jd0nj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, -1.02, 0)
+
+[node name="Brick_C" parent="." unique_id=648947583 instance=ExtResource("3_5typ0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
+
+[node name="Brick_D" parent="." unique_id=544597204 instance=ExtResource("4_x5cc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 1.02, 0)
+
+[node name="Brick_E" parent="." unique_id=967650454 instance=ExtResource("5_tubuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 2.04, 0)

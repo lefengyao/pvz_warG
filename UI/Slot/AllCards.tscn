@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://c4iawt0nsqleh"]
+
+[ext_resource type="Texture2D" uid="uid://bbr4jl7ia44yi" path="res://UI/Slot/SlotUI.png" id="1_uf1qd"]
+[ext_resource type="FontFile" uid="uid://cr6ila827jftp" path="res://Assets/Font/Silver.ttf" id="2_rvc80"]
+[ext_resource type="Texture2D" uid="uid://ql146lk0mws3" path="res://UI/Slot/Slot.png" id="3_uf1qd"]
+[ext_resource type="Texture2D" uid="uid://cnkm1v0m1vknj" path="res://UI/Slot/SunSlot.png" id="4_8ttql"]
+[ext_resource type="Texture2D" uid="uid://ba3el3vgmluq8" path="res://UI/Button.png" id="5_uf1qd"]
+[ext_resource type="Texture2D" uid="uid://bstie7vgw8534" path="res://UI/ButtonPressed.png" id="6_uf1qd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onsns"]
+atlas = ExtResource("1_uf1qd")
+region = Rect2(34, 86, 229, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yutu3"]
+atlas = ExtResource("3_uf1qd")
+region = Rect2(71, 86, 132, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmnkq"]
+atlas = ExtResource("4_8ttql")
+region = Rect2(71, 86, 132, 144)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nflqo"]
+font = ExtResource("2_rvc80")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvvc7"]
+atlas = ExtResource("3_uf1qd")
+region = Rect2(71, 86, 132, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6hbm"]
+atlas = ExtResource("5_uf1qd")
+region = Rect2(34, 112, 229, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w8fk"]
+atlas = ExtResource("6_uf1qd")
+region = Rect2(33, 116, 229, 67)
+
+[node name="ui_all_cards" type="Control" unique_id=1435959812]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1080.0
+offset_bottom = -810.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.36)
+
+[node name="all_cards" type="NinePatchRect" parent="." unique_id=1103484656]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 548.0427
+offset_right = 703.0
+offset_bottom = 1042.0427
+scale = Vector2(2.0016065, 4.170302)
+texture = SubResource("AtlasTexture_onsns")
+patch_margin_top = 90
+patch_margin_bottom = 50
+
+[node name="MarginContainer" type="MarginContainer" parent="all_cards" unique_id=1623378386]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 87.0
+offset_right = 645.0
+offset_bottom = 484.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="all_cards/MarginContainer" unique_id=38993226]
+layout_mode = 2
+follow_focus = true
+
+[node name="GridContainer" type="GridContainer" parent="all_cards/MarginContainer/ScrollContainer" unique_id=1523407416]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+columns = 7
+
+[node name="Label" type="Label" parent="all_cards" unique_id=210869771]
+layout_mode = 0
+offset_left = 141.88603
+offset_top = 17.92031
+offset_right = 212.88603
+offset_bottom = 36.92031
+scale = Vector2(4.6575346, 4.056712)
+theme_override_fonts/font = ExtResource("2_rvc80")
+theme_override_font_sizes/font_size = 19
+text = "请选择你的植物"
+
+[node name="slot" type="TextureRect" parent="." unique_id=2036913090]
+layout_mode = 1
+offset_right = 1946.0
+offset_bottom = 462.63342
+scale = Vector2(0.9977105, 0.973255)
+texture = SubResource("AtlasTexture_yutu3")
+metadata/_edit_lock_ = true
+
+[node name="sun_slot" type="TextureRect" parent="slot" unique_id=405604785]
+layout_mode = 0
+offset_right = 132.00003
+offset_bottom = 252.66907
+scale = Vector2(1.8, 1.8)
+texture = SubResource("AtlasTexture_fmnkq")
+
+[node name="Label" type="Label" parent="slot/sun_slot" unique_id=461749399]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -71.17438
+offset_right = -30.0
+offset_bottom = -35.386597
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3.56869, 2.2862)
+text = "10000"
+label_settings = SubResource("LabelSettings_nflqo")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="shovel" type="TextureRect" parent="slot" unique_id=240996930]
+layout_mode = 0
+offset_left = 1718.0
+offset_right = 1952.0
+offset_bottom = 466.19217
+texture = SubResource("AtlasTexture_uvvc7")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="slot/shovel" unique_id=789273996]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 27.0
+offset_right = 211.0
+offset_bottom = 426.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="slot" unique_id=767809318]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 85.409256
+offset_right = 1216.0533
+offset_bottom = 205.40924
+scale = Vector2(1.54201, 2.77373)
+theme_override_constants/separation = 0
+metadata/_edit_lock_ = true
+
+[node name="start_button" type="TextureButton" parent="." unique_id=467764750]
+layout_mode = 0
+offset_left = 324.00003
+offset_top = 2644.1284
+offset_right = 553.0
+offset_bottom = 2715.1284
+scale = Vector2(2.2978199, 3.0022233)
+texture_normal = SubResource("AtlasTexture_u6hbm")
+texture_pressed = SubResource("AtlasTexture_6w8fk")
+
+[node name="Label" type="Label" parent="start_button" unique_id=833200249]
+layout_mode = 0
+offset_left = 8.703892
+offset_top = 11.853573
+offset_right = 56.70389
+offset_bottom = 32.853573
+scale = Vector2(4.342183, 3.491555)
+theme_override_fonts/font = ExtResource("2_rvc80")
+theme_override_font_sizes/font_size = 19
+text = "开始冒险"
+
+[connection signal="button_down" from="start_button" to="." method="_on_texture_button_button_down"]

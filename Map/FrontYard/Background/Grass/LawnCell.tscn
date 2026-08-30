@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Map/FrontYard/Background/Grass/lawn_cell.gd" id="1_cell"]
+
+[node name="LawnCell" type="Node3D"]
+script = ExtResource("1_cell")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cfjn2vjdnvyv2"]
+
+[ext_resource type="Texture2D" uid="uid://c18d2cn83iwf" path="res://UI/ProgressBar/Bar.png" id="1_rfghx"]
+[ext_resource type="Script" uid="uid://ct7xu8koma685" path="res://UI/ProgressBar/WaveNode.gd" id="2_wmiqy"]
+
+[node name="Sprite2D4" type="Sprite2D" unique_id=955901992]
+modulate = Color(1.803205, 1.6512469, 1.803205, 1)
+texture = ExtResource("1_rfghx")
+region_enabled = true
+region_rect = Rect2(64, 114, 21, 21)
+script = ExtResource("2_wmiqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1357242849]
+texture = ExtResource("1_rfghx")
+region_enabled = true
+region_rect = Rect2(39, 114, 21, 21)

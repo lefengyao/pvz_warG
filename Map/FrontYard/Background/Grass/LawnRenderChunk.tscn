@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Map/FrontYard/Background/Grass/lawn_render_chunk.gd" id="1_chunk"]
+
+[node name="LawnRenderChunk" type="Node3D"]
+script = ExtResource("1_chunk")

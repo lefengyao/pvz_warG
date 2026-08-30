@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://Assets/Textures/Road/Brick/stylized_brick.gdshader" id="1_shader"]
+
+[resource]
+resource_name = "BrickStoneMaterial"
+shader = ExtResource("1_shader")
+shader_parameter/surface_is_crack = false
+shader_parameter/stone_color = Color(0.85098, 0.811765, 0.717647, 1)
+shader_parameter/grain_color = Color(0.607843, 0.552941, 0.443137, 1)
+shader_parameter/grain_scale = 16.0
+shader_parameter/grain_strength = 0.07
+shader_parameter/crack_color = Color(0.4, 0.337255, 0.239216, 1)
+shader_parameter/damage_contrast = 0.85
+shader_parameter/roughness = 0.92
+shader_parameter/specular = 0.16

@@ -1,0 +1,912 @@
+[gd_scene format=3 uid="uid://b1ct5mysavv75"]
+
+[ext_resource type="Script" uid="uid://dj1ri78tea227" path="res://Map/FrontYard/front_yard.gd" id="1_front_yard"]
+[ext_resource type="Texture2D" uid="uid://btil8j5he8723" path="res://Plants/FrontYard/SunFlower/sunflower1.png" id="2_gkncj"]
+[ext_resource type="PackedScene" uid="uid://ujkynlrtvxcg" path="res://Assets/Textures/Grass/stylized_lawn_demo.glb" id="3_0q0sr"]
+[ext_resource type="PackedScene" path="res://Map/FrontYard/Background/Grass/LawnCell.tscn" id="3_h6jfq"]
+[ext_resource type="PackedScene" path="res://Map/FrontYard/Background/Grass/LawnGrid.tscn" id="3_lawn_grid"]
+[ext_resource type="Texture2D" uid="uid://dxdjvlg0ou02r" path="res://Assets/Textures/Decoration/Shrub.png" id="3_x2sn2"]
+[ext_resource type="Script" uid="uid://ddp3u0r2ldkuc" path="res://Map/FrontYard/Background/Grass/lawn_grass_settings.gd" id="4_ay5sj"]
+[ext_resource type="PackedScene" uid="uid://bo0ed3i1djl2w" path="res://Assets/Textures/Road/straight_road.glb" id="7_nxvnw"]
+[ext_resource type="PackedScene" uid="uid://cqdj0y3t1707j" path="res://Assets/Textures/Road/Brick/brick_a.tscn" id="8_gaad4"]
+[ext_resource type="PackedScene" uid="uid://c8h4enproq2xc" path="res://Assets/Textures/Road/Brick/brick_b.tscn" id="9_jndya"]
+[ext_resource type="PackedScene" uid="uid://wr4r0ikjt7ep" path="res://Assets/Textures/Road/Brick/brick_c.tscn" id="10_brick_c"]
+[ext_resource type="PackedScene" uid="uid://de3frqru6se13" path="res://Assets/Textures/Road/Brick/brick_d.tscn" id="11_brick_d"]
+[ext_resource type="PackedScene" uid="uid://mgflaii7kihk" path="res://Assets/Textures/Road/Brick/brick_e.tscn" id="12_brick_e"]
+[ext_resource type="PackedScene" uid="uid://duesckasq0e15" path="res://Assets/Textures/Fence/fence_stylized.tscn" id="13_rv2xu"]
+[ext_resource type="PackedScene" uid="uid://dbik5aw7a35jc" path="res://Assets/Textures/Fence/fence_stylized_variant_01.tscn" id="14_ixsfw"]
+[ext_resource type="PackedScene" uid="uid://lufpxax4mpxg" path="res://Assets/Textures/Fence/fence_stylized_variant_02.tscn" id="15_px4g3"]
+[ext_resource type="PackedScene" uid="uid://b0iymfystopew" path="res://Assets/Textures/House/qa_wide_facade2.glb" id="16_ixsfw"]
+[ext_resource type="PackedScene" uid="uid://dwcvewkjpqtyt" path="res://Assets/Textures/House/qa_wide_facade.glb" id="17_px4g3"]
+[ext_resource type="Texture2D" uid="uid://mayopckiphc7" path="res://Assets/Textures/Decoration/Shrub4.png" id="18_g5yad"]
+[ext_resource type="PackedScene" uid="uid://bebg4f7w3o07f" path="res://Assets/Textures/Fence/IronFence/Fence_Gate.glb" id="21_1blnt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3yhks"]
+sky_top_color = Color(0.43529412, 0.6627451, 0.84705883, 1)
+sky_horizon_color = Color(0.7254902, 0.8666667, 0.9411765, 1)
+ground_bottom_color = Color(0.47058824, 0.59607846, 0.65882355, 1)
+ground_horizon_color = Color(0.8352941, 0.9098039, 0.9372549, 1)
+
+[sub_resource type="Sky" id="Sky_g5yad"]
+sky_material = SubResource("ProceduralSkyMaterial_3yhks")
+
+[sub_resource type="Environment" id="Environment_gkncj"]
+background_mode = 2
+sky = SubResource("Sky_g5yad")
+ambient_light_source = 3
+ambient_light_energy = 0.6
+glow_enabled = true
+fog_mode = 1
+fog_density = 1.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ixsfw"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 25.0
+dof_blur_far_transition = 15.0
+dof_blur_amount = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_board"]
+albedo_color = Color(0.18, 0.4, 0.1, 1)
+roughness = 0.96
+cull_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_board"]
+size = Vector2(80, 80)
+subdivide_width = 1
+subdivide_depth = 1
+
+[sub_resource type="Resource" id="Resource_x2sn2"]
+resource_local_to_scene = true
+script = ExtResource("4_ay5sj")
+model_variant_weights = PackedFloat32Array(0.6, 0.3, 0.02)
+model_clumps_per_cell = 60
+dark_color = Color(0.094118, 0.180392, 0.039216, 1)
+light_color = Color(0.235294, 0.533333, 0.14902, 1)
+grass_highlight_threshold = 0.09
+grass_highlight_hardness = 1.0
+grass_normal_up_strength = 1.0
+grass_root_color = Color(0.141176, 0.301961, 0.070588, 1)
+grass_tip_color = Color(0.470588, 0.741176, 0.290196, 1)
+grass_gradient_strength = 1.0
+grass_wind_animated = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkncj"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp3of"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo2f3"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jfq"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q0sr"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay5sj"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxvnw"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sypt5"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(96, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaad4"]
+atlas = ExtResource("2_gkncj")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkqoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkncj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp3of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo2f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6jfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q0sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxvnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sypt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaad4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FrontYard" type="Node3D" unique_id=100995161]
+script = ExtResource("1_front_yard")
+camera_height = 10.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=590257898]
+
+[node name="BK" type="Control" parent="UI" unique_id=655650902]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1116134165]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 8.6602545, 15)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=875490108]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 10, 15)
+current = true
+fov = 42.0
+size = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1587421602]
+environment = SubResource("Environment_gkncj")
+camera_attributes = SubResource("CameraAttributesPractical_ixsfw")
+
+[node name="Background" type="Node3D" parent="." unique_id=2136817006]
+
+[node name="Grass" type="Node3D" parent="Background" unique_id=1815309427]
+
+[node name="Board" type="Node3D" parent="Background/Grass" unique_id=1590013198]
+
+[node name="BoardBase" type="MeshInstance3D" parent="Background/Grass/Board" unique_id=1590013200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.349819, 0, -22.03401)
+material_override = SubResource("StandardMaterial3D_board")
+mesh = SubResource("PlaneMesh_board")
+
+[node name="LawnGrid" parent="Background/Grass" unique_id=1875299574 instance=ExtResource("3_lawn_grid")]
+settings = SubResource("Resource_x2sn2")
+
+[node name="LawnCell_0_0" parent="Background/Grass/LawnGrid" unique_id=1016666098 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_1" parent="Background/Grass/LawnGrid" unique_id=1290436360 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+column = 1
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_2" parent="Background/Grass/LawnGrid" unique_id=611979972 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+column = 2
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_3" parent="Background/Grass/LawnGrid" unique_id=2067821643 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+column = 3
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_4" parent="Background/Grass/LawnGrid" unique_id=622774747 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+column = 4
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_5" parent="Background/Grass/LawnGrid" unique_id=226380322 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+column = 5
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_6" parent="Background/Grass/LawnGrid" unique_id=84360104 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+column = 6
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_7" parent="Background/Grass/LawnGrid" unique_id=1724330135 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+column = 7
+metadata/lawn_generated = true
+
+[node name="LawnCell_0_8" parent="Background/Grass/LawnGrid" unique_id=1056798068 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+column = 8
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_0" parent="Background/Grass/LawnGrid" unique_id=1240336103 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+row = 1
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_1" parent="Background/Grass/LawnGrid" unique_id=1109151846 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+row = 1
+column = 1
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_2" parent="Background/Grass/LawnGrid" unique_id=588540488 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+row = 1
+column = 2
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_3" parent="Background/Grass/LawnGrid" unique_id=19834389 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+row = 1
+column = 3
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_4" parent="Background/Grass/LawnGrid" unique_id=69458367 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+row = 1
+column = 4
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_5" parent="Background/Grass/LawnGrid" unique_id=769507160 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+row = 1
+column = 5
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_6" parent="Background/Grass/LawnGrid" unique_id=1976891197 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+row = 1
+column = 6
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_7" parent="Background/Grass/LawnGrid" unique_id=828482611 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+row = 1
+column = 7
+metadata/lawn_generated = true
+
+[node name="LawnCell_1_8" parent="Background/Grass/LawnGrid" unique_id=1665485719 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+row = 1
+column = 8
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_0" parent="Background/Grass/LawnGrid" unique_id=2127194460 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+row = 2
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_1" parent="Background/Grass/LawnGrid" unique_id=490473359 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+row = 2
+column = 1
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_2" parent="Background/Grass/LawnGrid" unique_id=1368982516 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+row = 2
+column = 2
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_3" parent="Background/Grass/LawnGrid" unique_id=834632530 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+row = 2
+column = 3
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_4" parent="Background/Grass/LawnGrid" unique_id=659176632 instance=ExtResource("3_h6jfq")]
+row = 2
+column = 4
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_5" parent="Background/Grass/LawnGrid" unique_id=1647882243 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+row = 2
+column = 5
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_6" parent="Background/Grass/LawnGrid" unique_id=1027805484 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+row = 2
+column = 6
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_7" parent="Background/Grass/LawnGrid" unique_id=1081112360 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+row = 2
+column = 7
+metadata/lawn_generated = true
+
+[node name="LawnCell_2_8" parent="Background/Grass/LawnGrid" unique_id=2116079766 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+row = 2
+column = 8
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_0" parent="Background/Grass/LawnGrid" unique_id=1804761581 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+row = 3
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_1" parent="Background/Grass/LawnGrid" unique_id=1351679805 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+row = 3
+column = 1
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_2" parent="Background/Grass/LawnGrid" unique_id=630308925 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+row = 3
+column = 2
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_3" parent="Background/Grass/LawnGrid" unique_id=1460285216 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+row = 3
+column = 3
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_4" parent="Background/Grass/LawnGrid" unique_id=88150912 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+row = 3
+column = 4
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_5" parent="Background/Grass/LawnGrid" unique_id=1113568570 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+row = 3
+column = 5
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_6" parent="Background/Grass/LawnGrid" unique_id=1361423637 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+row = 3
+column = 6
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_7" parent="Background/Grass/LawnGrid" unique_id=1874576532 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+row = 3
+column = 7
+metadata/lawn_generated = true
+
+[node name="LawnCell_3_8" parent="Background/Grass/LawnGrid" unique_id=2141140451 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+row = 3
+column = 8
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_0" parent="Background/Grass/LawnGrid" unique_id=2029971695 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+row = 4
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_1" parent="Background/Grass/LawnGrid" unique_id=39897019 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+row = 4
+column = 1
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_2" parent="Background/Grass/LawnGrid" unique_id=1129609176 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+row = 4
+column = 2
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_3" parent="Background/Grass/LawnGrid" unique_id=1444908988 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+row = 4
+column = 3
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_4" parent="Background/Grass/LawnGrid" unique_id=829009912 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+row = 4
+column = 4
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_5" parent="Background/Grass/LawnGrid" unique_id=1215242097 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+row = 4
+column = 5
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_6" parent="Background/Grass/LawnGrid" unique_id=876890502 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+row = 4
+column = 6
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_7" parent="Background/Grass/LawnGrid" unique_id=285235257 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+row = 4
+column = 7
+metadata/lawn_generated = true
+
+[node name="LawnCell_4_8" parent="Background/Grass/LawnGrid" unique_id=119714346 instance=ExtResource("3_h6jfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+row = 4
+column = 8
+metadata/lawn_generated = true
+
+[node name="Decorations" type="Node3D" parent="Background" unique_id=675318032]
+
+[node name="straight_road" parent="Background/Decorations" unique_id=1980121730 instance=ExtResource("7_nxvnw")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14, -0.1, -37.139038)
+
+[node name="straight_road2" parent="Background/Decorations" unique_id=771071521 instance=ExtResource("7_nxvnw")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14, -0.1, -1.2069798)
+
+[node name="Brick" type="Node3D" parent="Background/Decorations" unique_id=90760380]
+
+[node name="Row_Bottom" type="Node3D" parent="Background/Decorations/Brick" unique_id=1239373244]
+
+[node name="Brick_Bottom_01" parent="Background/Decorations/Brick/Row_Bottom" unique_id=529084658 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -8.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_02" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1252777785 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_03" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1221159043 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_04" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1185159323 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_05" parent="Background/Decorations/Brick/Row_Bottom" unique_id=383571626 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_06" parent="Background/Decorations/Brick/Row_Bottom" unique_id=548324126 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_07" parent="Background/Decorations/Brick/Row_Bottom" unique_id=953828332 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.5, 0.01, -5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Bottom_08" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1833517484 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_09" parent="Background/Decorations/Brick/Row_Bottom" unique_id=2104099888 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_10" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1685690789 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_11" parent="Background/Decorations/Brick/Row_Bottom" unique_id=916539468 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_12" parent="Background/Decorations/Brick/Row_Bottom" unique_id=343592925 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_13" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1451590077 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_14" parent="Background/Decorations/Brick/Row_Bottom" unique_id=424447745 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_15" parent="Background/Decorations/Brick/Row_Bottom" unique_id=947968962 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5.5, 0.01, -5.5)
+
+[node name="Brick_Bottom_16" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1087572915 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6.5, 0.01, -5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Bottom_17" parent="Background/Decorations/Brick/Row_Bottom" unique_id=1506064548 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7.5, 0.01, -5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Bottom_18" parent="Background/Decorations/Brick/Row_Bottom" unique_id=160824835 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.5, 0.01, -5.5)
+
+[node name="Column_Right2" type="Node3D" parent="Background/Decorations/Brick" unique_id=1243116299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="Brick_Right_01" parent="Background/Decorations/Brick/Column_Right2" unique_id=967650454 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -3.5)
+
+[node name="Brick_Right_02" parent="Background/Decorations/Brick/Column_Right2" unique_id=1805161198 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -2.5)
+
+[node name="Brick_Right_03" parent="Background/Decorations/Brick/Column_Right2" unique_id=544597204 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -1.5)
+
+[node name="Brick_Right_04" parent="Background/Decorations/Brick/Column_Right2" unique_id=648947583 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -0.5)
+
+[node name="Brick_Right_05" parent="Background/Decorations/Brick/Column_Right2" unique_id=811780899 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 0.5)
+
+[node name="Brick_Right_06" parent="Background/Decorations/Brick/Column_Right2" unique_id=2018085197 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 1.5)
+
+[node name="Brick_Right_07" parent="Background/Decorations/Brick/Column_Right2" unique_id=821859482 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 2.5)
+
+[node name="Brick_Right_08" parent="Background/Decorations/Brick/Column_Right2" unique_id=192851535 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 3.5)
+
+[node name="Brick_Right_Bottom" parent="Background/Decorations/Brick/Column_Right2" unique_id=444189977 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -4.5)
+
+[node name="Brick_Right_Bottom2" parent="Background/Decorations/Brick/Column_Right2" unique_id=2023748699 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -5.5)
+
+[node name="Brick_Right_Top" parent="Background/Decorations/Brick/Column_Right2" unique_id=1252602150 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 4.5)
+
+[node name="Brick_Right_Top2" parent="Background/Decorations/Brick/Column_Right2" unique_id=820649868 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 5.5)
+
+[node name="Row_Top" type="Node3D" parent="Background/Decorations/Brick" unique_id=1562133259]
+
+[node name="Brick_Top_01" parent="Background/Decorations/Brick/Row_Top" unique_id=248745583 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -8.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Top_02" parent="Background/Decorations/Brick/Row_Top" unique_id=573891893 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.5, 0.01, 5.5)
+
+[node name="Brick_Top_03" parent="Background/Decorations/Brick/Row_Top" unique_id=2026921560 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Top_04" parent="Background/Decorations/Brick/Row_Top" unique_id=1248120839 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5.5, 0.01, 5.5)
+
+[node name="Brick_Top_05" parent="Background/Decorations/Brick/Row_Top" unique_id=539783914 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4.5, 0.01, 5.5)
+
+[node name="Brick_Top_06" parent="Background/Decorations/Brick/Row_Top" unique_id=1190869601 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Top_07" parent="Background/Decorations/Brick/Row_Top" unique_id=1788591229 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.5, 0.01, 5.5)
+
+[node name="Brick_Top_08" parent="Background/Decorations/Brick/Row_Top" unique_id=2056469389 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.5, 0.01, 5.5)
+
+[node name="Brick_Top_09" parent="Background/Decorations/Brick/Row_Top" unique_id=1486314650 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.5, 0.01, 5.5)
+
+[node name="Brick_Top_10" parent="Background/Decorations/Brick/Row_Top" unique_id=992669786 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5, 0.01, 5.5)
+
+[node name="Brick_Top_11" parent="Background/Decorations/Brick/Row_Top" unique_id=1593695475 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.5, 0.01, 5.5)
+
+[node name="Brick_Top_12" parent="Background/Decorations/Brick/Row_Top" unique_id=855084498 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Top_13" parent="Background/Decorations/Brick/Row_Top" unique_id=879343570 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.5, 0.01, 5.5)
+
+[node name="Brick_Top_14" parent="Background/Decorations/Brick/Row_Top" unique_id=529987927 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Top_15" parent="Background/Decorations/Brick/Row_Top" unique_id=274820336 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5.5, 0.01, 5.5)
+
+[node name="Brick_Top_16" parent="Background/Decorations/Brick/Row_Top" unique_id=1577303697 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6.5, 0.01, 5.5)
+
+[node name="Brick_Top_17" parent="Background/Decorations/Brick/Row_Top" unique_id=267162073 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Top_18" parent="Background/Decorations/Brick/Row_Top" unique_id=677749525 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.5, 0.01, 5.5)
+
+[node name="Column_Left" type="Node3D" parent="Background/Decorations/Brick" unique_id=2039127292]
+
+[node name="Brick_Left_01" parent="Background/Decorations/Brick/Column_Left" unique_id=360024909 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, -3.5)
+
+[node name="Brick_Left_02" parent="Background/Decorations/Brick/Column_Left" unique_id=2084468998 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, -2.5)
+
+[node name="Brick_Left_03" parent="Background/Decorations/Brick/Column_Left" unique_id=1756567741 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, -1.5)
+
+[node name="Brick_Left_04" parent="Background/Decorations/Brick/Column_Left" unique_id=838452357 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, -0.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Left_05" parent="Background/Decorations/Brick/Column_Left" unique_id=875315212 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, 0.5)
+
+[node name="Brick_Left_06" parent="Background/Decorations/Brick/Column_Left" unique_id=210761498 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, 1.5)
+
+[node name="Brick_Left_07" parent="Background/Decorations/Brick/Column_Left" unique_id=1548068008 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, 2.5)
+
+[node name="Brick_Left_08" parent="Background/Decorations/Brick/Column_Left" unique_id=1676820716 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, 3.5)
+
+[node name="Brick_Left_Bottom" parent="Background/Decorations/Brick/Column_Left" unique_id=1381975817 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, -4.5)
+
+[node name="Brick_Left_Top" parent="Background/Decorations/Brick/Column_Left" unique_id=1532528008 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, 4.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Column_Right" type="Node3D" parent="Background/Decorations/Brick" unique_id=805642434]
+
+[node name="Brick_Right_01" parent="Background/Decorations/Brick/Column_Right" unique_id=459683615 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -3.5)
+
+[node name="Brick_Right_02" parent="Background/Decorations/Brick/Column_Right" unique_id=835900188 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -2.5)
+
+[node name="Brick_Right_03" parent="Background/Decorations/Brick/Column_Right" unique_id=736507415 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -1.5)
+
+[node name="Brick_Right_04" parent="Background/Decorations/Brick/Column_Right" unique_id=581471665 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -0.5)
+
+[node name="Brick_Right_05" parent="Background/Decorations/Brick/Column_Right" unique_id=1138839530 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 0.5)
+
+[node name="Brick_Right_06" parent="Background/Decorations/Brick/Column_Right" unique_id=414106972 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 1.5)
+
+[node name="Brick_Right_07" parent="Background/Decorations/Brick/Column_Right" unique_id=686261124 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 2.5)
+
+[node name="Brick_Right_08" parent="Background/Decorations/Brick/Column_Right" unique_id=1989702732 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 3.5)
+
+[node name="Brick_Right_Bottom" parent="Background/Decorations/Brick/Column_Right" unique_id=105745606 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -4.5)
+
+[node name="Brick_Right_Top" parent="Background/Decorations/Brick/Column_Right" unique_id=183767864 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 4.5)
+
+[node name="Column_Left_Outer" type="Node3D" parent="Background/Decorations/Brick" unique_id=1986754672]
+
+[node name="Brick_Left_Outer_01" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=1509130612 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, -5.5)
+
+[node name="Brick_Left_Outer_02" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=531551891 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, -4.5)
+
+[node name="Brick_Left_Outer_03" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=1976092240 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, -3.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Left_Outer_04" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=1159908988 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, -2.5)
+
+[node name="Brick_Left_Outer_05" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=876673556 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, -1.5)
+
+[node name="Brick_Left_Outer_06" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=1435572830 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, -0.5)
+
+[node name="Brick_Left_Outer_07" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=416457901 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, 0.5)
+
+[node name="Brick_Left_Outer_08" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=328574820 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, 1.5)
+
+[node name="Brick_Left_Outer_09" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=436431646 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, 2.5)
+
+[node name="Brick_Left_Outer_10" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=136238441 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, 3.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Left_Outer_11" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=1603625288 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, 4.5)
+
+[node name="Brick_Left_Outer_12" parent="Background/Decorations/Brick/Column_Left_Outer" unique_id=1771892185 instance=ExtResource("9_jndya")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.5, 0.01, 5.5)
+
+[node name="Corners" type="Node3D" parent="Background/Decorations/Brick" unique_id=1536514757]
+
+[node name="Brick_Corner_BottomLeft" parent="Background/Decorations/Brick/Corners" unique_id=623881617 instance=ExtResource("11_brick_d")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, -5.5)
+
+[node name="Brick_Corner_BottomRight" parent="Background/Decorations/Brick/Corners" unique_id=1834928399 instance=ExtResource("10_brick_c")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, -5.5)
+
+[node name="Brick_Corner_TopLeft" parent="Background/Decorations/Brick/Corners" unique_id=88994982 instance=ExtResource("8_gaad4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, 0.01, 5.5)
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Brick_Corner_TopRight" parent="Background/Decorations/Brick/Corners" unique_id=222734691 instance=ExtResource("12_brick_e")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.5, 0.01, 5.5)
+
+[node name="Fence" type="Node3D" parent="Background/Decorations" unique_id=1378483415]
+
+[node name="House1" type="Node3D" parent="Background/Decorations/Fence" unique_id=1166836019]
+
+[node name="Fence_Stylized" parent="Background/Decorations/Fence/House1" unique_id=1439624350 instance=ExtResource("13_rv2xu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.284549, 0, -6)
+
+[node name="Fence_Stylized_Variant_01" parent="Background/Decorations/Fence/House1" unique_id=308706352 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.1039805, 0, -6)
+
+[node name="Fence_Stylized_Variant_04" parent="Background/Decorations/Fence/House1" unique_id=889211634 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.0998306, 0, -6)
+
+[node name="Fence_Stylized_Variant_02" parent="Background/Decorations/Fence/House1" unique_id=541105245 instance=ExtResource("15_px4g3")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.1691976, 0, -6)
+
+[node name="Fence_Stylized_Variant_03" parent="Background/Decorations/Fence/House1" unique_id=552400180 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -6)
+
+[node name="Fence_Stylized_Variant_05" parent="Background/Decorations/Fence/House1" unique_id=452548525 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.368441, 0, -6)
+
+[node name="Fence_Stylized2" parent="Background/Decorations/Fence/House1" unique_id=587783450 instance=ExtResource("13_rv2xu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1239471, 0, -6)
+
+[node name="House2" type="Node3D" parent="Background/Decorations/Fence" unique_id=1932615313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.217867)
+
+[node name="Fence_Stylized" parent="Background/Decorations/Fence/House2" unique_id=1907496637 instance=ExtResource("13_rv2xu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.284549, 0, -6)
+
+[node name="Fence_Stylized_Variant_01" parent="Background/Decorations/Fence/House2" unique_id=1052628045 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.1039805, 0, -6)
+
+[node name="Fence_Stylized_Variant_04" parent="Background/Decorations/Fence/House2" unique_id=410563991 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.0998306, 0, -6)
+
+[node name="Fence_Stylized_Variant_02" parent="Background/Decorations/Fence/House2" unique_id=1783381195 instance=ExtResource("15_px4g3")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.1691976, 0, -6)
+
+[node name="Fence_Stylized_Variant_03" parent="Background/Decorations/Fence/House2" unique_id=255913100 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -6)
+
+[node name="Fence_Stylized_Variant_05" parent="Background/Decorations/Fence/House2" unique_id=95719475 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.368441, 0, -6)
+
+[node name="Fence_Stylized2" parent="Background/Decorations/Fence/House2" unique_id=1573569202 instance=ExtResource("13_rv2xu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1239471, 0, -6)
+
+[node name="House3" type="Node3D" parent="Background/Decorations/Fence" unique_id=1157269134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.374723)
+
+[node name="Fence_Stylized" parent="Background/Decorations/Fence/House3" unique_id=684349737 instance=ExtResource("13_rv2xu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.284549, 0, -6)
+
+[node name="Fence_Stylized_Variant_01" parent="Background/Decorations/Fence/House3" unique_id=280677137 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.1039805, 0, -6)
+
+[node name="Fence_Stylized_Variant_04" parent="Background/Decorations/Fence/House3" unique_id=623260411 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.0998306, 0, -6)
+
+[node name="Fence_Stylized_Variant_02" parent="Background/Decorations/Fence/House3" unique_id=1123853127 instance=ExtResource("15_px4g3")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.1691976, 0, -6)
+
+[node name="Fence_Stylized_Variant_03" parent="Background/Decorations/Fence/House3" unique_id=1238056059 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -6)
+
+[node name="Fence_Stylized_Variant_05" parent="Background/Decorations/Fence/House3" unique_id=1274380034 instance=ExtResource("14_ixsfw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.368441, 0, -6)
+
+[node name="Fence_Stylized2" parent="Background/Decorations/Fence/House3" unique_id=146563992 instance=ExtResource("13_rv2xu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1239471, 0, -6)
+
+[node name="House" type="Node3D" parent="Background/Decorations" unique_id=1646477660]
+
+[node name="qa_wide_facade2" parent="Background/Decorations/House" unique_id=1160858394 instance=ExtResource("16_ixsfw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.067459, 0.2, 0)
+
+[node name="qa_wide_facade" parent="Background/Decorations/House" unique_id=1672674987 instance=ExtResource("17_px4g3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -19.162342)
+
+[node name="Other" type="Node3D" parent="Background/Decorations" unique_id=1058046099]
+
+[node name="Sprite3D" type="Sprite3D" parent="Background/Decorations/Other" unique_id=264050148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4294765, 1.6620636, -6.7667294)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Background/Decorations/Other" unique_id=664645251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4294765, 1.6620636, 8.928164)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Background/Decorations/Other" unique_id=449181451]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 6.01492, 0.60800123, 6.5251493)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D8" type="Sprite3D" parent="Background/Decorations/Other" unique_id=419331825]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.235607, 0.60800123, 6.5251493)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Background/Decorations/Other" unique_id=785034423]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.162628, 1.6620636, -8.579952)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("18_g5yad")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Background/Decorations/Other" unique_id=815052901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22376728, 1.6620636, -12.412844)
+flip_h = true
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D9" type="Sprite3D" parent="Background/Decorations/Other" unique_id=1073109486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.103176, 1.6620636, -16.16605)
+flip_h = true
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Background/Decorations/Other" unique_id=769416265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2028925, 1.6620636, -9.934776)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Background/Decorations/Other" unique_id=1509739404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17309952, 1.6620636, -8.155714)
+modulate = Color(0, 0.7411765, 0, 1)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_x2sn2")
+
+[node name="GraveYard" type="Node3D" parent="Background" unique_id=724362289]
+
+[node name="Fence_Gate2" parent="Background/GraveYard" unique_id=627061335 instance=ExtResource("21_1blnt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.041168, 0, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=360215507]
+transform = Transform3D(2, 0, 0, 0, 1.9999999, 0, 0, 0, 1.9999999, 0.2331667, 0.875, 0.16619349)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_vkqoe")
+autoplay = "default"

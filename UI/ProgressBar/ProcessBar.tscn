@@ -1,0 +1,279 @@
+[gd_scene format=3 uid="uid://ddhssa0r6d113"]
+
+[ext_resource type="Texture2D" uid="uid://c18d2cn83iwf" path="res://UI/ProgressBar/Bar.png" id="1_8ihd7"]
+[ext_resource type="Script" uid="uid://cqkg35i30eb4f" path="res://UI/ProgressBar/ProcessBar.gd" id="2_7phnu"]
+[ext_resource type="PackedScene" uid="uid://cfjn2vjdnvyv2" path="res://UI/ProgressBar/WaveNode.tscn" id="3_2g7tv"]
+[ext_resource type="Texture2D" uid="uid://cf8hkkpu72qc7" path="res://UI/ProgressBar/UIimg.png" id="4_wqfx6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joy7m"]
+atlas = ExtResource("1_8ihd7")
+region = Rect2(1, 46.61389, 146, 11.955048)
+
+[sub_resource type="Gradient" id="Gradient_qesiy"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fh11"]
+gradient = SubResource("Gradient_qesiy")
+fill = 1
+fill_from = Vector2(0.4957265, 0.48076922)
+fill_to = Vector2(0.80982906, 0.21794872)
+
+[sub_resource type="Animation" id="Animation_8fh11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.8759707, 1.8759707, 1.8759707, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D2/PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.07]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.803205, 1.803205, 1.803205, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sprite2D/PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.07]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Sprite2D2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ak6fv"]
+resource_name = "green_flash"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.803205, 1.803205, 1.803205, 1), Color(1.803205, 1.803205, 1.803205, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D/PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.07, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sprite2D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_25ui5"]
+resource_name = "red_flash"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.8759707, 1.8759707, 1.8759707, 1), Color(1.8759707, 1.8759707, 1.8759707, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D2/PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.07, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sprite2D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgbi4"]
+_data = {
+&"RESET": SubResource("Animation_8fh11"),
+&"green_flash": SubResource("Animation_ak6fv"),
+&"red_flash": SubResource("Animation_25ui5")
+}
+
+[node name="TextureProgressBar" type="TextureProgressBar" unique_id=1178195651]
+offset_right = 146.0
+offset_bottom = 11.0
+scale = Vector2(2.5, 2.5)
+fill_mode = 1
+texture_progress = SubResource("AtlasTexture_joy7m")
+script = ExtResource("2_7phnu")
+wave_node = ExtResource("3_2g7tv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=540472093]
+z_index = -1
+position = Vector2(-11.333333, 7.9999995)
+texture = ExtResource("4_wqfx6")
+region_enabled = true
+region_rect = Rect2(440, 10, 65, 43)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=1578457200]
+visible = false
+modulate = Color(1.803205, 1.803205, 1.803205, 1)
+position = Vector2(-7.3333335, -0.6666667)
+scale = Vector2(0.7912416, 0.8422173)
+texture = ExtResource("4_wqfx6")
+region_enabled = true
+region_rect = Rect2(627, 15, 24, 23)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D/Sprite2D" unique_id=1482753016]
+position = Vector2(0.42127842, 1.9789028)
+scale = Vector2(4.8523655, 3.8232515)
+color = Color(0.101960786, 1, 0.2, 1)
+energy = 4.07
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8fh11")
+texture_scale = 0.2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" unique_id=446919220]
+modulate = Color(1.8759707, 1.8759707, 1.8759707, 1)
+position = Vector2(-7.3333335, -1.1920929e-07)
+scale = Vector2(0.63505244, 0.63505244)
+texture = ExtResource("4_wqfx6")
+region_enabled = true
+region_rect = Rect2(597, 13, 25, 25)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D/Sprite2D2" unique_id=1113663842]
+position = Vector2(0.42127842, 1.9789028)
+scale = Vector2(6.58392, 5.187569)
+color = Color(1, 0, 0, 1)
+energy = 4.07
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8fh11")
+texture_scale = 0.2
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1638370261]
+z_index = -1
+position = Vector2(74.66667, 7.3333335)
+texture = ExtResource("1_8ihd7")
+region_enabled = true
+region_rect = Rect2(0, 57.967163, 150, 11.273575)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=436213792]
+position = Vector2(74.66667, 7.3333335)
+texture = ExtResource("1_8ihd7")
+region_enabled = true
+region_rect = Rect2(1, 26, 146, 19.956741)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=716348225]
+libraries/ = SubResource("AnimationLibrary_pgbi4")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1415759856]
+position = Vector2(145.33333, 8)

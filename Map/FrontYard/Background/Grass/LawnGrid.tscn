@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Map/FrontYard/Background/Grass/lawn_grid.gd" id="1_grid"]
+[ext_resource type="Resource" path="res://Map/FrontYard/Background/Grass/LawnGrassSettings.tres" id="2_settings"]
+
+[node name="LawnGrid" type="Node3D"]
+script = ExtResource("1_grid")
+settings = ExtResource("2_settings")
+render_chunk_rows = 3
+render_chunk_columns = 3
