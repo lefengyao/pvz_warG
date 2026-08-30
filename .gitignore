@@ -6,4 +6,5 @@
 .superpowers/
 docs/
 AGENTS.md
+*.ps1
 /android/
