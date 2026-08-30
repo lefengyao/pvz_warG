@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://clgfjglutvtcd"]
+
+[ext_resource type="PackedScene" uid="uid://drw6vb8ex2rld" path="res://Scene/Settings/Music/AudioSlider.tscn" id="1_audio_slider"]
+
+[node name="AudioSettings" type="Control" unique_id=1284736799]
+custom_minimum_size = Vector2(420, 252)
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 252.0
+
+[node name="Sliders" type="VBoxContainer" parent="." unique_id=1249916030]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 252.0
+theme_override_constants/separation = 12
+
+[node name="MasterVolume" parent="Sliders" unique_id=576552886 instance=ExtResource("1_audio_slider")]
+layout_mode = 2
+bus_name = "Master"
+setting_label = "总音量"
+
+[node name="MusicVolume" parent="Sliders" unique_id=917217538 instance=ExtResource("1_audio_slider")]
+layout_mode = 2
+bus_name = "music"
+setting_label = "音乐音量"
+
+[node name="SfxVolume" parent="Sliders" unique_id=1675100916 instance=ExtResource("1_audio_slider")]
+layout_mode = 2
+bus_name = "sfx"
+setting_label = "音效音量"

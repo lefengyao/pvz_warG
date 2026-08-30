@@ -9,7 +9,8 @@ func rebuild(
 	merged_custom_data_by_key: Dictionary,
 	model_meshes: Array[Mesh],
 	grass_materials_by_variant: Array,
-	chunk_aabb: AABB
+	chunk_aabb: AABB,
+	grass_cast_shadow: bool = true
 ) -> void:
 	clear_generated_renderers()
 	for key in merged_transforms_by_key.keys():
@@ -39,7 +40,7 @@ func rebuild(
 		renderer.name = "ChunkGrass_Style_%d_Variant_%d" % [style_id, variant_index]
 		renderer.multimesh = multimesh
 		renderer.material_override = style_materials[variant_index]
-		renderer.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		renderer.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if grass_cast_shadow else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		renderer.set_meta("lawn_generated", true)
 		add_child(renderer)
 

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bdvublcy6sy5f"]
+
+[ext_resource type="PackedScene" uid="uid://dw5tca7f1fupw" path="res://Assets/Textures/House/house_windows_fixed.glb" id="1_lciki"]
+
+[node name="house_windows_fixed" unique_id=1916421222 instance=ExtResource("1_lciki")]
+
+[node name="Hinge_WUL_L" parent="." index="4" unique_id=340935869]
+transform = Transform3D(-0.25881904, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881904, -4.28, 4.67, -4.1)
+
+[node name="Hinge_WUL_R" parent="." index="5" unique_id=219299103]
+transform = Transform3D(-0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881904, -2.52, 4.67, -4.1)

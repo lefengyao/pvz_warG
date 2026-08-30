@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ujkynlrtvxcg" path="res://Assets/Textures/Grass/stylized_lawn_demo.glb" id="3_0q0sr"]
 [ext_resource type="PackedScene" path="res://Map/FrontYard/Background/Grass/LawnCell.tscn" id="3_h6jfq"]
 [ext_resource type="PackedScene" path="res://Map/FrontYard/Background/Grass/LawnGrid.tscn" id="3_lawn_grid"]
+[ext_resource type="PackedScene" uid="uid://c7y6s3sjl1hre" path="res://Scene/Settings/Setting.tscn" id="3_u85nk"]
 [ext_resource type="Texture2D" uid="uid://dxdjvlg0ou02r" path="res://Assets/Textures/Decoration/Shrub.png" id="3_x2sn2"]
 [ext_resource type="Script" uid="uid://ddp3u0r2ldkuc" path="res://Map/FrontYard/Background/Grass/lawn_grass_settings.gd" id="4_ay5sj"]
 [ext_resource type="PackedScene" uid="uid://bo0ed3i1djl2w" path="res://Assets/Textures/Road/straight_road.glb" id="7_nxvnw"]
@@ -16,10 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://duesckasq0e15" path="res://Assets/Textures/Fence/fence_stylized.tscn" id="13_rv2xu"]
 [ext_resource type="PackedScene" uid="uid://dbik5aw7a35jc" path="res://Assets/Textures/Fence/fence_stylized_variant_01.tscn" id="14_ixsfw"]
 [ext_resource type="PackedScene" uid="uid://lufpxax4mpxg" path="res://Assets/Textures/Fence/fence_stylized_variant_02.tscn" id="15_px4g3"]
-[ext_resource type="PackedScene" uid="uid://b0iymfystopew" path="res://Assets/Textures/House/qa_wide_facade2.glb" id="16_ixsfw"]
 [ext_resource type="PackedScene" uid="uid://dwcvewkjpqtyt" path="res://Assets/Textures/House/qa_wide_facade.glb" id="17_px4g3"]
 [ext_resource type="Texture2D" uid="uid://mayopckiphc7" path="res://Assets/Textures/Decoration/Shrub4.png" id="18_g5yad"]
+[ext_resource type="PackedScene" uid="uid://bdvublcy6sy5f" path="res://Assets/Textures/House/house_windows_fixed.tscn" id="18_u85nk"]
 [ext_resource type="PackedScene" uid="uid://bebg4f7w3o07f" path="res://Assets/Textures/Fence/IronFence/Fence_Gate.glb" id="21_1blnt"]
+[ext_resource type="Script" uid="uid://cxgx73ke2umna" path="res://Tool/StateMachine/StateMachineManager.gd" id="21_x2sn2"]
+[ext_resource type="Script" uid="uid://xwdskyrdxe04" path="res://Manager/PlantLogic.gd" id="22_plant_logic"]
+[ext_resource type="Script" uid="uid://digwh4euv80dw" path="res://UI/FPSLabel.gd" id="23_fps_label"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3yhks"]
 sky_top_color = Color(0.43529412, 0.6627451, 0.84705883, 1)
@@ -46,28 +50,26 @@ dof_blur_far_transition = 15.0
 dof_blur_amount = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_board"]
+cull_mode = 2
 albedo_color = Color(0.18, 0.4, 0.1, 1)
 roughness = 0.96
-cull_mode = 2
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_board"]
 size = Vector2(80, 80)
 subdivide_width = 1
 subdivide_depth = 1
 
-[sub_resource type="Resource" id="Resource_x2sn2"]
+[sub_resource type="Resource" id="Resource_rcyul"]
 resource_local_to_scene = true
 script = ExtResource("4_ay5sj")
-model_variant_weights = PackedFloat32Array(0.6, 0.3, 0.02)
-model_clumps_per_cell = 60
+model_variant_weights = PackedFloat32Array(0.5, 0.3, 0.01)
+model_clumps_per_cell = 40
+grass_cast_shadow = false
 dark_color = Color(0.094118, 0.180392, 0.039216, 1)
 light_color = Color(0.235294, 0.533333, 0.14902, 1)
-grass_highlight_threshold = 0.09
-grass_highlight_hardness = 1.0
-grass_normal_up_strength = 1.0
-grass_root_color = Color(0.141176, 0.301961, 0.070588, 1)
-grass_tip_color = Color(0.470588, 0.741176, 0.290196, 1)
-grass_gradient_strength = 1.0
+grass_highlight_strength = 1.0
+grass_highlight_threshold = 0.4
 grass_wind_animated = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gkncj"]
@@ -143,25 +145,40 @@ animations = [{
 
 [node name="FrontYard" type="Node3D" unique_id=100995161]
 script = ExtResource("1_front_yard")
-camera_height = 10.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=590257898]
 
 [node name="BK" type="Control" parent="UI" unique_id=655650902]
-visible = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
+
+[node name="FPSLabel" type="Label" parent="UI" unique_id=864800416]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "FPS: 0"
+script = ExtResource("23_fps_label")
+
+[node name="Setting" parent="UI" unique_id=1086533342 instance=ExtResource("3_u85nk")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1116134165]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 8.6602545, 15)
 shadow_enabled = true
+directional_shadow_max_distance = 30.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=875490108]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 10, 15)
 current = true
 fov = 42.0
-size = 10.0
+size = 11.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1587421602]
 environment = SubResource("Environment_gkncj")
@@ -179,7 +196,7 @@ material_override = SubResource("StandardMaterial3D_board")
 mesh = SubResource("PlaneMesh_board")
 
 [node name="LawnGrid" parent="Background/Grass" unique_id=1875299574 instance=ExtResource("3_lawn_grid")]
-settings = SubResource("Resource_x2sn2")
+settings = SubResource("Resource_rcyul")
 
 [node name="LawnCell_0_0" parent="Background/Grass/LawnGrid" unique_id=1016666098 instance=ExtResource("3_h6jfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
@@ -816,11 +833,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1239471, 0, -6)
 
 [node name="House" type="Node3D" parent="Background/Decorations" unique_id=1646477660]
 
-[node name="qa_wide_facade2" parent="Background/Decorations/House" unique_id=1160858394 instance=ExtResource("16_ixsfw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.067459, 0.2, 0)
-
 [node name="qa_wide_facade" parent="Background/Decorations/House" unique_id=1672674987 instance=ExtResource("17_px4g3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -19.162342)
+
+[node name="house_windows_fixed2" parent="Background/Decorations/House" unique_id=1916421222 instance=ExtResource("18_u85nk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0.2, 0)
 
 [node name="Other" type="Node3D" parent="Background/Decorations" unique_id=1058046099]
 
@@ -910,3 +927,20 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vkqoe")
 autoplay = "default"
+
+[node name="Manager" type="Node" parent="." unique_id=736767531]
+
+[node name="PlantLogic" type="Node" parent="Manager" unique_id=766579314]
+script = ExtResource("22_plant_logic")
+
+[node name="Plant" type="Node" parent="Manager" unique_id=455279263]
+
+[node name="Zombie" type="Node" parent="Manager" unique_id=1657872107]
+
+[node name="LevelLogic" type="Node" parent="Manager" unique_id=629904157]
+
+[node name="Music" type="Node" parent="Manager" unique_id=434310525]
+
+[node name="StateMachineManager" type="Node" parent="." unique_id=2011448861]
+script = ExtResource("21_x2sn2")
+metadata/_custom_type_script = "uid://cxgx73ke2umna"

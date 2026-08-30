@@ -39,10 +39,6 @@ void vertex() {
 	float grass_height_value = clamp(VERTEX.y / max(grass_variant_height, 0.001), 0.0, 1.0);
 	float wind_mask = smoothstep(0.05, 1.0, grass_height_value);
 	vec2 wind_direction = grass_wind_direction;
-	if (dot(wind_direction, wind_direction) < 0.0001) {
-		wind_direction = vec2(1.0, 0.0);
-	}
-	wind_direction = normalize(wind_direction);
 	float wind_time = 0.0;
 	if (grass_wind_animated) {
 		wind_time = TIME * grass_wind_speed;
@@ -60,7 +56,7 @@ void vertex() {
 	vec2 wind_offset = local_wind_direction * wave * grass_wind_strength * wind_mask / width_scale;
 	VERTEX.xz += wind_offset;
 
-	float normal_mix = clamp(grass_normal_up_strength, 0.0, 1.0);
+	float normal_mix = grass_normal_up_strength;
 	NORMAL = normalize(mix(NORMAL, vec3(0.0, 1.0, 0.0), normal_mix));
 	// 让摆动后的叶片产生轻微倾斜，保留原有朝上法线控制。
 	vec3 wind_normal = normalize(vec3(-local_wind_direction.x * wave * 0.22, 1.0, -local_wind_direction.y * wave * 0.22));
@@ -69,9 +65,9 @@ void vertex() {
 	// 合批后同一 MultiMesh 包含多个格子，用实例变换后的世界坐标进行逐实例裁剪。
 	vec3 world_vertex_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	grass_cell_position = world_vertex_position.xz - INSTANCE_CUSTOM.rg;
-	grass_height01 = clamp(pow(grass_height_value, max(grass_gradient_exponent, 0.25)), 0.0, 1.0);
+	grass_height01 = pow(grass_height_value, grass_gradient_exponent);
 	float tip = smoothstep(grass_highlight_threshold, 1.0, grass_height_value);
-	grass_highlight = floor(pow(clamp(tip, 0.0, 1.0), max(grass_highlight_hardness, 1.0)) * 4.0 + 0.5) / 4.0;
+	grass_highlight = floor(pow(tip, grass_highlight_hardness) * 4.0 + 0.5) / 4.0;
 	grass_vertex_tint = COLOR.rgb;
 }
 
@@ -88,7 +84,7 @@ void fragment() {
 	}
 	vec3 base_color = grass_color.rgb * vertex_tint;
 	vec3 gradient_color = mix(grass_root_color.rgb, grass_tip_color.rgb, grass_height01);
-	base_color = mix(base_color, gradient_color, clamp(grass_gradient_strength, 0.0, 1.0));
+	base_color = mix(base_color, gradient_color, grass_gradient_strength);
 	ALBEDO = mix(base_color, grass_highlight_color.rgb, clamp(grass_highlight * grass_highlight_strength, 0.0, 1.0));
 	EMISSION = grass_highlight_color.rgb * grass_highlight * grass_emission_strength;
 	ROUGHNESS = 0.9;

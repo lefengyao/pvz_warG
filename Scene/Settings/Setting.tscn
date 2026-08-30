@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://c7y6s3sjl1hre"]
+
+[ext_resource type="Script" uid="uid://cgso4c5eq75p4" path="res://Scene/Settings/Setting.gd" id="1_setting_script"]
+[ext_resource type="PackedScene" uid="uid://clgfjglutvtcd" path="res://Scene/Settings/Music/AudioSettings.tscn" id="2_audio_settings"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxNavHover"]
+bg_color = Color(0.894118, 0.709804, 0.396078, 0.1)
+border_width_left = 1
+border_color = Color(0.894118, 0.709804, 0.396078, 0.72)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxCloseHover"]
+bg_color = Color(0.894118, 0.709804, 0.396078, 0.12)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.894118, 0.709804, 0.396078, 0.42)
+
+[node name="Setting" type="Control" unique_id=1086533342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_setting_script")
+
+[node name="BackdropLayer" type="ColorRect" parent="." unique_id=903858786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0431373, 0.0627451, 0.0862745, 0.68)
+
+[node name="SettingsLayout" type="Control" parent="." unique_id=387038621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NavigationModule" type="Control" parent="SettingsLayout" unique_id=512896423]
+layout_mode = 1
+anchor_left = 0.09
+anchor_top = 0.145
+anchor_right = 0.225
+anchor_bottom = 0.73
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NavigationLine" type="ColorRect" parent="SettingsLayout/NavigationModule" unique_id=1635565211]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 28.0
+offset_right = -25.0
+offset_bottom = 430.0
+mouse_filter = 2
+color = Color(0.768627, 0.819608, 0.831373, 0.28)
+
+[node name="NavigationTitle" type="Label" parent="SettingsLayout/NavigationModule" unique_id=601905808]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 15
+text = "设置"
+
+[node name="SelectionMarker" type="ColorRect" parent="SettingsLayout/NavigationModule" unique_id=679261105]
+layout_mode = 0
+offset_top = 75.0
+offset_right = 3.0
+offset_bottom = 109.0
+mouse_filter = 2
+color = Color(0.894118, 0.709804, 0.396078, 1)
+
+[node name="CategoryNavigation" type="VBoxContainer" parent="SettingsLayout/NavigationModule" unique_id=2039290498]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 47.0
+offset_right = 168.0
+offset_bottom = 337.0
+theme_override_constants/separation = 20
+
+[node name="GeneralButton" type="Button" parent="SettingsLayout/NavigationModule/CategoryNavigation" unique_id=929244825]
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.733333, 0.752941, 1)
+theme_override_colors/font_hover_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxNavHover")
+text = "通用"
+flat = true
+alignment = 0
+
+[node name="AudioButton" type="Button" parent="SettingsLayout/NavigationModule/CategoryNavigation" unique_id=939385225]
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_colors/font_hover_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxNavHover")
+text = "声音"
+flat = true
+alignment = 0
+
+[node name="DisplayButton" type="Button" parent="SettingsLayout/NavigationModule/CategoryNavigation" unique_id=1531079616]
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.733333, 0.752941, 1)
+theme_override_colors/font_hover_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxNavHover")
+text = "画面"
+flat = true
+alignment = 0
+
+[node name="ControlsButton" type="Button" parent="SettingsLayout/NavigationModule/CategoryNavigation" unique_id=1128431691]
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.733333, 0.752941, 1)
+theme_override_colors/font_hover_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxNavHover")
+text = "操作"
+flat = true
+alignment = 0
+
+[node name="AccessibilityButton" type="Button" parent="SettingsLayout/NavigationModule/CategoryNavigation" unique_id=849213695]
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.733333, 0.752941, 1)
+theme_override_colors/font_hover_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxNavHover")
+text = "辅助"
+flat = true
+alignment = 0
+
+[node name="ContentModule" type="Control" parent="SettingsLayout" unique_id=909594877]
+layout_mode = 1
+anchor_left = 0.225
+anchor_top = 0.119
+anchor_right = 0.79
+anchor_bottom = 0.72
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SectionHeader" type="Control" parent="SettingsLayout/ContentModule"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SectionKicker" type="Label" parent="SettingsLayout/ContentModule/SectionHeader" unique_id=452592209]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 13
+text = "选项"
+
+[node name="SectionTitle" type="Label" parent="SettingsLayout/ContentModule/SectionHeader" unique_id=1610164448]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 720.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.941176, 0.952941, 0.94902, 1)
+theme_override_font_sizes/font_size = 32
+text = "声音设置"
+
+[node name="Divider" type="ColorRect" parent="SettingsLayout/ContentModule/SectionHeader" unique_id=174431786]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.165
+anchor_right = 1.0
+anchor_bottom = 0.167
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.768627, 0.819608, 0.831373, 0.3)
+
+[node name="SectionContent" type="Control" parent="SettingsLayout/ContentModule"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AudioSettings" parent="SettingsLayout/ContentModule/SectionContent" unique_id=946466884 instance=ExtResource("2_audio_settings")]
+anchors_preset = 0
+offset_top = 122.0
+offset_bottom = 374.0
+
+[node name="OverlayLayer" type="Control" parent="." unique_id=343648416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WindowControls" type="Control" parent="OverlayLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="OverlayLayer/WindowControls" unique_id=1202025440]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89
+anchor_top = 0.12
+anchor_right = 0.915
+anchor_bottom = 0.165
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "关闭设置"
+theme_override_colors/font_color = Color(0.898039, 0.917647, 0.921569, 1)
+theme_override_colors/font_hover_color = Color(0.894118, 0.709804, 0.396078, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxCloseHover")
+text = "×"
+flat = true
+
+[connection signal="pressed" from="SettingsLayout/NavigationModule/CategoryNavigation/GeneralButton" to="." method="_on_general_button_pressed"]
+[connection signal="pressed" from="SettingsLayout/NavigationModule/CategoryNavigation/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="SettingsLayout/NavigationModule/CategoryNavigation/DisplayButton" to="." method="_on_display_button_pressed"]
+[connection signal="pressed" from="SettingsLayout/NavigationModule/CategoryNavigation/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="SettingsLayout/NavigationModule/CategoryNavigation/AccessibilityButton" to="." method="_on_accessibility_button_pressed"]
+[connection signal="pressed" from="OverlayLayer/WindowControls/CloseButton" to="." method="_on_close_button_pressed"]

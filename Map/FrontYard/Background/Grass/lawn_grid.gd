@@ -6,6 +6,7 @@ const LAWN_CELL_SCENE: PackedScene = preload("res://Map/FrontYard/Background/Gra
 const LAWN_RENDER_CHUNK_SCENE: PackedScene = preload("res://Map/FrontYard/Background/Grass/LawnRenderChunk.tscn")
 const LAWN_RENDER_CHUNK_SCRIPT: Script = preload("res://Map/FrontYard/Background/Grass/lawn_render_chunk.gd")
 const LAWN_GRASS_SHADER: Shader = preload("res://Map/FrontYard/Background/Grass/lawn_cell_grass.gdshader")
+const SIGNATURE_POLL_INTERVAL := 0.25
 
 @export_group("地图布局")
 ## 草坪行数；修改后会重建格子节点。
@@ -53,7 +54,10 @@ const LAWN_GRASS_SHADER: Shader = preload("res://Map/FrontYard/Background/Grass/
 	set(value):
 		if settings == value:
 			return
+		_unbind_settings_changed()
 		settings = value
+		_bind_settings_changed()
+		_mark_render_dirty()
 		_queue_rebuild()
 ## 是否在编辑器视口中自动生成草坪预览。
 @export var editor_preview: bool = true:
@@ -76,10 +80,14 @@ var _density_noise: FastNoiseLite
 var _height_noise: FastNoiseLite
 var _noise_signature := ""
 var _last_signature := ""
+var _render_dirty := true
+var _signature_poll_elapsed := 0.0
+var _bound_settings: LawnGrassSettings
 var _rebuild_queued := false
 var _built_once := false
 
 func _ready() -> void:
+	_bind_settings_changed()
 	if not Engine.is_editor_hint():
 		if not _built_once:
 			rebuild_all_cells()
@@ -90,11 +98,42 @@ func _rebuild_if_needed() -> void:
 	if not _built_once:
 		rebuild_all_cells()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not Engine.is_editor_hint() or not editor_preview:
 		return
-	if _last_signature != _render_signature():
+	if _render_dirty:
 		rebuild_all_cells()
+		return
+	_signature_poll_elapsed += delta
+	if _signature_poll_elapsed < SIGNATURE_POLL_INTERVAL:
+		return
+	_signature_poll_elapsed = 0.0
+	var current_signature := _render_signature()
+	if current_signature != _last_signature:
+		_mark_render_dirty()
+
+func _unbind_settings_changed() -> void:
+	if _bound_settings != null and _bound_settings.changed.is_connected(_on_settings_changed):
+		_bound_settings.changed.disconnect(_on_settings_changed)
+	_bound_settings = null
+
+func _bind_settings_changed() -> void:
+	if settings == null:
+		return
+	if not settings.changed.is_connected(_on_settings_changed):
+		settings.changed.connect(_on_settings_changed)
+	_bound_settings = settings
+
+func _on_settings_changed() -> void:
+	_mark_render_dirty()
+
+func _mark_render_dirty() -> void:
+	_render_dirty = true
+	_signature_poll_elapsed = 0.0
+
+func _mark_render_clean() -> void:
+	_render_dirty = false
+	_signature_poll_elapsed = 0.0
 
 func _queue_rebuild() -> void:
 	if not is_inside_tree() or not Engine.is_editor_hint() or _rebuild_queued:
@@ -127,6 +166,7 @@ func rebuild_all_cells() -> void:
 			cell.rebuild()
 	_rebuild_all_render_chunks()
 	_last_signature = _render_signature()
+	_mark_render_clean()
 	_built_once = true
 
 func rebuild_cell(row: int, column: int) -> bool:
@@ -142,6 +182,7 @@ func rebuild_cell(row: int, column: int) -> bool:
 	cell.rebuild()
 	_rebuild_render_chunk(_chunk_key_for_cell(row, column))
 	_last_signature = _render_signature()
+	_mark_render_clean()
 	return true
 
 func set_cell_grass_density(row: int, column: int, density: int) -> bool:
@@ -160,6 +201,15 @@ func set_cell_grass_style(row: int, column: int, style_id: int) -> bool:
 
 func get_cell(row: int, column: int) -> LawnCell:
 	return cells.get(Vector2i(row, column)) as LawnCell
+
+func get_cell_index_from_world(world_position: Vector3) -> Vector2i:
+	var local_position := to_local(world_position)
+	var board_size := get_board_size()
+	var column := floori((local_position.x + board_size.x * 0.5) / cell_size.x)
+	var row := floori((local_position.z + board_size.y * 0.5) / cell_size.y)
+	if not _is_valid_cell(row, column):
+		return Vector2i(-1, -1)
+	return Vector2i(row, column)
 
 func get_board_size() -> Vector2:
 	return Vector2(columns * cell_size.x, rows * cell_size.y)
@@ -272,6 +322,9 @@ func _chunk_key_for_cell(row: int, column: int) -> Vector2i:
 func _rebuild_render_chunk(chunk_key: Vector2i) -> void:
 	var merged_transforms: Dictionary = {}
 	var merged_custom_data: Dictionary = {}
+	var chunk_aabb := AABB()
+	var has_chunk_bounds := false
+	var max_wind_margin := 0.0
 	for row in range(chunk_key.x * render_chunk_rows, mini((chunk_key.x + 1) * render_chunk_rows, rows)):
 		for column in range(chunk_key.y * render_chunk_columns, mini((chunk_key.y + 1) * render_chunk_columns, columns)):
 			var cell := cells.get(Vector2i(row, column)) as LawnCell
@@ -291,8 +344,18 @@ func _rebuild_render_chunk(chunk_key: Vector2i) -> void:
 					merged_transforms[batch_key] = []
 					merged_custom_data[batch_key] = []
 				for instance_index in range(cell_transforms.size()):
-					merged_transforms[batch_key].append(cell.transform * cell_transforms[instance_index])
-					merged_custom_data[batch_key].append(cell_custom_data[instance_index])
+					var merged_transform: Transform3D = cell.transform * cell_transforms[instance_index]
+					var instance_custom_data: Color = cell_custom_data[instance_index]
+					merged_transforms[batch_key].append(merged_transform)
+					merged_custom_data[batch_key].append(instance_custom_data)
+					if variant_index < _model_grass_bounds.size():
+						chunk_aabb = _merge_transformed_aabb(chunk_aabb, merged_transform, _model_grass_bounds[variant_index])
+						has_chunk_bounds = true
+						var wind_margin := absf(settings.grass_wind_strength)
+						max_wind_margin = maxf(max_wind_margin, wind_margin)
+	var render_aabb := _get_render_chunk_aabb(chunk_key)
+	if has_chunk_bounds:
+		render_aabb = _expand_aabb_xz(chunk_aabb, max_wind_margin).grow(0.02)
 	var chunk := render_chunks.get(chunk_key) as Node3D
 	if chunk == null:
 		chunk = LAWN_RENDER_CHUNK_SCENE.instantiate() as Node3D
@@ -303,7 +366,28 @@ func _rebuild_render_chunk(chunk_key: Vector2i) -> void:
 		chunk.set_meta("lawn_generated", true)
 		add_child(chunk)
 		render_chunks[chunk_key] = chunk
-	chunk.call("rebuild", merged_transforms, merged_custom_data, _model_grass_meshes, _grass_materials_by_variant, _get_render_chunk_aabb(chunk_key))
+	chunk.call("rebuild", merged_transforms, merged_custom_data, _model_grass_meshes, _grass_materials_by_variant, render_aabb, settings.grass_cast_shadow)
+
+func _merge_transformed_aabb(current: AABB, instance_transform: Transform3D, local_bounds: AABB) -> AABB:
+	var local_center := local_bounds.position + local_bounds.size * 0.5
+	var local_half := local_bounds.size * 0.5
+	var world_center := instance_transform * local_center
+	var instance_basis := instance_transform.basis
+	var world_half := Vector3(
+		absf(instance_basis.x.x) * local_half.x + absf(instance_basis.y.x) * local_half.y + absf(instance_basis.z.x) * local_half.z,
+		absf(instance_basis.x.y) * local_half.x + absf(instance_basis.y.y) * local_half.y + absf(instance_basis.z.y) * local_half.z,
+		absf(instance_basis.x.z) * local_half.x + absf(instance_basis.y.z) * local_half.y + absf(instance_basis.z.z) * local_half.z
+	)
+	var transformed := AABB(world_center - world_half, world_half * 2.0)
+	return transformed if current.size == Vector3.ZERO else current.merge(transformed)
+
+func _expand_aabb_xz(aabb: AABB, margin: float) -> AABB:
+	var safe_margin := maxf(margin, 0.0)
+	aabb.position.x -= safe_margin
+	aabb.position.z -= safe_margin
+	aabb.size.x += safe_margin * 2.0
+	aabb.size.z += safe_margin * 2.0
+	return aabb
 
 func _get_render_chunk_aabb(chunk_key: Vector2i) -> AABB:
 	var first_row := chunk_key.x * render_chunk_rows
@@ -315,7 +399,7 @@ func _get_render_chunk_aabb(chunk_key: Vector2i) -> AABB:
 	var wind_margin := maxf(settings.grass_wind_strength, 0.0) * 1.25
 	var half_size := cell_size * (0.5 + settings.grass_cell_overflow) + Vector2(wind_margin, wind_margin)
 	var tallest_model := _get_tallest_model_height()
-	var height_scale := settings.model_grass_scale * 1.12 * 3.0 * (1.0 + settings.height_noise_strength)
+	var height_scale := settings.model_grass_scale * 1.12 * (1.0 + settings.height_noise_strength)
 	var clipped_height := maxf(tallest_model * height_scale + 0.05, 0.05)
 	return AABB(
 		Vector3(first_center.x - half_size.x, 0.0, first_center.z - half_size.y),
@@ -399,6 +483,7 @@ func _prepare_grass_materials() -> void:
 	_grass_material_signature = _get_grass_material_signature()
 	_grass_materials_by_variant.clear()
 	var reference_base_color := settings.dark_color.lerp(settings.light_color, 0.5)
+	var wind_direction := _get_normalized_wind_direction()
 	for color in [settings.dark_color, settings.light_color]:
 		var style_materials: Array = []
 		var style_root_color := _scale_gradient_color(color, settings.grass_root_color, reference_base_color)
@@ -424,11 +509,17 @@ func _prepare_grass_materials() -> void:
 			material.set_shader_parameter("grass_wind_animated", settings.grass_wind_animated)
 			material.set_shader_parameter("grass_wind_speed", settings.grass_wind_speed)
 			material.set_shader_parameter("grass_wind_frequency", settings.grass_wind_frequency)
-			material.set_shader_parameter("grass_wind_direction", settings.grass_wind_direction)
+			material.set_shader_parameter("grass_wind_direction", wind_direction)
 			var variant_height := maxf(_model_grass_bounds[variant_index].size.y, 0.001)
 			material.set_shader_parameter("grass_variant_height", variant_height)
 			style_materials.append(material)
 		_grass_materials_by_variant.append(style_materials)
+
+func _get_normalized_wind_direction() -> Vector2:
+	var direction := settings.grass_wind_direction
+	if direction.length_squared() < 0.0001:
+		return Vector2.RIGHT
+	return direction.normalized()
 
 func _scale_gradient_color(base_color: Color, reference_color: Color, reference_base_color: Color) -> Color:
 	var reference_luminance := _color_luminance(reference_base_color)

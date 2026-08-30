@@ -13,6 +13,8 @@ class_name LawnGrassSettings
 @export_range(1, 200, 1) var model_clumps_per_cell: int = 25
 ## 模型草簇的基础世界缩放。
 @export_range(0.1, 1.5, 0.01) var model_grass_scale: float = 0.68
+## 模型草是否投射阴影；关闭后可降低草地的阴影渲染开销。
+@export var grass_cast_shadow: bool = true
 ## 样式 0 使用的深色草基础颜色。
 @export var dark_color: Color = Color("#182e0a")
 ## 样式 1 使用的浅色草基础颜色。
@@ -107,7 +109,7 @@ func make_signature() -> String:
 	normalize()
 	return "|".join([
 		str(model_scene), model_mesh_name_filter + ":" + str(model_variant_weights), str(model_clumps_per_cell), str(model_grass_scale),
-		str(dark_color), str(light_color), str(cell_coverage), str(grass_cell_overflow), str(grass_light_wrap), str(grass_highlight_color),
+		str(grass_cast_shadow), str(dark_color), str(light_color), str(cell_coverage), str(grass_cell_overflow), str(grass_light_wrap), str(grass_highlight_color),
 		str(grass_highlight_strength), str(grass_highlight_threshold), str(grass_highlight_hardness), str(grass_emission_strength),
 		str(grass_normal_up_strength),
 		str(grass_root_color), str(grass_tip_color), str(grass_gradient_strength), str(grass_gradient_exponent),

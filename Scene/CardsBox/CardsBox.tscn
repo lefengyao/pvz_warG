@@ -1,0 +1,415 @@
+[gd_scene format=3 uid="uid://x6ew5h0ga3s2"]
+
+[ext_resource type="Script" uid="uid://dqisso0ebmr7d" path="res://Scene/CardsBox/CardsBox.gd" id="1_gallery_script"]
+[ext_resource type="Script" uid="uid://cp5cspoa1qtb8" path="res://Scene/CardsBox/CardPreviewPlaceholder.gd" id="2_preview_script"]
+[ext_resource type="Texture2D" uid="uid://c587mww331yxu" path="res://icon.svg" id="3_godot_logo"]
+
+[sub_resource type="Environment" id="Environment_card_gallery"]
+background_mode = 1
+background_color = Color(0.0509804, 0.0823529, 0.105882, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.431373, 0.529412, 0.564706, 1)
+ambient_light_energy = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial_king_card"]
+albedo_color = Color(0.223529, 0.313726, 0.352941, 1)
+roughness = 0.72
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_card_preview"]
+size = Vector3(2, 3, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial_queen_card"]
+albedo_color = Color(0.439216, 0.266667, 0.278431, 1)
+roughness = 0.72
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial_bishop_card"]
+albedo_color = Color(0.184314, 0.384314, 0.368627, 1)
+roughness = 0.72
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial_swordsman_card"]
+albedo_color = Color(0.419608, 0.321569, 0.215686, 1)
+roughness = 0.72
+texture_filter = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxCardHover"]
+content_margin_left = 12.0
+bg_color = Color(0.827451, 0.643137, 0.352941, 0.1)
+border_width_left = 3
+border_color = Color(0.827451, 0.643137, 0.352941, 0.78)
+
+[node name="CardsBox" type="Node3D" unique_id=410073167]
+script = ExtResource("1_gallery_script")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=591612598]
+environment = SubResource("Environment_card_gallery")
+
+[node name="CardStage" type="Node3D" parent="." unique_id=630303689]
+
+[node name="Camera3D" type="Camera3D" parent="CardStage" unique_id=627236843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+current = true
+fov = 50.0
+
+[node name="KeyLight" type="DirectionalLight3D" parent="CardStage" unique_id=201064582]
+transform = Transform3D(0.8660254, 0.3345653, -0.3715724, 0, 0.7431448, 0.6691306, 0.5, -0.5794841, 0.6435823, 0, 0, 0)
+light_color = Color(1, 0.827451, 0.643137, 1)
+light_energy = 2.4
+shadow_enabled = true
+
+[node name="FillLight" type="OmniLight3D" parent="CardStage" unique_id=245178908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.4, 2.2)
+light_color = Color(0.596078, 0.760784, 0.788235, 1)
+light_energy = 0.65
+omni_range = 6.0
+
+[node name="PreviewCards" type="Node3D" parent="CardStage" unique_id=813472608]
+
+[node name="KingCard" type="Node3D" parent="CardStage/PreviewCards" unique_id=441627704]
+visible = false
+script = ExtResource("2_preview_script")
+
+[node name="PresentationPivot" type="Node3D" parent="CardStage/PreviewCards/KingCard" unique_id=1167906464]
+
+[node name="SpinPivot" type="Node3D" parent="CardStage/PreviewCards/KingCard/PresentationPivot" unique_id=1623105835]
+
+[node name="Card" type="MeshInstance3D" parent="CardStage/PreviewCards/KingCard/PresentationPivot/SpinPivot" unique_id=1808373344]
+material_override = SubResource("StandardMaterial_king_card")
+mesh = SubResource("BoxMesh_card_preview")
+
+[node name="FrontPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/KingCard/PresentationPivot/SpinPivot" unique_id=154996883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="BackPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/KingCard/PresentationPivot/SpinPivot" unique_id=1635655929]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="QueenCard" type="Node3D" parent="CardStage/PreviewCards" unique_id=756670519]
+script = ExtResource("2_preview_script")
+
+[node name="PresentationPivot" type="Node3D" parent="CardStage/PreviewCards/QueenCard" unique_id=879746501]
+
+[node name="SpinPivot" type="Node3D" parent="CardStage/PreviewCards/QueenCard/PresentationPivot" unique_id=663418421]
+
+[node name="Card" type="MeshInstance3D" parent="CardStage/PreviewCards/QueenCard/PresentationPivot/SpinPivot" unique_id=438915752]
+material_override = SubResource("StandardMaterial_queen_card")
+mesh = SubResource("BoxMesh_card_preview")
+
+[node name="FrontPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/QueenCard/PresentationPivot/SpinPivot" unique_id=849564235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="BackPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/QueenCard/PresentationPivot/SpinPivot" unique_id=1581793637]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="BishopCard" type="Node3D" parent="CardStage/PreviewCards" unique_id=175084576]
+visible = false
+script = ExtResource("2_preview_script")
+
+[node name="PresentationPivot" type="Node3D" parent="CardStage/PreviewCards/BishopCard" unique_id=1203242145]
+
+[node name="SpinPivot" type="Node3D" parent="CardStage/PreviewCards/BishopCard/PresentationPivot" unique_id=1354960586]
+
+[node name="Card" type="MeshInstance3D" parent="CardStage/PreviewCards/BishopCard/PresentationPivot/SpinPivot" unique_id=1888162041]
+material_override = SubResource("StandardMaterial_bishop_card")
+mesh = SubResource("BoxMesh_card_preview")
+
+[node name="FrontPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/BishopCard/PresentationPivot/SpinPivot" unique_id=1303860964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="BackPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/BishopCard/PresentationPivot/SpinPivot" unique_id=1072333978]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="SwordsmanCard" type="Node3D" parent="CardStage/PreviewCards" unique_id=672482695]
+visible = false
+script = ExtResource("2_preview_script")
+
+[node name="PresentationPivot" type="Node3D" parent="CardStage/PreviewCards/SwordsmanCard" unique_id=186279887]
+
+[node name="SpinPivot" type="Node3D" parent="CardStage/PreviewCards/SwordsmanCard/PresentationPivot" unique_id=1363886077]
+
+[node name="Card" type="MeshInstance3D" parent="CardStage/PreviewCards/SwordsmanCard/PresentationPivot/SpinPivot" unique_id=1041079467]
+material_override = SubResource("StandardMaterial_swordsman_card")
+mesh = SubResource("BoxMesh_card_preview")
+
+[node name="FrontPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/SwordsmanCard/PresentationPivot/SpinPivot" unique_id=1068673031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="BackPlaceholder" type="Sprite3D" parent="CardStage/PreviewCards/SwordsmanCard/PresentationPivot/SpinPivot" unique_id=2108740844]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.084)
+pixel_size = 0.011
+texture_filter = 0
+texture = ExtResource("3_godot_logo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1743670647]
+
+[node name="CardCollectionUI" type="Control" parent="CanvasLayer" unique_id=1791187576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="CanvasLayer/CardCollectionUI" unique_id=297153828]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0352941, 0.0509804, 0.0666667, 0.18)
+
+[node name="Header" type="Control" parent="CanvasLayer/CardCollectionUI" unique_id=1251048673]
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.065
+anchor_right = 0.94
+anchor_bottom = 0.14
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/CardCollectionUI/Header" unique_id=301408878]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.952941, 0.94902, 1)
+theme_override_font_sizes/font_size = 32
+text = "已获取卡片"
+vertical_alignment = 1
+
+[node name="CountLabel" type="Label" parent="CanvasLayer/CardCollectionUI/Header" unique_id=1250781207]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.84
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 16
+text = "04 / 04"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Sidebar" type="Control" parent="CanvasLayer/CardCollectionUI" unique_id=560538054]
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.22
+anchor_right = 0.22
+anchor_bottom = 0.76
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SidebarTitle" type="Label" parent="CanvasLayer/CardCollectionUI/Sidebar" unique_id=137684558]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 15
+text = "卡片名册"
+
+[node name="NavigationLine" type="ColorRect" parent="CanvasLayer/CardCollectionUI/Sidebar" unique_id=1482260379]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.13
+anchor_bottom = 0.87
+offset_left = -14.0
+offset_right = -13.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.768627, 0.819608, 0.831373, 0.28)
+
+[node name="SelectionMarker" type="ColorRect" parent="CanvasLayer/CardCollectionUI/Sidebar" unique_id=414177630]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 3.0
+offset_bottom = 91.0
+mouse_filter = 2
+color = Color(0.827451, 0.643137, 0.352941, 1)
+
+[node name="CardList" type="VBoxContainer" parent="CanvasLayer/CardCollectionUI/Sidebar" unique_id=76777077]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.9
+offset_left = 16.0
+offset_top = 42.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="KingButton" type="Button" parent="CanvasLayer/CardCollectionUI/Sidebar/CardList" unique_id=459543561]
+custom_minimum_size = Vector2(180, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.682353, 0.690196, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxCardHover")
+text = "向日葵"
+flat = true
+alignment = 0
+
+[node name="QueenButton" type="Button" parent="CanvasLayer/CardCollectionUI/Sidebar/CardList" unique_id=522923487]
+custom_minimum_size = Vector2(180, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxCardHover")
+text = "豌豆射手"
+flat = true
+alignment = 0
+
+[node name="BishopButton" type="Button" parent="CanvasLayer/CardCollectionUI/Sidebar/CardList" unique_id=240404712]
+custom_minimum_size = Vector2(180, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.682353, 0.690196, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxCardHover")
+text = "坚果"
+flat = true
+alignment = 0
+
+[node name="SwordsmanButton" type="Button" parent="CanvasLayer/CardCollectionUI/Sidebar/CardList" unique_id=1300287648]
+custom_minimum_size = Vector2(180, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.682353, 0.690196, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxCardHover")
+text = "土豆地雷"
+flat = true
+alignment = 0
+
+[node name="DetailsPanel" type="Control" parent="CanvasLayer/CardCollectionUI" unique_id=783601037]
+layout_mode = 1
+anchor_left = 0.78
+anchor_top = 0.22
+anchor_right = 0.94
+anchor_bottom = 0.76
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TypeLabel" type="Label" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=688105654]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 15
+text = "植物卡牌"
+
+[node name="CardNameLabel" type="Label" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=541158962]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 0.22
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.952941, 0.94902, 1)
+theme_override_font_sizes/font_size = 36
+text = "豌豆射手"
+vertical_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=1049944905]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.265
+anchor_right = 1.0
+anchor_bottom = 0.27
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.768627, 0.819608, 0.831373, 0.3)
+
+[node name="AbilityHeading" type="Label" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=2088301096]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.32
+anchor_right = 1.0
+anchor_bottom = 0.39
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 15
+text = "功能"
+
+[node name="AbilityLabel" type="Label" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=1094870177]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.405
+anchor_right = 1.0
+anchor_bottom = 0.54
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.788235, 0.827451, 0.831373, 1)
+theme_override_font_sizes/font_size = 17
+text = "向前方发射豌豆，持续攻击来袭的僵尸。"
+autowrap_mode = 2
+
+[node name="StoryHeading" type="Label" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=645773742]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.62
+anchor_right = 1.0
+anchor_bottom = 0.69
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827451, 0.643137, 0.352941, 1)
+theme_override_font_sizes/font_size = 15
+text = "背景故事"
+
+[node name="StoryLabel" type="Label" parent="CanvasLayer/CardCollectionUI/DetailsPanel" unique_id=2006692036]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.705
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.788235, 0.827451, 0.831373, 1)
+theme_override_font_sizes/font_size = 17
+text = "一颗豌豆，一份勇气，守住身后的每一寸草坪。"
+autowrap_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/CardCollectionUI/Sidebar/CardList/KingButton" to="." method="_on_king_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CardCollectionUI/Sidebar/CardList/QueenButton" to="." method="_on_queen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CardCollectionUI/Sidebar/CardList/BishopButton" to="." method="_on_bishop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CardCollectionUI/Sidebar/CardList/SwordsmanButton" to="." method="_on_swordsman_button_pressed"]

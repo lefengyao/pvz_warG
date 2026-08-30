@@ -15,7 +15,7 @@ extends Node3D
 		camera_distance = maxf(value, 1.0)
 		_queue_camera_control_apply()
 ## 修改后同步 Camera3D 的垂直距离（Y 轴），与水平距离独立调整。
-@export_range(0.5, 60.0, 0.1) var camera_height: float = 8.0:
+@export_range(0.5, 60.0, 0.1) var camera_height: float = 10.0:
 	set(value):
 		camera_height = maxf(value, 0.5)
 		_queue_camera_control_apply()

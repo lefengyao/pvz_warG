@@ -8,6 +8,7 @@ resource_local_to_scene = true
 script = ExtResource("1_settings")
 model_variant_weights = PackedFloat32Array(0.6, 0.3, 0.02)
 model_clumps_per_cell = 60
+grass_cast_shadow = true
 dark_color = Color(0.094118, 0.180392, 0.039216, 1)
 light_color = Color(0.235294, 0.533333, 0.14902, 1)
 grass_highlight_threshold = 0.35
