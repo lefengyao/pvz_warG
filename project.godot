@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/show_image=false
 config/icon="res://assets/textures/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"
+
 [autoload]
 
 Audiomanager="*res://src/autoload/audiomanager.gd"
@@ -23,7 +27,10 @@ Globalmanager="*res://src/autoload/globalmanager.gd"
 GenerateCards="*res://src/autoload/generate_cards.gd"
 GameProgressBus="*res://src/autoload/game_progress_bus.gd"
 EventBus="*res://src/autoload/event_bus.gd"
-Settings="*res://src/autoload/settings.gd"
+Settings="*res://scenes/ui/settings.tscn"
+ScreenFade="*res://scenes/ui/screen_fade.tscn"
+SceneTransition="*res://src/ui/scene_transition.gd"
+MCPRuntime="*uid://73bwgc6ttcqg"
 
 [display]
 
@@ -40,6 +47,10 @@ project/assembly_name="pvz_warG"
 text_editor/behavior/indent/type=0
 text_editor/behavior/indent/size=4
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg")
+
 [global_group]
 
 zombie=""
@@ -50,6 +61,7 @@ trap=""
 
 [gui]
 
+common/snap_controls_to_pixels=false
 theme/custom_font="res://assets/fonts/Silver.ttf"
 
 [physics]
@@ -61,7 +73,3 @@ theme/custom_font="res://assets/fonts/Silver.ttf"
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
-
-[audio]
-
-buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"

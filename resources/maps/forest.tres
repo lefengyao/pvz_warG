@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MapInfo" format=3 uid="uid://cpjesaio5inws"]
+
+[ext_resource type="Script" uid="uid://7cvd05503t47" path="res://src/data/map_info.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://vxvkff72opcs" path="res://assets/textures/levels/forest/forest.png" id="2_bg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg"]
+atlas = ExtResource("2_bg")
+region = Rect2(0, 289.31955, 438.1562, 492.16544)
+
+[resource]
+script = ExtResource("1_script")
+display_name = "森林"
+background = SubResource("AtlasTexture_bg")
+locked = true

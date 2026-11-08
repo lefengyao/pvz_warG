@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbtn00000001" path="res://scenes/ui/draggable_button.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cu34gh5gpj1gi" path="res://assets/textures/ui/music/D4C39D9F8B4D386530CA29D6E3095444.png" id="4"]
 [ext_resource type="FontFile" uid="uid://cr6ila827jftp" path="res://assets/fonts/Silver.ttf" id="5"]
+[ext_resource type="Theme" path="res://resources/ui/button_theme.tres" id="6_btn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sx4ct"]
 atlas = ExtResource("2")
@@ -69,10 +70,10 @@ offset_top = 233.0
 offset_right = 1128.0
 offset_bottom = 383.0
 scale = Vector2(1.295414, 1.3516214)
+theme = ExtResource("6_btn")
 theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 text = "返回主菜单"
-flat = true
 icon_alignment = 1
 
 [node name="Button2" type="Button" parent="." unique_id=1549968046]
@@ -82,10 +83,10 @@ offset_top = 400.0
 offset_right = 1128.0
 offset_bottom = 550.0
 scale = Vector2(1.295414, 1.3516214)
+theme = ExtResource("6_btn")
 theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 text = "返回游戏"
-flat = true
 icon_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

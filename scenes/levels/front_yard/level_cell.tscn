@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/levels/front_yard/level_cell.gd" id="1_cell"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silver.ttf" id="2_font"]
+
+[node name="LevelCell" type="Control"]
+custom_minimum_size = Vector2(64.222, 72)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.222
+offset_bottom = 72.0
+clip_contents = false
+script = ExtResource("1_cell")
+
+[node name="Piece" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.222
+offset_bottom = 72.0
+mouse_filter = 2
+texture_filter = 2
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="IndexLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 64.222
+offset_bottom = 24.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+horizontal_alignment = 1
+
+[node name="LockLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 20.0
+offset_right = 64.222
+offset_bottom = 58.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "锁"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -75,3 +75,15 @@ python tools/verify_references.py
 - 回退时解压到新目录，不要覆盖混合两套目录结构。
 
 项目目前没有 Git 仓库。已提供 `.gitignore`；建立版本管理后，应提交源码、场景、原素材、`.uid`、`.import` 和文档，忽略缓存、测试日志与导出包。
+
+## 许可
+
+本项目采用 **Apache License 2.0**，完整条款见根目录的 `LICENSE`。
+
+- 允许商业使用、修改、再分发
+- 分发时需保留版权与许可声明，修改过的文件需注明改动
+- 附带专利授权条款；同时不提供任何担保
+
+版权声明：`Copyright 2026 lefengyao`
+
+游戏内「开源声明」弹层同步写明了许可证与源码仓库地址，位置在 `src/levels/general/chose_map.gd` 的 `_on_license_pressed()`。

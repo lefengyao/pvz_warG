@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://1v53gqqsjndl" path="res://scenes/levels/front_yard/level_logic/level_logic4.tscn" id="7"]
 [ext_resource type="AudioStream" uid="uid://d3ogrskdas5r" path="res://assets/audio/general_music/tap.wav" id="8"]
 [ext_resource type="Texture2D" uid="uid://qckam548yqwr" path="res://assets/textures/levels/front_yard/b70160bc76ad1d896a66838bb3b12428.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://ba3el3vgmluq8" path="res://assets/textures/ui/button.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://c04t5b5v87wkt" path="res://assets/textures/ui/0.png" id="11"]
 [ext_resource type="FontFile" uid="uid://cr6ila827jftp" path="res://assets/fonts/Silver.ttf" id="12"]
+[ext_resource type="Texture2D" uid="uid://k4ffwavd0i8a" path="res://assets/textures/lawn/dirt.png" id="13_dirt"]
+[ext_resource type="Script" uid="uid://46gkiv3fr3s" path="res://src/levels/front_yard/level_grid.gd" id="14_grid"]
+[ext_resource type="Theme" uid="uid://bj1ftygudsto8" path="res://resources/ui/button_theme.tres" id="15_btn"]
 
 [sub_resource type="Resource" id="Resource_6sqqc"]
 script = ExtResource("4")
@@ -45,30 +46,11 @@ metadata/_custom_type_script = "uid://b3c5kgk84js4t"
 atlas = ExtResource("9")
 region = Rect2(15.809036, 52.00157, 1168.353, 663.31476)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iov81"]
-atlas = ExtResource("10")
-region = Rect2(34, 112, 229, 71)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dirt_bg"]
+atlas = ExtResource("13_dirt")
+region = Rect2(12, 14, 64, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbmn7"]
-atlas = ExtResource("11")
-region = Rect2(0, 2, 29, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqjdq"]
-atlas = ExtResource("10")
-region = Rect2(34, 112, 229, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xtp5"]
-atlas = ExtResource("10")
-region = Rect2(34, 112, 229, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdftq"]
-atlas = ExtResource("11")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sqqc"]
-atlas = ExtResource("10")
-region = Rect2(34, 112, 229, 71)
-
-[node name="Control" type="Control" unique_id=472099257]
+[node name="Control2" type="Control" unique_id=472099257]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.644, 1.629)
 script = ExtResource("1")
-level_resources = [SubResource("Resource_6sqqc"), SubResource("Resource_q23jo"), SubResource("Resource_4h6b4"), SubResource("Resource_0gdfd")]
+level_resources = Array[ExtResource("4")]([SubResource("Resource_6sqqc"), SubResource("Resource_q23jo"), SubResource("Resource_4h6b4"), SubResource("Resource_0gdfd")])
 tap_sfx = ExtResource("8")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=702831281]
@@ -88,101 +70,76 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("AtlasTexture_ug015")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=71235655]
-layout_mode = 0
-offset_left = 273.00003
-offset_top = 528.0
-offset_right = 1360.0
-offset_bottom = 599.0
-scale = Vector2(0.38781267, 1.401749)
-theme_override_constants/separation = 200
+[node name="Board" type="Control" parent="." unique_id=226552055]
+anchors_preset = 0
+offset_left = 230.53528
+offset_top = 258.44077
+offset_right = 808.5353
+offset_bottom = 618.4408
+mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer" unique_id=310455758]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_iov81")
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureButton" unique_id=1966782249]
-layout_mode = 0
-offset_left = 33.521255
-offset_top = 15.694676
-offset_right = 73.521255
-offset_bottom = 55.694675
-scale = Vector2(3.420161, 1.0137476)
-texture = SubResource("AtlasTexture_pbmn7")
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=468979883]
-layout_mode = 2
-texture = SubResource("AtlasTexture_uqjdq")
-
-[node name="Label" type="Label" parent="HBoxContainer/TextureRect" unique_id=1883634841]
-layout_mode = 0
-offset_left = 89.29138
-offset_top = -7.847339
-offset_right = 99.29138
-offset_bottom = 37.15266
-scale = Vector2(5.5283394, 2.8717902)
-theme_override_fonts/font = ExtResource("12")
-theme_override_font_sizes/font_size = 36
-text = "1"
-
-[node name="TextureButton2" type="TextureButton" parent="HBoxContainer" unique_id=410574060]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_7xtp5")
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureButton2" unique_id=1912987944]
-layout_mode = 0
-offset_left = 41.918983
-offset_top = 3.566972
-offset_right = 81.918976
-offset_bottom = 43.56697
-scale = Vector2(3.532823, 1.4360347)
-texture = SubResource("AtlasTexture_mdftq")
-flip_h = true
-
-[node name="Button" type="Button" parent="." unique_id=1330250475]
-layout_mode = 0
-offset_left = 356.0
-offset_top = 375.0
-offset_right = 617.0
-offset_bottom = 495.0
-theme_override_fonts/font = ExtResource("12")
-theme_override_font_sizes/font_size = 100
-text = "开始游戏"
-flat = true
-
-[node name="setting" type="TextureRect" parent="." unique_id=1326483335]
-layout_mode = 0
-offset_left = 1.8248177
-offset_top = 2.4554958
-offset_right = 267.82483
-offset_bottom = 118.4555
-scale = Vector2(0.65297997, 0.65297997)
-texture = SubResource("AtlasTexture_6sqqc")
+[node name="DirtLayer" type="TextureRect" parent="Board" unique_id=201231694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.289
+offset_top = -0.18
+offset_right = 0.289
+offset_bottom = 0.18
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_dirt_bg")
 expand_mode = 1
+stretch_mode = 1
 
-[node name="Button" type="Button" parent="setting" unique_id=1215420125]
+[node name="LevelGrid" type="GridContainer" parent="Board" unique_id=1507666970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+script = ExtResource("14_grid")
+
+[node name="Button" type="Button" parent="." unique_id=1215420125]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 8.0
-offset_right = 217.0
-offset_bottom = 158.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 110.0
+theme = ExtResource("15_btn")
 theme_override_fonts/font = ExtResource("12")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 56
 text = "返回"
-flat = true
+icon_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 545.0
+offset_right = 1120.0
+offset_bottom = 635.0
+theme = ExtResource("15_btn")
+theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 56
+text = "开始"
 icon_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=988777455]
 layout_mode = 0
-offset_left = 179.44038
-offset_top = 137.50768
-offset_right = 826.44037
-offset_bottom = 421.5077
+offset_right = 1168.0
+offset_bottom = 110.0
 theme_override_fonts/font = ExtResource("12")
-theme_override_font_sizes/font_size = 256
+theme_override_font_sizes/font_size = 96
 text = "庭院危机"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="setting/Button" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]

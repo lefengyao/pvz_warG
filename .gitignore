@@ -10,3 +10,4 @@ dist/
 exports/
 tools/logs/
 .codex/sessions/
+.specloom/
