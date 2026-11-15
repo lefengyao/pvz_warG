@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://jpkjmraof5q1"]
+
+[ext_resource type="Script" uid="uid://clja1k3wyqp41" path="res://2d/src/objects/armor/helmet/basic_helmet/铁桶.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://bfntnai5v1gvw" path="res://shared/assets/audio/objects/armor/helmet/basic_helmet/shieldhit2.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://ou8dgk51ymbt" path="res://shared/assets/audio/objects/armor/helmet/basic_helmet/shieldhit.wav" id="3"]
+[ext_resource type="Texture2D" uid="uid://c6avkk5tsyiec" path="res://2d/assets/textures/objects/armor/helmet/basic_helmet/helmet1.png" id="4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxws4"]
+atlas = ExtResource("4")
+region = Rect2(102, 88, 36, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er7sj"]
+atlas = ExtResource("4")
+region = Rect2(0, 75, 50, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51skm"]
+atlas = ExtResource("4")
+region = Rect2(50, 75, 50, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6olmx"]
+atlas = ExtResource("4")
+region = Rect2(100, 75, 50, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxws4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er7sj")
+}],
+"loop": true,
+"name": &"初始状态",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51skm")
+}],
+"loop": true,
+"name": &"轻度破损",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6olmx")
+}],
+"loop": true,
+"name": &"重度破损",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1685036235]
+script = ExtResource("1")
+sfx1 = ExtResource("2")
+sfx2 = ExtResource("3")
+loot_tex = SubResource("AtlasTexture_rxws4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1381478348]
+sprite_frames = SubResource("SpriteFrames_rxws4")
+animation = &"初始状态"
+autoplay = "初始状态"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://daqys6v7kt22m"
+path="res://.godot/imported/forest med.MP3-d010fc09387964b15e2c1feed8a27b73.mp3str"
+
+[deps]
+
+source_file="res://shared/assets/audio/levels/forest/forest med.MP3"
+dest_files=["res://.godot/imported/forest med.MP3-d010fc09387964b15e2c1feed8a27b73.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

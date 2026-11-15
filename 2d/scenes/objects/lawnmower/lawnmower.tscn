@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://bcdswpn2q3ulo"]
+
+[ext_resource type="Script" uid="uid://ct0sberkt1uey" path="res://2d/src/objects/lawnmower/lawnmower.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://fye25brm5u0n" path="res://shared/assets/audio/general_music/步枪射击.mp3" id="2"]
+[ext_resource type="Texture2D" uid="uid://cx4stkv5vq08e" path="res://2d/assets/textures/objects/lawnmower/lawnmower.png" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx8rv"]
+size = Vector2(64, 38)
+
+[sub_resource type="Gradient" id="Gradient_j8nq8"]
+offsets = PackedFloat32Array(0, 0.525974, 0.766234)
+colors = PackedColorArray(0.113049, 0.113049, 0.113049, 1, 0.0882484, 0.0882484, 0.0882484, 0.52963, 0.0605303, 0.0605303, 0.0605303, 0.00392157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5cwhd"]
+gradient = SubResource("Gradient_j8nq8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.9)
+metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqn5p"]
+atlas = ExtResource("3")
+region = Rect2(8, 57, 56, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx8rv"]
+atlas = ExtResource("3")
+region = Rect2(10, 7, 57, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lt53"]
+atlas = ExtResource("3")
+region = Rect2(74, 8, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvl8q"]
+atlas = ExtResource("3")
+region = Rect2(74, 8, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cwhd"]
+atlas = ExtResource("3")
+region = Rect2(10, 32, 64, 23)
+
+[sub_resource type="Animation" id="Animation_oqn5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sprite2D4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sx8rv"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sprite2D4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5cwhd"]
+_data = {
+&"RESET": SubResource("Animation_oqn5p"),
+&"attack": SubResource("Animation_sx8rv")
+}
+
+[node name="Node2D" type="Area2D" unique_id=546566258]
+z_index = 20
+scale = Vector2(2, 2)
+collision_mask = 2
+script = ExtResource("1")
+attack_sfx = ExtResource("2")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870028604]
+position = Vector2(35.000008, -33.5)
+shape = SubResource("RectangleShape2D_sx8rv")
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=1020999407]
+position = Vector2(34.500004, -3.4999924)
+scale = Vector2(0.9218751, 0.2546645)
+texture = SubResource("GradientTexture2D_5cwhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=331664887]
+position = Vector2(35.000008, -22.5)
+texture = SubResource("AtlasTexture_oqn5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=356144776]
+position = Vector2(1, -19)
+texture = SubResource("AtlasTexture_sx8rv")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" unique_id=637912886]
+position = Vector2(-16, 14)
+texture = SubResource("AtlasTexture_8lt53")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D" unique_id=654946789]
+position = Vector2(14, 15)
+texture = SubResource("AtlasTexture_bvl8q")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D" unique_id=1281801713]
+visible = false
+position = Vector2(4, -19)
+texture = SubResource("AtlasTexture_5cwhd")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=814305184]
+libraries/ = SubResource("AnimationLibrary_5cwhd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

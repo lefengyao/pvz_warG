@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://my3tb6k5h8kt"]
+
+[ext_resource type="Script" uid="uid://b2oy0kfj50rf2" path="res://2d/src/projectiles/gun/gun_bullet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dp3k1gli48k4k" path="res://2d/assets/textures/zombies/forest/rifleman/shallow.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iry7l"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ogb"]
+atlas = ExtResource("2")
+region = Rect2(115, 148, 23, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u07ic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ogb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GunBullet" type="Area2D" unique_id=77881027]
+script = ExtResource("1")
+speed = -750
+attack = 150
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240281409]
+shape = SubResource("CircleShape2D_iry7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=655999118]
+position = Vector2(-5, -13)
+scale = Vector2(0.81781995, 0.81781995)
+sprite_frames = SubResource("SpriteFrames_u07ic")
+autoplay = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

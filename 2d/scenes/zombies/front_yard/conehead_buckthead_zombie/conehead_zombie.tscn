@@ -1,0 +1,779 @@
+[gd_scene format=3 uid="uid://qwbsx3g23cgw"]
+
+[ext_resource type="Script" uid="uid://xjlv7fwbqo7b" path="res://2d/src/zombies/front_yard/ordinary_zombie/ordinary_zombie.gd" id="1"]
+[ext_resource type="Script" uid="uid://7v0430fpqluj" path="res://shared/src/characters/general_character.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://cak8eowov4itv" path="res://shared/assets/audio/general_music_zombie/zombie_falling_1.wav" id="3"]
+[ext_resource type="PackedScene" uid="uid://cigu6407e1367" path="res://2d/scenes/zombies/front_yard/ordinary_zombie/loot_head.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://nmg2wyq186wf" path="res://2d/scenes/objects/armor/helmet/basic_helmet/路障.tscn" id="5"]
+[ext_resource type="Script" uid="uid://c66fb38xcjtno" path="res://2d/src/objects/armor/armor.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dggxpgu53bfle" path="res://2d/assets/textures/zombies/front_yard/ordinary_zombie/ordinary zombie.png" id="7"]
+[ext_resource type="Script" uid="uid://dwfiofsaierhq" path="res://shared/src/state_machine/state_machine.gd" id="8"]
+[ext_resource type="Script" uid="uid://dmwh26f86sako" path="res://2d/src/zombies/front_yard/ordinary_zombie/idle.gd" id="9"]
+[ext_resource type="Script" uid="uid://bs8qdbx6tx265" path="res://2d/src/zombies/front_yard/ordinary_zombie/attack.gd" id="10"]
+[ext_resource type="PackedScene" uid="uid://6thwsbpll33w" path="res://2d/scenes/projectiles/melee_bullet/melee_template/melee.tscn" id="11"]
+[ext_resource type="AudioStream" uid="uid://t43vbygcdquo" path="res://shared/assets/audio/general_music_zombie/chomp.wav" id="12"]
+[ext_resource type="Script" uid="uid://ce5mmkp3phgdo" path="res://2d/src/zombies/front_yard/ordinary_zombie/walk.gd" id="13"]
+[ext_resource type="Script" uid="uid://0v0xyf1rswkn" path="res://2d/src/zombies/front_yard/ordinary_zombie/dead.gd" id="14"]
+
+[sub_resource type="Resource" id="Resource_dagnf"]
+script = ExtResource("2")
+resource_local_to_scene = true
+character_name = "路障僵尸"
+attack_speed_constant_value = 1.6
+speed = -28.0
+metadata/_custom_type_script = "uid://7v0430fpqluj"
+
+[sub_resource type="Resource" id="Resource_d2aaw"]
+script = ExtResource("6")
+resource_local_to_scene = true
+armor_scence = ExtResource("5")
+metadata/_custom_type_script = "uid://c66fb38xcjtno"
+
+[sub_resource type="Gradient" id="Gradient_xjnn2"]
+offsets = PackedFloat32Array(0, 0.525974, 0.766234)
+colors = PackedColorArray(0.113049, 0.113049, 0.113049, 1, 0.0882484, 0.0882484, 0.0882484, 0.52963, 0.0605303, 0.0605303, 0.0605303, 0.00392157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_623xj"]
+gradient = SubResource("Gradient_xjnn2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.9)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rp30"]
+size = Vector2(41, 30.5)
+
+[sub_resource type="Animation" id="Animation_to8lg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/左腿:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 58)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/右腿:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/右手:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, 41)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/左手:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9.999985, 35.99999)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/躯干:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.9999999, 0.99999994)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/躯干/头/Sprite2D2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0171739]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton2D/躯干/头/Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton2D/躯干/头/Sprite2D2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton2D/躯干:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8hq7f"]
+resource_name = "attack"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/左手:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4.9999995, 38), Vector2(-17, 35), Vector2(-22, 32), Vector2(-36, 15.999997), Vector2(-32, -2.000002), Vector2(-33, 27.999998), Vector2(-4.9999995, 38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/右手:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1, 1.2, 1.42, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-34, 31), Vector2(-44, 7), Vector2(-27, -10), Vector2(-41, 26), Vector2(-26, 35), Vector2(-22, 39), Vector2(-34, 31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/躯干:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.99999976, 1.9999999), Vector2(-3.9999998, 0.99999994), Vector2(-1.9999999, 1.9999999), Vector2(0.9999995, 1.1920929e-07), Vector2(0.99999976, 1.9999999)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/左腿:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 58)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/右腿:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 64)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/躯干/头/Sprite2D2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.53, 0.74, 1.15, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0171739, 0.16255681, -0.07504335, 0.11836525, -0.033098273]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StateMachine/ATTACK")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0mjyb"]
+resource_name = "dead"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/躯干/头/Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/躯干/头/Sprite2D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/左手:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.9999995, 46.999996), Vector2(40.000004, 41), Vector2(0.9999962, 47), Vector2(-10.000003, 52.999996), Vector2(-17, 75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/右手:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.85, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-37, 35), Vector2(-56, 7), Vector2(-9, -44), Vector2(-55, -20), Vector2(-71, 20), Vector2(-109, 53)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/左腿:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(18, 58), Vector2(4, 60), Vector2(18, 65), Vector2(15, 40), Vector2(15, 64)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node/右腿:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, 64), Vector2(-11, 51), Vector2(-28, 54), Vector2(-1, 59), Vector2(-1, 59)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton2D/躯干:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.7410699, 1.1607136), Vector2(15.999999, 2.3841858e-07), Vector2(-10, 2.9999998), Vector2(-52.000004, 49.000004)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton2D/躯干:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.45182723, -0.16557497, -0.9719863]
+}
+
+[sub_resource type="Animation" id="Animation_65tw2"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/左腿:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 58)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/右腿:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/右手:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, 41)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/左手:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9.999985, 35.99999)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/躯干:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.9999999, 0.99999994), Vector2(-2.0000002, 2.9999998), Vector2(2.3841858e-07, 4.7683716e-07), Vector2(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_j5x7g"]
+resource_name = "walk"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/左手:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.999998, 38), Vector2(-22.000004, 35), Vector2(2.0000002, 42.000004), Vector2(-10, 38), Vector2(2.999998, 38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/右手:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-28, 36), Vector2(-12, 43), Vector2(-24, 43), Vector2(-33, 38), Vector2(-28, 36)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/左腿:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(18, 61), Vector2(5, 52), Vector2(0, 55), Vector2(8, 60), Vector2(18, 61)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/右腿:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, 64), Vector2(-1, 60), Vector2(4, 61), Vector2(-6, 51), Vector2(-11, 64)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/躯干:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.9999999, 0.99999994), Vector2(-2.9999998, 0.99999994), Vector2(0.99999994, -0.99999994), Vector2(2, 0.99999976), Vector2(3, 0.9999998), Vector2(-1.9999999, 0.99999994)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rty7"]
+_data = {
+&"RESET": SubResource("Animation_to8lg"),
+&"attack": SubResource("Animation_8hq7f"),
+&"dead": SubResource("Animation_0mjyb"),
+&"idle": SubResource("Animation_65tw2"),
+&"walk": SubResource("Animation_j5x7g")
+}
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_kqwqe"]
+resource_name = "左臂"
+target_nodepath = NodePath("../Node/左手")
+joint_one_bone_idx = 8
+joint_one_bone2d_node = NodePath("躯干/左上臂")
+joint_two_bone_idx = 9
+joint_two_bone2d_node = NodePath("躯干/左上臂/左下臂")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jm516"]
+resource_name = "右臂"
+target_nodepath = NodePath("../Node/右手")
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("躯干/右上臂")
+joint_two_bone_idx = 2
+joint_two_bone2d_node = NodePath("躯干/右上臂/右下臂")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_y8g14"]
+resource_name = "左腿"
+target_nodepath = NodePath("../Node/左腿")
+flip_bend_direction = true
+joint_one_bone_idx = 5
+joint_one_bone2d_node = NodePath("躯干/左大腿")
+joint_two_bone_idx = 6
+joint_two_bone2d_node = NodePath("躯干/左大腿/左小腿")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_nra44"]
+resource_name = "右腿"
+target_nodepath = NodePath("../Node/右腿")
+flip_bend_direction = true
+joint_one_bone_idx = 3
+joint_one_bone2d_node = NodePath("躯干/右大腿")
+joint_two_bone_idx = 4
+joint_two_bone2d_node = NodePath("躯干/右大腿/右小腿")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_77b1l"]
+resource_local_to_scene = true
+enabled = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_kqwqe")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_jm516")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_y8g14")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_nra44")
+
+[node name="ordinary_zombie" type="Area2D" unique_id=1156216088 node_paths=PackedStringArray("loot_head_position", "loot_node", "armor_target1") groups=["zombie"]]
+scale = Vector2(2, 2)
+collision_layer = 2
+script = ExtResource("1")
+character = SubResource("Resource_dagnf")
+fall_sfx = ExtResource("3")
+loot_head = ExtResource("4")
+loot_head_position = NodePath("Skeleton2D/躯干/头/Sprite2D")
+loot_node = NodePath("掉落物位置")
+armor1 = SubResource("Resource_d2aaw")
+armor_target1 = NodePath("Skeleton2D/躯干/头/Sprite2D/一类防具")
+metadata/_edit_lock_ = true
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=314632930]
+position = Vector2(-1.4998405, -12.500008)
+scale = Vector2(1.20313, 0.421875)
+texture = SubResource("GradientTexture2D_623xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1346447492]
+position = Vector2(-2.9998398, -39.75)
+shape = SubResource("RectangleShape2D_5rp30")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1819408713]
+libraries/ = SubResource("AnimationLibrary_7rty7")
+autoplay = &"attack"
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=1726211604]
+position = Vector2(-1.4998398, -77.5)
+modification_stack = SubResource("SkeletonModificationStack2D_77b1l")
+
+[node name="躯干" type="Bone2D" parent="Skeleton2D" unique_id=2085903237]
+position = Vector2(-1.9999999, 0.99999994)
+scale = Vector2(0.9999631, 0.9999631)
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+auto_calculate_length_and_angle = false
+length = 6.32456
+bone_angle = -161.56493
+
+[node name="右上臂" type="Bone2D" parent="Skeleton2D/躯干" unique_id=1183816702]
+position = Vector2(-6, -2)
+rotation = -0.522201
+scale = Vector2(0.9998678, 0.9998678)
+rest = Transform2D(0.774408, -0.632686, 0.632686, 0.774408, -8, -5)
+auto_calculate_length_and_angle = false
+length = 20.9407
+bone_angle = 151.68193
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/躯干/右上臂" unique_id=761655565]
+position = Vector2(-9, 4)
+rotation = 0.813988
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(504.612, 47.9869, 17.4474, 30.7895)
+
+[node name="右下臂" type="Bone2D" parent="Skeleton2D/躯干/右上臂" unique_id=2075941326]
+position = Vector2(-18.4347, 9.93348)
+rotation = 0.12375951
+scale = Vector2(0.9999805, 0.9999805)
+rest = Transform2D(0.960146, 0.279501, -0.279501, 0.960146, -28, 12)
+auto_calculate_length_and_angle = false
+length = 26.826
+bone_angle = 178.667
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/右上臂/右下臂" unique_id=295488355]
+position = Vector2(-11.8518, 1.57249)
+rotation = -4.76213
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(502.121, 84.4821, 18.5061, 35.8555)
+
+[node name="右大腿" type="Bone2D" parent="Skeleton2D/躯干" unique_id=189440502]
+position = Vector2(-5, 22)
+rotation = -0.7333841
+scale = Vector2(0.99999, 0.99999)
+rest = Transform2D(0.742911, -0.66939, 0.66939, 0.742911, -5, 22)
+auto_calculate_length_and_angle = false
+length = 20.5183
+bone_angle = 133.025
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/右大腿" unique_id=90641628]
+position = Vector2(-7, 8)
+rotation = 0.585082
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(367.739, 76.8361, 18.7993, 27.4023)
+
+[node name="右小腿" type="Bone2D" parent="Skeleton2D/躯干/右大腿" unique_id=1802198361]
+position = Vector2(-14, 15)
+rotation = 0.706055
+rest = Transform2D(0.760927, 0.648838, -0.648838, 0.760927, -14, 15)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -267.42892
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/右大腿/右小腿" unique_id=1679166394]
+position = Vector2(3, 12)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(365.396, 106.557, 25.6836, 38.102)
+
+[node name="左大腿" type="Bone2D" parent="Skeleton2D/躯干" unique_id=74926665]
+position = Vector2(9, 24)
+rotation = 0.0168227
+scale = Vector2(0.9999905, 0.9999905)
+rest = Transform2D(0.993863, 0.110623, -0.110623, 0.993863, 13, 19)
+auto_calculate_length_and_angle = false
+length = 20.0117
+bone_angle = 78.81387
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/左大腿" unique_id=1217720412]
+position = Vector2(1, 6)
+rotation = -0.193565
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(217.518, 59.3559, 19.6302, 31.3786)
+
+[node name="左小腿" type="Bone2D" parent="Skeleton2D/躯干/左大腿" unique_id=848170048]
+position = Vector2(3.88219, 19.6315)
+rotation = -0.109034
+scale = Vector2(0.999998, 0.999998)
+rest = Transform2D(0.984548, -0.175116, 0.175116, 0.984548, 5.24903, 19.5563)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -274.93896
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/左大腿/左小腿" unique_id=562751976]
+position = Vector2(-4.71118, 12.1575)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(209.152, 109.857, 31.667, 39.4286)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干" unique_id=2097158261]
+position = Vector2(2, 10)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(56.4303, 57.3086, 47.698, 54.754)
+
+[node name="头" type="Bone2D" parent="Skeleton2D/躯干" unique_id=1089706977]
+position = Vector2(-15, -10)
+rotation = 0.0821411
+rest = Transform2D(1, 0, 0, 1, -18, -20)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/头" unique_id=1789061676]
+position = Vector2(10, -16)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(797.607, 31.7441, 41.4888, 39.7954)
+
+[node name="一类防具" type="Marker2D" parent="Skeleton2D/躯干/头/Sprite2D" unique_id=474253314]
+position = Vector2(-4.6000085, -28.093704)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/躯干/头" unique_id=75626567]
+position = Vector2(15.705521, 2.6553488)
+rotation = 0.0171739
+texture = ExtResource("7")
+offset = Vector2(-9.692315, 0.85222363)
+region_enabled = true
+region_rect = Rect2(798.785, 69.4295, 28.5652, 15.0712)
+
+[node name="左上臂" type="Bone2D" parent="Skeleton2D/躯干" unique_id=743548372]
+position = Vector2(4.000099, 0)
+rotation = 1.225705
+scale = Vector2(0.9998396, 0.9998396)
+rest = Transform2D(0.867732, 0.497033, -0.497033, 0.867732, 5, -9)
+auto_calculate_length_and_angle = false
+length = 23.0868
+bone_angle = 17.650095
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/左上臂" unique_id=576692376]
+position = Vector2(7.063422, -0.35234642)
+rotation = -1.46073
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(669.749, 58.3646, 19.2489, 28.6165)
+
+[node name="左下臂" type="Bone2D" parent="Skeleton2D/躯干/左上臂" unique_id=695216279]
+position = Vector2(17.092926, 1.9799218)
+rotation = 1.0913012
+scale = Vector2(0.9998631, 0.9998631)
+rest = Transform2D(0.952926, 0.303204, -0.303204, 0.952926, 22, 7)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/躯干/左上臂/左下臂" unique_id=625856572]
+position = Vector2(11, 4)
+rotation = -1.29189
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(666.073, 87.9643, 19.4247, 32.2847)
+
+[node name="attack_position" type="Marker2D" parent="." unique_id=762863919]
+position = Vector2(-3, -41)
+
+[node name="Node" type="Node2D" parent="." unique_id=8074638]
+position = Vector2(-1.4998398, -77.5)
+
+[node name="左手" type="Node2D" parent="Node" unique_id=66525463]
+position = Vector2(9.999985, 35.99999)
+rotation = -0.452735
+
+[node name="右手" type="Node2D" parent="Node" unique_id=1472134478]
+position = Vector2(-26, 41)
+
+[node name="左腿" type="Node2D" parent="Node" unique_id=432725541]
+position = Vector2(18, 58)
+
+[node name="右腿" type="Node2D" parent="Node" unique_id=1686821227]
+position = Vector2(-11, 64)
+
+[node name="掉落物位置" type="Marker2D" parent="." unique_id=686136628]
+position = Vector2(24.50016, -9.5)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1454621936]
+position = Vector2(17.50016, -32.5)
+target_position = Vector2(-35, 0)
+collide_with_areas = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=148082013 node_paths=PackedStringArray("owner_root")]
+script = ExtResource("8")
+owner_root = NodePath("..")
+
+[node name="IDLE" type="Node" parent="StateMachine" unique_id=1983824656]
+script = ExtResource("9")
+
+[node name="ATTACK" type="Node" parent="StateMachine" unique_id=1844945394]
+script = ExtResource("10")
+
+[node name="Melee" parent="StateMachine/ATTACK" unique_id=1120522101 instance=ExtResource("11")]
+position = Vector2(-6, -82)
+scale = Vector2(4.3906136, 3.4652467)
+monitoring = false
+attack = 32
+bite_sfx = ExtResource("12")
+attack_type = 3
+
+[node name="WALK" type="Node" parent="StateMachine" unique_id=1743845998]
+script = ExtResource("13")
+
+[node name="DEAD" type="Node" parent="StateMachine" unique_id=887874641]
+script = ExtResource("14")

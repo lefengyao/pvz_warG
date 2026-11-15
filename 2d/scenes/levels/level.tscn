@@ -1,0 +1,718 @@
+[gd_scene format=3 uid="uid://bql0ym7grlif6"]
+
+[ext_resource type="Script" uid="uid://cbboxgnxwni02" path="res://2d/src/levels/level.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bcdswpn2q3ulo" path="res://2d/scenes/objects/lawnmower/lawnmower.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bb3rewyiamsof" path="res://2d/scenes/ui/slot/card_selection.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c4iawt0nsqleh" path="res://2d/scenes/ui/slot/ui_all_cards.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://ddhssa0r6d113" path="res://2d/scenes/ui/slot/progress_bar/progress_bar.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://ba3el3vgmluq8" path="res://2d/assets/textures/ui/button.png" id="6"]
+[ext_resource type="FontFile" uid="uid://cr6ila827jftp" path="res://shared/assets/fonts/Silver.ttf" id="7"]
+[ext_resource type="Script" uid="uid://bqr2mdjqbcfdy" path="res://2d/src/levels/front_yard/path_follow_2d.gd" id="8"]
+[ext_resource type="Texture2D" uid="uid://qckam548yqwr" path="res://2d/assets/textures/levels/front_yard/b70160bc76ad1d896a66838bb3b12428.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://clb0vnhtqnrrb" path="res://2d/assets/textures/ui/subtitles/word.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://nu412oneirqx" path="res://2d/assets/textures/ui/subtitles/ecc20f9ee03d2903282beb59a4405bad.png" id="11"]
+[ext_resource type="AudioStream" uid="uid://cfh1f63txhthh" path="res://shared/assets/audio/levels/front_yard/speaker.wav" id="12"]
+[ext_resource type="Script" uid="uid://p5853mpthw1u" path="res://2d/src/levels/front_yard/music.gd" id="13"]
+[ext_resource type="AudioStream" uid="uid://384nvt3dgm64" path="res://shared/assets/audio/levels/front_yard/Grasswalk.front.mp3" id="14"]
+[ext_resource type="AudioStream" uid="uid://2dj1eko5tp2x" path="res://shared/assets/audio/general_music/Choose Your Seeds-Laura Shigihara#1ug1Y.mp3" id="15"]
+[ext_resource type="Script" uid="uid://d1kalxeegcbbr" path="res://2d/src/levels/general/general_sun.gd" id="16"]
+[ext_resource type="Texture2D" uid="uid://lkvbatdls2eb" path="res://2d/assets/textures/levels/forest/forest_lizi.png" id="17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pycyr"]
+atlas = ExtResource("6")
+region = Rect2(34, 112, 229, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nljys"]
+atlas = ExtResource("6")
+region = Rect2(34, 112, 229, 71)
+
+[sub_resource type="Curve2D" id="Curve2D_d2brg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 750, 0)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2brg"]
+atlas = ExtResource("9")
+region = Rect2(17.149193, 149.15704, 1168.7288, 570.4038)
+
+[sub_resource type="Gradient" id="Gradient_x4vxl"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.04887218, 0.556391, 0.91729325, 1)
+colors = PackedColorArray(0.8862745, 0, 0, 0, 0.8862745, 0, 0, 0.3254902, 0.8865023, 3.7115653e-06, 6.185943e-07, 1, 1, 0, 0, 0.32941177, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvgsu"]
+gradient = SubResource("Gradient_x4vxl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b46lp"]
+size = Vector2(621.13696, 342.5629)
+
+[sub_resource type="Animation" id="Animation_ppvqs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("manager/subtitles/ready_plant:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1005.99994, 503.99997)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("manager/subtitles/ready_plant:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("manager/subtitles/ready_plant2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("manager/subtitles/ready_plant2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 512)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("manager/subtitles/ready_plant:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.9, 2.9)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("manager/subtitles/ready_plant:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("manager/subtitles/ready_plant2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("manager/subtitles/speaker:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("manager/subtitles/speaker:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("manager/subtitles/speaker/AudioStreamPlayer:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("manager/subtitles/wave_coming:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1123, 508)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("manager/subtitles/wave_coming:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("manager/subtitles/wave_coming:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("manager/subtitles/wave_coming:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ysvsh"]
+resource_name = "ready_set_plant"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("manager/subtitles/ready_plant:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1005.99994, 503.99997)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("manager/subtitles/ready_plant:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("manager/subtitles/ready_plant2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("manager/subtitles/ready_plant2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 512)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("manager/subtitles/ready_plant:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.9, 1.9), Vector2(2.9, 2.9)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("manager/subtitles/ready_plant:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("manager/subtitles/ready_plant2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(4.5, 4.5), Vector2(4.8, 4.8)]
+}
+
+[sub_resource type="Animation" id="Animation_nwd3s"]
+resource_name = "speaker"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("manager/subtitles/speaker:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("manager/subtitles/speaker:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("manager/subtitles/speaker/AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cpdjc"]
+resource_name = "zombie_wave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("manager/subtitles/wave_coming:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1123, 508)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("manager/subtitles/wave_coming:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("manager/subtitles/wave_coming:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.6781721, 3.12365), Vector2(8.539155, 15.894277)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("manager/subtitles/wave_coming:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bha8"]
+_data = {
+&"RESET": SubResource("Animation_ppvqs"),
+&"ready_set_plant": SubResource("Animation_ysvsh"),
+&"speaker": SubResource("Animation_nwd3s"),
+&"zombie_wave": SubResource("Animation_cpdjc")
+}
+
+[sub_resource type="Curve" id="Curve_l7bqu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.52348995, 0.9925416), 0.0, 0.0, 0, 0, Vector2(0.9899329, 0.0043028593), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bo3ys"]
+curve = SubResource("Curve_l7bqu")
+
+[sub_resource type="Curve" id="Curve_ar0wf"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5067114, 3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l7bqu"]
+curve = SubResource("Curve_ar0wf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gejot"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 600, 1)
+spread = 180.0
+initial_velocity_min = -20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_over_velocity_min = 2.0
+scale_over_velocity_max = 5.0
+scale_over_velocity_curve = SubResource("CurveTexture_l7bqu")
+color = Color(1, 1, 0.84705883, 1)
+alpha_curve = SubResource("CurveTexture_bo3ys")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cb53y"]
+distance = 446.1018
+
+[node name="level" type="Control" unique_id=1643381789]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1")
+cell_row = 5
+cell_column = 9
+lawnmover = ExtResource("2")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=487935037]
+
+[node name="card_selection" parent="UI" unique_id=1432876930 instance=ExtResource("3")]
+
+[node name="ui_all_cards" parent="UI" unique_id=1435959812 instance=ExtResource("4")]
+
+[node name="TextureProgressBar" parent="UI" unique_id=1178195651 instance=ExtResource("5")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -380.0
+offset_top = -93.00006
+offset_right = -234.0
+offset_bottom = -82.00006
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="setting" type="TextureRect" parent="UI" unique_id=1287177002]
+offset_left = 1646.0
+offset_top = 10.0
+offset_right = 1912.0
+offset_bottom = 126.0
+texture = SubResource("AtlasTexture_pycyr")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="UI/setting" unique_id=1277497284]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 8.0
+offset_right = 217.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 128
+text = "设置"
+flat = true
+icon_alignment = 1
+
+[node name="returnmenu" type="TextureRect" parent="UI" unique_id=1685241308]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -244.5
+offset_top = -257.0
+offset_right = 244.5
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_nljys")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="UI/returnmenu" unique_id=1250406452]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 8.0
+offset_right = 217.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 128
+text = "返回主菜单"
+flat = true
+icon_alignment = 1
+
+[node name="win" type="Label" parent="UI/returnmenu" unique_id=49918291]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.99994
+offset_top = -453.0
+offset_right = -24.999939
+offset_bottom = -311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.137082, 2.137082)
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 128
+text = "游戏胜利"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lose" type="Label" parent="UI/returnmenu" unique_id=983118731]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.99994
+offset_top = -453.0
+offset_right = -24.999939
+offset_bottom = -311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.137082, 2.137082)
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 128
+text = "游戏失败"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1466059879]
+position = Vector2(960, 540)
+curve = SubResource("Curve2D_d2brg")
+metadata/_edit_lock_ = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=205241125]
+script = ExtResource("8")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D" unique_id=1467660436]
+position_smoothing_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=561463920]
+layout_mode = 0
+offset_right = 1168.0
+offset_bottom = 570.0
+scale = Vector2(2.298801, 1.8923756)
+mouse_filter = 2
+texture = SubResource("AtlasTexture_d2brg")
+metadata/_edit_lock_ = true
+
+[node name="manager" type="Node" parent="." unique_id=1982442700]
+
+[node name="subtitles" type="Node2D" parent="manager" unique_id=409674020]
+z_index = 100
+metadata/_edit_lock_ = true
+
+[node name="ready_plant" type="Sprite2D" parent="manager/subtitles" unique_id=1496354777]
+visible = false
+position = Vector2(1005.99994, 503.99997)
+scale = Vector2(2.9, 2.9)
+texture = ExtResource("10")
+region_enabled = true
+region_rect = Rect2(190, 299, 128, 40)
+
+[node name="ready_plant2" type="Sprite2D" parent="manager/subtitles" unique_id=1742234661]
+visible = false
+position = Vector2(1024, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("10")
+region_enabled = true
+region_rect = Rect2(185, 243, 144, 40)
+
+[node name="speaker" type="Sprite2D" parent="manager/subtitles" unique_id=1378684241]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1043.0001, 241.41417)
+scale = Vector2(15.356986, 3.5495567)
+texture = SubResource("GradientTexture2D_dvgsu")
+
+[node name="Label" type="Label" parent="manager/subtitles/speaker" unique_id=1061023673]
+offset_left = -15.962115
+offset_top = -21.173498
+offset_right = 65.03789
+offset_bottom = -2.1734982
+scale = Vector2(0.27498046, 1.7624673)
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 32
+text = "喇叭声唤醒了什么"
+
+[node name="Sprite2D3" type="Sprite2D" parent="manager/subtitles/speaker" unique_id=1705524994]
+position = Vector2(-19.655827, -3.7809777)
+scale = Vector2(0.32682946, 1.873487)
+texture = ExtResource("11")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="manager/subtitles/speaker" unique_id=550836986]
+stream = ExtResource("12")
+bus = &"sfx"
+
+[node name="wave_coming" type="Sprite2D" parent="manager/subtitles" unique_id=1791173460]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1123, 508)
+texture = ExtResource("10")
+region_enabled = true
+region_rect = Rect2(4.760025, 370.7273, 572.93524, 46.775208)
+
+[node name="music" type="Node" parent="manager" unique_id=873308174]
+script = ExtResource("13")
+bg_1 = ExtResource("14")
+chose_your_plant = ExtResource("15")
+
+[node name="general_sun" type="Node" parent="manager" unique_id=1096955384]
+script = ExtResource("16")
+
+[node name="Timer" type="Timer" parent="manager/general_sun" unique_id=1581340354]
+wait_time = 16.0
+
+[node name="Marker2D" type="Marker2D" parent="manager/general_sun" unique_id=475199933]
+position = Vector2(549, -94)
+
+[node name="Marker2D2" type="Marker2D" parent="manager/general_sun" unique_id=453520007]
+position = Vector2(1722, -130)
+
+[node name="plant_logic" type="Control" parent="." unique_id=150323485]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Area2D" type="Area2D" parent="plant_logic" unique_id=220749141]
+position = Vector2(5.999999, -272)
+scale = Vector2(2.1122565, 1.9347458)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_logic/Area2D" unique_id=181776825]
+position = Vector2(560.5379, 474.2814)
+scale = Vector2(0.99999976, 1)
+shape = SubResource("RectangleShape2D_b46lp")
+
+[node name="positioning_device" type="Node2D" parent="plant_logic" unique_id=1927472454]
+position = Vector2(100.99999, 2)
+scale = Vector2(0.99999994, 1)
+
+[node name="TopLeft" type="Marker2D" parent="plant_logic/positioning_device" unique_id=1279798090]
+position = Vector2(428.00006, 309)
+
+[node name="BottomLeft" type="Marker2D" parent="plant_logic/positioning_device" unique_id=1051565136]
+position = Vector2(430.00006, 982)
+
+[node name="TopRight" type="Marker2D" parent="plant_logic/positioning_device" unique_id=1708266082]
+position = Vector2(1744.0001, 309)
+metadata/_edit_lock_ = true
+
+[node name="enemy_line" type="Marker2D" parent="plant_logic/positioning_device" unique_id=1089961596]
+position = Vector2(1936.0002, 322)
+
+[node name="lawnmowers_line" type="Marker2D" parent="plant_logic/positioning_device" unique_id=249834592]
+position = Vector2(291.00003, 308)
+metadata/_edit_lock_ = true
+
+[node name="right_border" type="Marker2D" parent="plant_logic/positioning_device" unique_id=242074976]
+position = Vector2(1819.0001, 293)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=994434311]
+libraries/ = SubResource("AnimationLibrary_0bha8")
+
+[node name="light_point" type="GPUParticles2D" parent="." unique_id=1943188262]
+position = Vector2(1079, 491)
+texture = ExtResource("17")
+process_material = SubResource("ParticleProcessMaterial_gejot")
+
+[node name="deadzone" type="Area2D" parent="." unique_id=472669955]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deadzone" unique_id=650246585]
+rotation = 1.5754306
+shape = SubResource("WorldBoundaryShape2D_cb53y")
+
+[connection signal="pressed" from="UI/setting/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/returnmenu/Button" to="." method="_on_button3_pressed"]
+[connection signal="timeout" from="manager/general_sun/Timer" to="manager/general_sun" method="_on_timer_timeout"]
+[connection signal="input_event" from="plant_logic/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="deadzone" to="." method="_on_deadzone_area_entered"]

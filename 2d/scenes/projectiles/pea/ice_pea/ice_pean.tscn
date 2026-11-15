@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dnw0le4kjx0l8"]
+
+[ext_resource type="PackedScene" uid="uid://bu0mrsf0vqv4u" path="res://2d/scenes/projectiles/pea/ordinary_pea/pean.tscn" id="1"]
+[ext_resource type="Script" uid="uid://b156afdwks4q2" path="res://2d/src/projectiles/pea/ice_pea/ice_pean.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://d4cfu8wx3svgw" path="res://shared/assets/audio/projectiles/pea/ice_pea/frozen.wav" id="3"]
+[ext_resource type="Texture2D" uid="uid://b8kusv2h0di4v" path="res://2d/assets/textures/projectiles/pea/ice_pea/ice (1)(1).png" id="4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6e1w"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqqsv"]
+atlas = ExtResource("4")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75q3p"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6e1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6e1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqqsv")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75q3p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Node2D" unique_id=1496459260 instance=ExtResource("1")]
+script = ExtResource("2")
+attack = 15
+pean_sfx = ExtResource("3")
+
+[node name="AnimatedSprite2D" parent="." index="2" unique_id=1579179719]
+sprite_frames = SubResource("SpriteFrames_t6e1w")
+animation = &"idle"
+frame_progress = 0.770436

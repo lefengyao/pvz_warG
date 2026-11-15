@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cjbd8r1okmev7"]
+
+[ext_resource type="Script" uid="uid://dx5iu52wju4el" path="res://2d/src/zombies/zombie_spawner.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://blj24pxy1ynux" path="res://2d/assets/textures/zombies/front_yard/ordinary_zombie/ordinary_zombie.png" id="2"]
+[ext_resource type="Script" uid="uid://b2q5rbmsluyax" path="res://2d/src/zombies/zombie_spawn_entry.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://biadvygagoj4t" path="res://2d/scenes/zombies/front_yard/ordinary_zombie/ordinary_zombie.tscn" id="4"]
+
+[sub_resource type="Resource" id="Resource_6qtam"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = ExtResource("2")
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[node name="Node" type="VBoxContainer" unique_id=890692614]
+custom_minimum_size = Vector2(300, 400)
+script = ExtResource("1")
+zombie_entries = [SubResource("Resource_6qtam")]
+row_weights = [0.0, 0.0, 0.0, 0.0, 0.0]

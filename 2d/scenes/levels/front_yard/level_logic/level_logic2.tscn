@@ -1,0 +1,279 @@
+[gd_scene format=3 uid="uid://c5fupmvnmitlk"]
+
+[ext_resource type="Script" uid="uid://dxukyacfk84cg" path="res://2d/src/levels/front_yard/level_logic.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cjbd8r1okmev7" path="res://2d/scenes/zombies/zombie_spawner.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b2q5rbmsluyax" path="res://2d/src/zombies/zombie_spawn_entry.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://biadvygagoj4t" path="res://2d/scenes/zombies/front_yard/ordinary_zombie/ordinary_zombie.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://qwbsx3g23cgw" path="res://2d/scenes/zombies/front_yard/conehead_buckthead_zombie/conehead_zombie.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dlft47lfc3qfh" path="res://2d/scenes/zombies/front_yard/assassin_zombie/assassin_zombie.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dolxj3av0u5nh" path="res://2d/scenes/zombies/front_yard/conehead_buckthead_zombie/buckthead_zombie.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://cr723ngpxx14e" path="res://2d/scenes/zombies/front_yard/pistol_zombie/pistol_zombie.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dxa084une6laa" path="res://2d/scenes/zombies/front_yard/weilong/weilong.tscn" id="9"]
+
+[sub_resource type="Resource" id="Resource_preie"]
+script = ExtResource("3")
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_olnwe"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_dd33p"]
+script = ExtResource("3")
+zombie_scene = ExtResource("5")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_mqd1v"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_43xew"]
+script = ExtResource("3")
+zombie_scene = ExtResource("6")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_5mk4m"]
+script = ExtResource("3")
+zombie_scene = ExtResource("5")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_tek1h"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+weight_max = 4.0
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_2i4qw"]
+script = ExtResource("3")
+zombie_scene = ExtResource("6")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_8ebjg"]
+script = ExtResource("3")
+zombie_scene = ExtResource("7")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_8lf0b"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_1vtdg"]
+script = ExtResource("3")
+zombie_scene = ExtResource("7")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_v3tgk"]
+script = ExtResource("3")
+zombie_scene = ExtResource("5")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_cc85t"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+weight_min = 3.0
+weight_max = 5.0
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_jkry6"]
+script = ExtResource("3")
+zombie_scene = ExtResource("6")
+weight_max = 3.0
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_6ls22"]
+script = ExtResource("3")
+zombie_scene = ExtResource("8")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_2smx4"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_vil3b"]
+script = ExtResource("3")
+zombie_scene = ExtResource("6")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_7we4d"]
+script = ExtResource("3")
+zombie_scene = null
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_xvp46"]
+script = ExtResource("3")
+zombie_scene = ExtResource("8")
+weight_min = 0.5
+weight_max = 0.7
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_876f1"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_qbm3x"]
+script = ExtResource("3")
+zombie_scene = ExtResource("7")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_xpml5"]
+script = ExtResource("3")
+zombie_scene = ExtResource("9")
+weight_min = 0.3
+weight_max = 0.4
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_k2aid"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_7n7l5"]
+script = ExtResource("3")
+zombie_scene = ExtResource("8")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_6p7dq"]
+script = ExtResource("3")
+zombie_scene = ExtResource("7")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_o8oxm"]
+script = ExtResource("3")
+zombie_scene = ExtResource("5")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_8opgg"]
+script = ExtResource("3")
+resource_local_to_scene = true
+zombie_scene = ExtResource("4")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_we74r"]
+script = ExtResource("3")
+zombie_scene = ExtResource("6")
+weight_min = 0.2
+weight_max = 0.5
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[sub_resource type="Resource" id="Resource_uawmr"]
+script = ExtResource("3")
+zombie_scene = ExtResource("7")
+icon = null
+metadata/_custom_type_script = "uid://b2q5rbmsluyax"
+
+[node name="level_logic" type="BoxContainer" unique_id=462265829]
+theme_override_constants/separation = 200
+script = ExtResource("1")
+
+[node name="Timer" type="Timer" parent="." unique_id=1262150683]
+
+[node name="Timer2" type="Timer" parent="." unique_id=1400650378]
+
+[node name="Node" parent="." unique_id=1363628359 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_preie")]
+total_zombies = 1
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+
+[node name="Node2" parent="." unique_id=1685151229 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_olnwe"), SubResource("Resource_dd33p")]
+total_zombies = 2
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+
+[node name="Node3" parent="." unique_id=1720362148 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_mqd1v"), SubResource("Resource_43xew"), SubResource("Resource_5mk4m")]
+total_zombies = 4
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+
+[node name="Node4" parent="." unique_id=1644806788 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_tek1h"), SubResource("Resource_2i4qw"), SubResource("Resource_8ebjg")]
+total_zombies = 6
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+is_big_wave = true
+
+[node name="Node5" parent="." unique_id=480779880 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_8lf0b"), SubResource("Resource_1vtdg"), SubResource("Resource_v3tgk")]
+total_zombies = 5
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+
+[node name="Node6" parent="." unique_id=1957812241 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_cc85t"), SubResource("Resource_jkry6"), SubResource("Resource_6ls22")]
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+
+[node name="Node7" parent="." unique_id=1309738350 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_2smx4"), SubResource("Resource_vil3b"), SubResource("Resource_7we4d"), SubResource("Resource_xvp46")]
+total_zombies = 12
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+is_big_wave = true
+
+[node name="Node8" parent="." unique_id=1555176491 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_876f1"), SubResource("Resource_qbm3x"), SubResource("Resource_xpml5")]
+total_zombies = 12
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+is_big_wave = true
+
+[node name="Node9" parent="." unique_id=738643108 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_k2aid"), SubResource("Resource_7n7l5"), SubResource("Resource_6p7dq"), SubResource("Resource_o8oxm")]
+total_zombies = 14
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+is_big_wave = true
+
+[node name="Node10" parent="." unique_id=2146131633 instance=ExtResource("2")]
+layout_mode = 2
+zombie_entries = [SubResource("Resource_8opgg"), SubResource("Resource_we74r"), SubResource("Resource_uawmr")]
+total_zombies = 20
+row_weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+is_big_wave = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

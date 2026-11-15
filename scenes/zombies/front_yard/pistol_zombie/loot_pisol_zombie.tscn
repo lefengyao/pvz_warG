@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bbex0nhickmr8"]
-
-[ext_resource type="PackedScene" uid="uid://cigu6407e1367" path="res://scenes/zombies/front_yard/ordinary_zombie/loot_head.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://bdamkf2bxh0pf" path="res://assets/textures/zombies/front_yard/pistol_zombie/cqzombie.png" id="2"]
-
-[node name="LootTemplate" unique_id=542679308 instance=ExtResource("1")]
-
-[node name="Sprite2D" parent="." index="0" unique_id=1524798828]
-texture = ExtResource("2")

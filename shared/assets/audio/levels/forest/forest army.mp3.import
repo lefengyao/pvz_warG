@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsbr6qrliyhk3"
+path="res://.godot/imported/forest army.mp3-340d992ff1e30d152fe40f6dd7848c88.mp3str"
+
+[deps]
+
+source_file="res://shared/assets/audio/levels/forest/forest army.mp3"
+dest_files=["res://.godot/imported/forest army.mp3-340d992ff1e30d152fe40f6dd7848c88.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

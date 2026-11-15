@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://shared/src/ui/screen_fade.gd" id="1_fade"]
+[ext_resource type="Shader" path="res://shared/resources/shaders/screen_wipe.gdshader" id="2_shader"]
+[ext_resource type="Shader" path="res://shared/resources/shaders/circle_wipe.gdshader" id="3_circle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wipe"]
+shader = ExtResource("2_shader")
+shader_parameter/progress = 0.0
+shader_parameter/fade_color = Color(0, 0, 0, 1)
+shader_parameter/softness = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_circle"]
+shader = ExtResource("3_circle")
+shader_parameter/hole = 1.0
+shader_parameter/focus_uv = Vector2(0.5, 0.5)
+shader_parameter/screen_ratio = 1.7777
+shader_parameter/max_radius = 2.0
+shader_parameter/edge_width = 2.0
+shader_parameter/mask_color = Color(0.06, 0.05, 0.04, 1)
+
+[node name="ScreenFade" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_fade")
+
+[node name="Rect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_wipe")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="Circle" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_circle")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)

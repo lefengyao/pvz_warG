@@ -1,0 +1,1180 @@
+[gd_scene format=3 uid="uid://djj0aj7fw4dat"]
+
+[ext_resource type="PackedScene" uid="uid://m6pqrlt43bib" path="res://2d/scenes/plants/template/plant_template.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://dngc4eahmoeqr" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0001.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bblxykt4lk3g0" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0002.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ygnj1brvfveu" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0003.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cae74c5lqaqlo" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0004.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bbp5vl5yrx20h" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0005.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://boyf5w1t617s" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0006.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://burbi523harfu" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0007.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dxvl15a5xy88" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0008.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bhsns57ske5ky" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0009.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://cce8wlojbyxmn" path="res://2d/assets/textures/plants/front_yard/wukong/idle/frame_0010.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://dhv1nkm4has1l" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0001.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://bmplefqetd0ri" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0003.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bwtowfmklci6i" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0004.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://dq3df5v4snr42" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0006.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://b1ncq2niugton" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0007.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://bia8jk7t0p8a6" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0008.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://cfx3ie6vv2a1m" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0009.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://bkyhk5n4flykr" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0011.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://b2e8nwnu4dlpm" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0013.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://drilmjubl7pqm" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0015.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://cd47r4v8j1r3b" path="res://2d/assets/textures/plants/front_yard/wukong/jump/frame_0022.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://d2qoms2hkmx4c" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0001.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://b5cdfr8s6rqu4" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0002.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://dl05f1ugdgogj" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0003.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://nbw3tdpol5wi" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0004.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://dxseuf2kd1cvt" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0005.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://dw1jstdm32uxf" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0006.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://bbh0o1oqi81l1" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0007.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://d3o0us5j32pqd" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0008.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://c5ruw2s6wem1g" path="res://2d/assets/textures/plants/front_yard/wukong/rotate/frame_0009.png" id="31"]
+[ext_resource type="Script" uid="uid://ydf11u0esmgm" path="res://2d/src/plants/front_yard/wukong/staff_stance.gd" id="32"]
+[ext_resource type="AudioStream" uid="uid://bns5q4arlr4r1" path="res://shared/assets/audio/plants/front_yard/wukong/蓄力完成.wav" id="33"]
+[ext_resource type="AudioStream" uid="uid://5e467yulri8d" path="res://shared/assets/audio/plants/front_yard/wukong/蓄力.wav" id="34"]
+[ext_resource type="Texture2D" uid="uid://pksquikgf5qu" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032417101392.png" id="35"]
+[ext_resource type="Texture2D" uid="uid://dhluqpn415lcl" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032409053081.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://dybds65u2v40h" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032417093142.png" id="37"]
+[ext_resource type="Texture2D" uid="uid://ocg5k2ld3mve" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032409000626.png" id="38"]
+[ext_resource type="Texture2D" uid="uid://b7wwainwg3n5h" path="res://2d/assets/textures/projectiles/pea/ordinary_pea/double pean(1).png" id="39"]
+[ext_resource type="Script" uid="uid://b3k2yxoqslyag" path="res://2d/src/plants/front_yard/wukong/weapon.gd" id="40"]
+[ext_resource type="Texture2D" uid="uid://bc8ipr8lo81rh" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032815261292.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://qaihkq4jdf2b" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032815255982.png" id="42"]
+[ext_resource type="Texture2D" uid="uid://dm3ny3ty2idnm" path="res://2d/assets/textures/plants/front_yard/wukong/weapon/retouch_2026032815251855.png" id="43"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7l6yx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31")
+}],
+"loop": false,
+"name": &"rotate",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_vervp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/rotate_stick:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/rotate_stick:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -45)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon/rotate_stick:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("weapon/rotate_stick:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0080503225, 0.0080503225)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("weapon/rotate_stick:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("weapon/pigun:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("weapon/pigun:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13.999996, -40)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("weapon/pigun:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.1552722]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("weapon/pigun:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.6726522, 2.6726522, 0, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimatedSprite2D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -37.000004)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("weapon/pigun:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.05716282, 0.05716282)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("weapon/chuogun:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, -10)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("weapon/chuogun:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("weapon/chuogun:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.009075123, -0.009075123)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("weapon/chuogun:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("weapon/chuogun:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("CollisionShape2D:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("staff_stance/Sprite2D3:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AnimatedSprite2D:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("staff_stance/pigun2:value")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("AnimatedSprite2D/RayCast2D:enabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("weapon/pigun/Area2Dpigun:monitoring")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("weapon/chuogun/Area2Dchuogun:monitoring")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pk6mt"]
+resource_name = "attack"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"rotate", &"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/rotate_stick:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/rotate_stick:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-14, -45), Vector2(-26, -39), Vector2(-28, -19.999996), Vector2(-5, -25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/rotate_stick:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586, 6.283185307179586, -6.283185307179586]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/rotate_stick:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.0080503225, 0.0080503225), Vector2(0.016046006, 0.016046006), Vector2(0.044382166, 0.044382166), Vector2(0.038918, 0.038918)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9, 1.75, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 8, 0, 9, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("weapon/rotate_stick:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5gwd3"]
+resource_name = "chuogun"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/pigun:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/rotate_stick:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/chuogun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -10), Vector2(-16, -10), Vector2(155, -32.000008), Vector2(155, -32.000008), Vector2(-9, -21)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/chuogun:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 7.0988135, 7.442978, 7.442978, 7.442978]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/chuogun:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.009075123, -0.009075123), Vector2(-0.035141394, -0.035141394), Vector2(-0.20084326, -0.20084326), Vector2(-0.20084326, -0.20084326), Vector2(-0.01311089, -0.01311089)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon/chuogun:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"rotate", &"idle"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimatedSprite2D:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 8, 0, 0, 9]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("weapon/chuogun:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimatedSprite2D/RayCast2D:enabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CollisionShape2D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("weapon/chuogun/Area2Dchuogun:monitoring")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.74, 1.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ox4e3"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 9, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.4333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.06283185307179626, 0.06283186, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/pigun:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_y8uhm"]
+resource_name = "parry"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/rotate_stick:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/rotate_stick:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(3.0058017, 3.0058017, 1.0375139, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/rotate_stick:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.085180104, 0.059818592)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/rotate_stick:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -4.988151002199794, -0.83353925, -2.2246776]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/rotate_stick:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(15, -46), Vector2(15, -46), Vector2(30, -33.000004)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon/pigun:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f73ab"]
+resource_name = "pigun"
+length = 3.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/rotate_stick:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pigun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"jump", &"idle"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.6333334, 3.1, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 5, 10, 0, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/pigun:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.06, 1.0666667, 2.29, 2.4, 3.4666667, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10.999999, -17), Vector2(-10.999999, -17), Vector2(113, -176), Vector2(114, -105), Vector2(135.00002, -150), Vector2(136.99998, -17.000002), Vector2(131, -16), Vector2(-13.999999, -38)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon/pigun:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.31, 1.75, 2.24, 2.3333333, 3.4666667, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [2.1552722, 2.1552722, 6.2831855, -6.2831855, 6.2831855, 7.85676, 7.85676, -6.2831855]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("weapon/pigun:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.76, 1.23, 2.4666667, 3, 3.3666666, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.6726522, 2.6726522, 0, 1), Color(4.5244036, 0, 0, 1), Color(4.5244036, 0, 0, 1), Color(2.6726522, 2.6726522, 0, 1), Color(2.6726522, 2.6726522, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimatedSprite2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 2.5333333, 2.8666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, -37.000004), Vector2(-4, -37.000004), Vector2(-3.695, -100), Vector2(-3.695, -100), Vector2(-3, -39.00001)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("weapon/pigun:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 2.6, 3.5, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.05716282, 0.05716282), Vector2(0.05716282, 0.05716282), Vector2(-0.13786566, 0.16757955), Vector2(-0.13786566, 0.16757955), Vector2(0.012182945, -0.014808709)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimatedSprite2D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.02, 1.4666667, 1.94, 1.9666667, 2.46, 2.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -6.2831855, 6.2831855, -2.1066124071571557, 6.2831855, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CollisionShape2D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.0009999999, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimatedSprite2D/RayCast2D:enabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("weapon/pigun/Area2Dpigun:monitoring")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2.64, 3.23),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2ajq"]
+_data = {
+&"RESET": SubResource("Animation_vervp"),
+&"attack": SubResource("Animation_pk6mt"),
+&"chuogun": SubResource("Animation_5gwd3"),
+&"idle": SubResource("Animation_ox4e3"),
+&"parry": SubResource("Animation_y8uhm"),
+&"pigun": SubResource("Animation_f73ab")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15d0p"]
+atlas = ExtResource("35")
+region = Rect2(1, 1, 1056, 921)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlu1e"]
+atlas = ExtResource("36")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw1gb"]
+atlas = ExtResource("37")
+region = Rect2(2, 2, 2203, 1886)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on77t"]
+atlas = ExtResource("38")
+region = Rect2(0, 0, 1455, 1479)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sys7f"]
+size = Vector2(75.52157, 1521.6926)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quafm"]
+size = Vector2(124.77035, 1568.2397)
+
+[node name="Node2D" unique_id=1764957335 instance=ExtResource("1")]
+script = null
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1058331434]
+position = Vector2(-4, -37.000004)
+scale = Vector2(0.07113946, 0.07113946)
+sprite_frames = SubResource("SpriteFrames_7l6yx")
+animation = &"idle"
+frame = 9
+
+[node name="RayCast2D" parent="AnimatedSprite2D" index="1" unique_id=308278255]
+target_position = Vector2(9859, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3" unique_id=1792943783]
+libraries/ = SubResource("AnimationLibrary_a2ajq")
+
+[node name="staff_stance" type="Node2D" parent="." index="4" unique_id=215339913]
+script = ExtResource("32")
+xuli3 = ExtResource("33")
+xuli = ExtResource("34")
+
+[node name="pigun" type="TextureProgressBar" parent="staff_stance" index="0" unique_id=1810092038]
+visible = false
+offset_left = -39.0
+offset_top = -32.0
+offset_right = 1412.0
+offset_bottom = 1360.0
+scale = Vector2(0.02889371, 0.02889371)
+fill_mode = 3
+texture_progress = SubResource("AtlasTexture_15d0p")
+
+[node name="Sprite2D" type="TextureButton" parent="staff_stance/pigun" index="0" unique_id=1463847380]
+layout_mode = 0
+offset_left = -34.609585
+offset_top = -103.82878
+offset_right = 1416.3904
+offset_bottom = 1288.1713
+scale = Vector2(0.91972435, 0.91972435)
+texture_normal = SubResource("AtlasTexture_xlu1e")
+metadata/_edit_lock_ = true
+
+[node name="pigun2" type="TextureProgressBar" parent="staff_stance" index="1" unique_id=2139134166]
+offset_left = -43.0
+offset_top = -40.0
+offset_right = 2160.0
+offset_bottom = 1846.0
+scale = Vector2(0.016081156, 0.016081156)
+fill_mode = 3
+texture_progress = SubResource("AtlasTexture_pw1gb")
+
+[node name="Sprite2D4" type="TextureButton" parent="staff_stance/pigun2" index="0" unique_id=1512583581]
+layout_mode = 0
+offset_right = 1456.0
+offset_bottom = 1479.0
+scale = Vector2(1.8350282, 1.8350282)
+texture_normal = SubResource("AtlasTexture_on77t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="staff_stance" index="2" unique_id=105668749]
+visible = false
+modulate = Color(3.7252798, 3.7252798, 3.7252798, 1)
+position = Vector2(-15, -1)
+scale = Vector2(0.3973166, 0.3973166)
+texture = ExtResource("39")
+region_enabled = true
+region_rect = Rect2(15, 12, 18, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="staff_stance" index="3" unique_id=1058034926]
+visible = false
+modulate = Color(3.7252798, 3.7252798, 3.7252798, 1)
+position = Vector2(-9, -5.9999995)
+scale = Vector2(0.3973166, 0.3973166)
+texture = ExtResource("39")
+region_enabled = true
+region_rect = Rect2(15, 12, 18, 18)
+
+[node name="Sprite2D3" type="Sprite2D" parent="staff_stance" index="4" unique_id=1530845528]
+visible = false
+modulate = Color(3.7252798, 3.7252798, 3.7252798, 1)
+position = Vector2(-5.0000005, -14)
+scale = Vector2(0.44006485, 0.44006485)
+texture = ExtResource("39")
+region_enabled = true
+region_rect = Rect2(15, 12, 18, 18)
+
+[node name="weapon" type="Node2D" parent="." index="5" unique_id=1316874504]
+script = ExtResource("40")
+
+[node name="rotate_stick" type="Sprite2D" parent="weapon" index="0" unique_id=1742805087]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-14, -45)
+scale = Vector2(0.0080503225, 0.0080503225)
+texture = ExtResource("41")
+
+[node name="pigun" type="Sprite2D" parent="weapon" index="1" unique_id=1278721072]
+visible = false
+modulate = Color(2.6726522, 2.6726522, 0, 1)
+position = Vector2(-13.999996, -40)
+rotation = 2.1552722
+scale = Vector2(0.05716282, 0.05716282)
+texture = ExtResource("42")
+
+[node name="Area2Dpigun" type="Area2D" parent="weapon/pigun" index="0" unique_id=1996990173]
+visible = false
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon/pigun/Area2Dpigun" index="0" unique_id=761410864]
+position = Vector2(-9.652489, -1.4511108)
+scale = Vector2(0.9999998, 1)
+shape = SubResource("RectangleShape2D_sys7f")
+
+[node name="chuogun" type="Sprite2D" parent="weapon" index="2" unique_id=1682463338]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-16, -10)
+scale = Vector2(-0.009075123, -0.009075123)
+texture = ExtResource("43")
+
+[node name="Area2Dchuogun" type="Area2D" parent="weapon/chuogun" index="0" unique_id=292513336]
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon/chuogun/Area2Dchuogun" index="0" unique_id=468491010]
+visible = false
+position = Vector2(-17.519348, 28.523315)
+rotation = 0.2906653
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_quafm")
+
+[node name="Button" type="Button" parent="." index="6" unique_id=1457109800]
+offset_left = -4.0
+offset_top = -50.0
+offset_right = 24.0
+offset_bottom = -19.0
+
+[connection signal="area_entered" from="weapon/pigun/Area2Dpigun" to="weapon" method="_on_area_2_dpigun_area_entered"]
+[connection signal="area_entered" from="weapon/chuogun/Area2Dchuogun" to="weapon" method="_on_area_2_dchuogun_area_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

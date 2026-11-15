@@ -1,0 +1,327 @@
+[gd_scene format=3 uid="uid://cqq0ib57l0ko"]
+
+[ext_resource type="Script" uid="uid://dbptbl06gvf8k" path="res://2d/src/levels/general/chose_map.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://d3ogrskdas5r" path="res://shared/assets/audio/general_music/tap.wav" id="6"]
+[ext_resource type="FontFile" uid="uid://cr6ila827jftp" path="res://shared/assets/fonts/Silver.ttf" id="7"]
+[ext_resource type="Texture2D" uid="uid://ba3el3vgmluq8" path="res://2d/assets/textures/ui/button.png" id="10"]
+[ext_resource type="PackedScene" uid="uid://dbtn00000001" path="res://2d/scenes/ui/draggable_button.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://bbr4jl7ia44yi" path="res://2d/assets/textures/ui/plant_slot.png" id="11_kl7o2"]
+[ext_resource type="Texture2D" uid="uid://cu34gh5gpj1gi" path="res://2d/assets/textures/ui/music/D4C39D9F8B4D386530CA29D6E3095444.png" id="12"]
+[ext_resource type="PackedScene" uid="uid://dflbpyeu52e3y" path="res://2d/scenes/ui/map_card.tscn" id="13_card"]
+[ext_resource type="Resource" uid="uid://b4hqu1ru2kg46" path="res://2d/resources/maps/courtyard.tres" id="14_courtyard"]
+[ext_resource type="Resource" uid="uid://cpjesaio5inws" path="res://2d/resources/maps/forest.tres" id="15_forest"]
+[ext_resource type="Resource" uid="uid://bywb87nlass47" path="res://2d/resources/maps/deep_woods.tres" id="16_deep_woods"]
+[ext_resource type="Theme" uid="uid://bj1ftygudsto8" path="res://2d/resources/ui/button_theme.tres" id="17_btn"]
+
+[sub_resource type="Gradient" id="Gradient_grwe1"]
+colors = PackedColorArray(0.79042274, 0.8608033, 1, 1, 0.21623439, 0.44282222, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_va424"]
+gradient = SubResource("Gradient_grwe1")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itf63"]
+atlas = ExtResource("11_kl7o2")
+region = Rect2(34, 86, 229, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onqah"]
+atlas = ExtResource("12")
+region = Rect2(7, 13, 31, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtkdq"]
+atlas = ExtResource("12")
+region = Rect2(10, 50, 31, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abpno"]
+atlas = ExtResource("12")
+region = Rect2(40, 13, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_menu_bg"]
+atlas = ExtResource("10")
+region = Rect2(40, 118, 217, 59)
+
+[node name="Control" type="Control" unique_id=1629561620]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1074.0
+offset_bottom = 809.0
+scale = Vector2(1.787, 1.334)
+script = ExtResource("1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1836883141]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(16.774012, 12.62557)
+texture = SubResource("GradientTexture2D_va424")
+
+[node name="Title" type="Label" parent="." unique_id=1460242119]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -323.5
+offset_right = 323.5
+offset_bottom = 260.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 200
+text = "pvz_warG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuRoot" type="VBoxContainer" parent="." unique_id=107324555]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 330.0
+offset_right = 712.0
+offset_bottom = 700.0
+theme_override_constants/separation = 24
+
+[node name="StoryButton" type="Button" parent="MenuRoot" unique_id=1932557743]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 64
+text = "闯关模式"
+
+[node name="CreditsButton" type="Button" parent="MenuRoot" unique_id=64232319]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 64
+text = "创作者名单"
+
+[node name="LicenseButton" type="Button" parent="MenuRoot" unique_id=253282943]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 64
+text = "开源声明"
+
+[node name="MapRoot" type="Control" parent="." unique_id=853512326]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapRoot" unique_id=986722971]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 192.65367
+offset_right = 1040.0
+offset_bottom = 792.6537
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="MapCard" parent="MapRoot/HBoxContainer" unique_id=695820063 instance=ExtResource("13_card")]
+layout_mode = 2
+info = ExtResource("14_courtyard")
+tap_sfx = ExtResource("6")
+
+[node name="MapCard2" parent="MapRoot/HBoxContainer" unique_id=999316682 instance=ExtResource("13_card")]
+layout_mode = 2
+info = ExtResource("15_forest")
+tap_sfx = ExtResource("6")
+
+[node name="MapCard3" parent="MapRoot/HBoxContainer" unique_id=986185207 instance=ExtResource("13_card")]
+layout_mode = 2
+info = ExtResource("16_deep_woods")
+tap_sfx = ExtResource("6")
+
+[node name="BackButton" type="Button" parent="." unique_id=1639191227]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 110.0
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 56
+text = "返回"
+
+[node name="setting" type="TextureRect" parent="." unique_id=1338673208]
+layout_mode = 0
+offset_left = 934.5271
+offset_top = 0.7496252
+offset_right = 1200.527
+offset_bottom = 116.74962
+scale = Vector2(0.5228572, 0.5228572)
+expand_mode = 1
+
+[node name="SettingButton" type="Button" parent="." unique_id=2102987170]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 20.0
+offset_right = 1054.0
+offset_bottom = 110.0
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 56
+text = "设置"
+icon_alignment = 1
+
+[node name="setting" type="NinePatchRect" parent="setting" unique_id=2038442674]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1590.9911
+offset_top = 352.04083
+offset_right = -522.86414
+offset_bottom = 1174.99
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_itf63")
+patch_margin_left = 10
+patch_margin_top = 50
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="DraggableProgressBar" parent="setting/setting" unique_id=1634096944 instance=ExtResource("11")]
+layout_mode = 0
+offset_left = 103.816055
+offset_top = 437.28134
+offset_right = 244.81606
+offset_bottom = 447.28134
+scale = Vector2(4.9074693, 6.018185)
+
+[node name="DraggableProgressBar2" parent="setting/setting" unique_id=1751181529 instance=ExtResource("11")]
+layout_mode = 0
+offset_left = 107.026855
+offset_top = 616.49506
+offset_right = 248.02686
+offset_bottom = 626.49506
+scale = Vector2(4.906951, 6.01755)
+tex1 = SubResource("AtlasTexture_onqah")
+tex2 = SubResource("AtlasTexture_mtkdq")
+tex3 = SubResource("AtlasTexture_abpno")
+bus_name = "sfx"
+
+[node name="Button2" type="Button" parent="setting/setting" unique_id=1469625139]
+layout_mode = 0
+offset_left = 349.97763
+offset_top = 120.431625
+offset_right = 655.97766
+offset_bottom = 270.43164
+scale = Vector2(1.149817, 1.149817)
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 96
+text = "返	回"
+icon_alignment = 1
+
+[node name="ConfirmLayer" type="Control" parent="." unique_id=1098272527]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="ConfirmLayer" unique_id=1873452857]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="NinePatchRect" parent="ConfirmLayer" unique_id=535299939]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -180.0
+offset_right = 360.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_menu_bg")
+patch_margin_left = 48
+patch_margin_top = 26
+patch_margin_right = 48
+patch_margin_bottom = 26
+
+[node name="Title" type="Label" parent="ConfirmLayer/Panel" unique_id=822341325]
+layout_mode = 0
+offset_left = -155.17572
+offset_top = 24.37556
+offset_right = 564.8243
+offset_bottom = 96.375565
+scale = Vector2(1.4741101, 1.4741101)
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 64
+text = "创作者名单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="ConfirmLayer/Panel" unique_id=1227655755]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 688.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="OpenButton" type="Button" parent="ConfirmLayer/Panel" unique_id=1735527909]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 269.0
+offset_right = 217.0
+offset_bottom = 346.0
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 36
+text = "查看"
+
+[node name="OpenButton2" type="Button" parent="ConfirmLayer/Panel" unique_id=1307661741]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 269.0
+offset_right = 402.0
+offset_bottom = 346.0
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 36
+text = "查看"
+
+[node name="CancelButton" type="Button" parent="ConfirmLayer/Panel" unique_id=520720298]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 269.0
+offset_right = 587.0
+offset_bottom = 346.0
+theme = ExtResource("17_btn")
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 36
+text = "关闭"
+
+[connection signal="pressed" from="SettingButton" to="." method="_on_button3_pressed"]
+[connection signal="pressed" from="setting/setting/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ConfirmLayer/Panel/OpenButton" to="." method="_on_info_open_1_pressed"]
+[connection signal="pressed" from="ConfirmLayer/Panel/OpenButton2" to="." method="_on_info_open_2_pressed"]
+[connection signal="pressed" from="ConfirmLayer/Panel/CancelButton" to="." method="_on_info_close_pressed"]

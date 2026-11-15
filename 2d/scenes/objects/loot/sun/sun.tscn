@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cjjpxqrmgpsbc"]
+
+[ext_resource type="Texture2D" uid="uid://cvqs05ocpk1t5" path="res://2d/assets/textures/objects/loot/sun/sun.png" id="1"]
+[ext_resource type="Script" uid="uid://o086ucf2yljq" path="res://2d/src/objects/loot/sun/sun.gd" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyehl"]
+atlas = ExtResource("1")
+region = Rect2(4, 8, 50, 50)
+
+[sub_resource type="Gradient" id="Gradient_t0wbk"]
+offsets = PackedFloat32Array(0.178571, 0.88961)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2mkob"]
+gradient = SubResource("Gradient_t0wbk")
+fill = 1
+fill_from = Vector2(0.527523, 0.568807)
+fill_to = Vector2(0.81422, 0.837156)
+
+[sub_resource type="Animation" id="Animation_q3ghu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.58]
+}
+
+[sub_resource type="Animation" id="Animation_bqgll"]
+resource_name = "will_del"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7js0"]
+_data = {
+&"RESET": SubResource("Animation_q3ghu"),
+&"will_del": SubResource("Animation_bqgll")
+}
+
+[node name="Node2D" type="TextureButton" unique_id=2112786994]
+z_index = 20
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(24.773438, 25.910156)
+texture_normal = SubResource("AtlasTexture_xyehl")
+script = ExtResource("2")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=290949174]
+position = Vector2(25, 22)
+energy = 1.58
+texture = SubResource("GradientTexture2D_2mkob")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1161543168]
+libraries/ = SubResource("AnimationLibrary_c7js0")
+
+[node name="Timer" type="Timer" parent="." unique_id=62912643]
+wait_time = 16.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

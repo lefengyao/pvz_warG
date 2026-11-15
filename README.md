@@ -1,89 +1,171 @@
 # pvz_warG
 
-Godot 4.7.1 游戏项目。用 Godot 打开根目录的 `project.godot`，按 F6 运行当前场景，按 F5 从主菜单启动项目。
+**植物大战僵尸同人塔防 · Godot 4.7.1 · 2D 与 3D 合体**
 
-## 文件分类
+2D 主线、3D 前院和公共模块已经合并成**同一个 Godot 工程**：一个仓库、一份 `project.godot`、一条主场景。按 **F5** 直接玩 2D 主线；在编辑器里打开 3D 场景按 **F6** 就能走进前院，两者共用同一套音频、事件、设置和转场。
 
-| 目录 | 放置内容 | 维护规则 |
-|---|---|---|
-| `assets/textures/` | 图片、角色帧、地图图片、UI 贴图、图标 | 按 `plants`、`zombies`、`levels`、`ui`、`objects`、`projectiles` 分功能 |
-| `assets/audio/` | 音乐、角色音效、环境音、UI 音效 | 角色和关卡专用声音放对应功能目录；公共音效在 `general_music` 等历史素材分组 |
-| `assets/fonts/` | 游戏运行时字体 | 保留字体授权信息，导入配置随字体维护 |
-| `assets/shaders/` | `.gdshader` 着色器 | 按使用场景分组，`.uid` 随文件保留 |
-| `src/autoload/` | 六个实际注册的全局脚本 | 在 Project Settings → Autoload 注册，保持现有单例名称 |
-| `src/core/` | 状态机、角色和属性等基础代码 | 被多个功能共用的基础类 |
-| `src/resources/` | 自定义 Resource 脚本 | 例如 `level_resource.gd` 定义关卡数据结构 |
-| `src/levels/` | 关卡、波次、选关与关卡音乐代码 | 子目录对应场景所在功能目录 |
-| `src/plants/`、`src/zombies/` | 角色逻辑和状态代码 | 按区域、角色、行为细分 |
-| `src/projectiles/`、`src/objects/` | 子弹、近战判定、道具、掉落等代码 | 与对应场景保持相同的功能分类 |
-| `src/ui/` | 界面交互逻辑 | 菜单、选卡、设置、血条等 |
-| `src/special/` | 阳光集合、僵尸环境音等辅助行为 | 新功能优先放所属功能目录 |
-| `scenes/` | `.tscn` 场景 | 分类为 `levels`、`plants`、`zombies`、`projectiles`、`objects`、`ui` 和 `components` |
-| `resources/` | 可复用 `.tres` 配置 | `audio/default_bus_layout.tres` 是运行时音频总线 |
-| `docs/` | 计划、维护规范、报告与历史记录 | 不放运行时依赖的文件 |
-| `tests/` | 流程和资源回归测试 | 从命令行显式运行，不混入游戏场景列表 |
-| `tools/` | 检查工具、辅助脚本 | `logs/` 是自动生成的本机测试输出 |
+| 主菜单 · 拼图选关 | 前院战斗 |
+| :---: | :---: |
+| ![](docs/maintenance/screenshots/main_menu.png) | ![](docs/maintenance/screenshots/first_level_battle.png) |
+| 作者 / 查看 / 设置，三张地图以拼图卡片呈现 | 卡槽、阳光、波次进度与车道末端的装甲车 |
 
-项目根目录只保留项目配置、README、忽略规则和这些分类目录。`.godot/` 是引擎生成的缓存，可重建，不应作为源文件管理。
+## 技术栈
 
-## 命名与新增文件
+| 项 | 值 |
+| --- | --- |
+| 引擎 | Godot **4.7.1**（`config_version=5`） |
+| 渲染 / 物理 | Forward Plus（Windows 走 D3D12）· Jolt Physics |
+| 语言 | GDScript，无 C# |
+| 画面 | 1920 × 1080，`viewport` 拉伸 |
+| 主场景 | `2d/scenes/levels/chose_map.tscn` |
+| 仓库 | <https://github.com/lefengyao/pvz_warG> |
+| 插件 | ECSmini（ECS 运行时）、Pixel Art Filter |
+| 许可 | Apache-2.0 |
 
-- 新建文件和目录使用英文 `snake_case`，例如 `src/plants/front_yard/new_plant/attack.gd`。
-- 同一功能在 `assets/`、`src/`、`scenes/` 中采用相同的分类路径，避免出现 `plant/plants` 或 `UI/UI` 这样的分叉。
-- 角色场景放 `scenes/plants/...`，行为脚本放 `src/plants/...`，图片放 `assets/textures/plants/...`，声音放 `assets/audio/plants/...`。
-- 图片、音频的现有原文件名（含中文和素材来源标识）本次保留，新增素材采用有含义的英文名称。
-- 实际注册的单例脚本放 `src/autoload/`；普通基础类放 `src/core/`，避免将所有共享脚本称为 Autoload。
-- PSD、音频工程、Blender 工程等制作源文件建议放项目外独立素材目录或仓库；导出的运行素材进入本项目 `assets/`。
-- 构建产物放 `build/` 或 `exports/`，不要把导出的游戏程序与源项目混放。
+## 快速开始
 
-## 移动资源的规则
+1. 用 Godot 4.7.1 打开本目录（`project.godot` 在根目录），等首次导入完成。
+2. 按 **F5** 运行主场景：主菜单 → 闯关 → 选地图 → 选关 → 选卡 → 战斗。
+3. 想直接看 3D，按 **F6** 运行下表中的场景。
 
-优先在 Godot 的 FileSystem 面板中移动资源，让编辑器更新依赖。移动脚本或着色器时保留 `.uid` 文件，移动图片、字体和音频时保留 `.import` 文件。
+| 入口 | 场景 | 说明 |
+| --- | --- | --- |
+| 2D 主线（F5） | `2d/scenes/levels/chose_map.tscn` | 主菜单、拼图选关、选卡、战斗、结算 |
+| 3D 前院 | `3d/scenes/maps/front_yard/FrontYard.tscn` | 3D 草坪、草叶着色器、方向光与阴影、车道网格 |
+| ECS 前院 | `3d/scenes/maps/front_yard/EcsFrontYardDemo.tscn` | 用 ECSmini 驱动前院逻辑的实验场景 |
+| 卡牌盒 | `3d/scenes/cards_box/CardsBox.tscn` | 3D 卡牌展示 |
+| 沙盒 | `3d/scenes/sandbox/test.tscn` | 临时试验场 |
 
-Godot 不一定会更新代码中的字符串、运行时拼接的路径或 `user://` 存档中的路径。移动后必须执行引用检查及引擎流程测试。入口场景、字体、图标、音频总线和 Autoload 在 `project.godot` 中使用明确路径；场景内部仍保留原 UID。
+> Godot 不在 PATH 时用完整路径启动，例如：`& 'E:/生产项目/项目/Godot/Godot_v4.7.1-stable_win64.exe/Godot_v4.7.1-stable_win64.exe' --path .`
 
-将来若再移动 `src/ui/music/music_setting.gd`，需要同时维护 `src/autoload/settings.gd` 中的存档兼容迁移，因为旧版 `.tres` 音量存档记录了这个脚本的位置。本次已备份旧存档并保留音量。
+## 内容一览
 
-## 启动与测试
+### 植物（13 株）
 
-在项目根目录执行，按本机实际位置指定 Godot 和 Python：
+每株一个独立场景，位于 `2d/scenes/plants/front_yard/<name>/`：
 
-```powershell
-# 正常启动游戏
-& '../Godot_v4.7.1-stable_win64.exe/Godot_v4.7.1-stable_win64_console.exe' --path .
+- 射手线：豌豆射手 `pean_shooter`、双发射手 `pea_repeater`、寒冰射手 `ice_shooter`、激光豆 `laser_bean`、魔炮 `magic_pea`
+- 经济与肉盾：向日葵 `sun_flower`、坚果 `nut`
+- 一次性与陷阱：樱桃炸弹 `cherry_bomb`、土豆雷 `potato_mine`、倭瓜 `squash`
+- 近战与地面：菜问 `caiwen`、地刺 `spikeweed`、悟空 `wukong`（带武器子场景）
 
-# 检查迁移文件、资源路径、UID、原素材完整性
-python tools/verify_references.py
+### 僵尸（7 种）
 
-# 编辑器导入、静态检查、主菜单启动、四关完整启动流程
-./tools/verify_project.ps1 -GodotPath '../Godot_v4.7.1-stable_win64.exe/Godot_v4.7.1-stable_win64_console.exe' -PythonPath 'python'
+位于 `2d/scenes/zombies/front_yard/`，出场由 `2d/scenes/zombies/zombie_spawner.tscn` 统一调度：
 
-# 使用真实图形设备复测，并保存主菜单、第一关战斗截图
-& '../Godot_v4.7.1-stable_win64.exe/Godot_v4.7.1-stable_win64_console.exe' --path . --resolution 960x540 --scene res://tests/project_smoke.tscn -- --capture
+- 普通僵尸 `ordinary_zombie`、路障僵尸 `conehead_zombie`、铁桶僵尸 `buckthead_zombie`
+- 手枪僵尸 `pistol_zombie`、撑杆跳僵尸 `pole_vaulting_zombie`、刺客僵尸 `assassin_zombie`、魏龙 `weilong`
+- 若干可掉落的部件场景（`loot_head`、`loot_pisol_zombie`、`pole`、`c4` 等）
+
+### 关卡、地图与界面
+
+| 类别 | 内容 |
+| --- | --- |
+| 关卡 | 4 关，`2d/scenes/levels/front_yard/level_logic/level_logic1..4.tscn`；关卡壳为 `level/level1.tscn` 与 `level/normal_front_yard_level.tscn` |
+| 地图 | 前院 `courtyard.tres`、森林 `forest.tres`、黑夜 `deep_woods.tres`（沙滩贴图与着色器已在 `2d/assets` 中） |
+| 界面 | 主菜单/选关 `chose_map`、地图卡片 `map_card`、选卡 `slot/card_selection`、全部卡牌 `slot/ui_all_cards`、波次进度 `slot/progress_bar`、暂停设置 `in_game_setting` |
+| 系统 | 阳光收集、卡槽冷却、车道末端装甲车兜底、波次推进、铲子移除、黑场转场 |
+
+## 目录结构
+
+```text
+pvz_warG/
+├─ project.godot          引擎、Autoload、渲染与输入配置
+├─ 2d/                    2D 主线
+│  ├─ scenes/             关卡、植物、僵尸、UI、卡片
+│  ├─ src/                玩法脚本：autoload、plants、zombies、projectiles、levels、special、ui
+│  ├─ assets/             贴图、音频、着色器
+│  └─ resources/          地图、关卡与数值资源
+├─ 3d/                    3D 前院与卡牌
+│  ├─ scenes/             FrontYard、ECS 演示、草坪、卡牌盒、僵尸模型
+│  ├─ src/managers/       EcsFrontYardDemo.gd、PlantLogic.gd
+│  └─ assets/             模型、材质、着色器
+├─ shared/                跨 2D/3D 复用
+│  ├─ src/                音频、事件总线、角色基类、两套状态机、场景转场
+│  ├─ scenes/             设置面板、音频滑块、淡入淡出
+│  └─ assets/             字体与公共音频
+├─ addons/                ECSmini、Pixel Art Filter（Godot 插件必须留在根目录）
+├─ specs/                 组件与实体规格
+├─ docs/                  设计、执行计划、验收报告、素材清单、截图
+├─ tests/                 2D 流程、3D 契约、共享组件回归
+└─ tools/                 迁移与一键验证脚本
 ```
 
-验证工具遇到资源错误、脚本错误、警告或非零退出码会判为失败。测试输出在 `tools/logs/`，不进入版本管理。测试用例以 8 倍游戏时间缩短等待，通过实际界面处理函数执行选关、选卡、取消重选、战斗、暂停和返回菜单；不替代完整通关或游戏平衡性测试。
+## 架构要点
 
-`verify_references.py` 中对原始文件的哈希检查用于确保本次迁移没有改变素材；将来有意修改原素材或删除旧文件时，应在评审中更新这份迁移验收基线。
+### 单例（以 `project.godot` 为准，共 8 个）
 
-## 本次迁移记录
+| 名称 | 来源 | 职责 |
+| --- | --- | --- |
+| `Audiomanager` | `shared/src/audio/audiomanager.gd` | 音频总线（MASTER / MUSIC / SFX）与播放 |
+| `Globalmanager` | `2d/src/autoload/globalmanager.gd` | 运行时容器引用（plants / zombies / bullets / suns / lawnmowers）与点击音效 |
+| `GenerateCards` | `2d/src/autoload/generate_cards.gd` | 植物名 → 场景路径的映射与卡牌生成 |
+| `GameProgressBus` | `2d/src/autoload/game_progress_bus.gd` | 关卡阶段信号（备战、选卡等） |
+| `EventBus` | `shared/src/events/event_bus.gd` | 跨系统事件订阅与派发 |
+| `Settings` | `2d/scenes/ui/settings.tscn` | 设置面板，`Settings.ingameset` 是 2D 暂停接口 |
+| `ScreenFade` | `shared/scenes/ui/screen_fade.tscn` | 黑场过渡层 |
+| `SceneTransition` | `shared/src/ui/scene_transition.gd` | 场景切换与镜头过渡的统一入口 |
 
-- 计划：`docs/superpowers/plans/2026-10-30-project-layout.md`
-- 逐文件清单、原始哈希与 UID：`docs/maintenance/migration_manifest.json`
-- 验证结果：`docs/maintenance/validation_report.md`
-- 原始备份：项目外 `../_project_backups/pvz_warG_20261030/before_restructure.zip`
-- 回退时解压到新目录，不要覆盖混合两套目录结构。
+### 两套状态机并存，不要混用
 
-项目目前没有 Git 仓库。已提供 `.gitignore`；建立版本管理后，应提交源码、场景、原素材、`.uid`、`.import` 和文档，忽略缓存、测试日志与导出包。
+`shared/src/state_machine/` 里有两套实现：`StateBase` / `StateMachineManager` 与 `state_base` / `state_machine`。它们的 API 不通用，各自服务原来的调用方；新增代码请沿用所接入的那一套。
 
-## 许可
+### 输入与职责边界
 
-本项目采用 **Apache License 2.0**，完整条款见根目录的 `LICENSE`。
+- 前院的全局输入统一从 `FrontYard/Manager/PlantLogic` 进入，地图、草坪和 UI 不重复监听同类输入。
+- `Manager` 下 PlantLogic、Plant、Zombie、LevelLogic、Music 各管一摊，跨系统调用优先走方法或信号。
+- 3D 新管理器放 `3d/src/managers/`，2D 专用管理器放 `2d/src/` 对应职责目录。
 
-- 允许商业使用、修改、再分发
-- 分发时需保留版权与许可声明，修改过的文件需注明改动
-- 附带专利授权条款；同时不提供任何担保
+### 3D 草坪
 
-版权声明：`Copyright 2026 lefengyao`
+草坪底板是 `Background/Grass/Board/BoardBase`；草叶由 `LawnGrid` / `LawnCell` 分块渲染（`LawnRenderChunk` 做批次），叶片形变走 `lawn_cell_grass.gdshader`。草坪、着色器、光照、阴影或 AABB 改动必须做真实图形运行验证，不能只看 headless。
 
-游戏内「开源声明」弹层同步写明了许可证与源码仓库地址，位置在 `src/levels/general/chose_map.gd` 的 `_on_license_pressed()`。
+### 资源与 UID
+
+移动资源要同步更新 `project.godot`、场景引用、`preload/load`、动态拼接路径和存档迁移，并保留 `.uid` / `.import` 源元数据。资源链接与 UID 由 `tools/verify_references.py` 静态校验。
+
+## 开发与验证
+
+```powershell
+# 1. 严格导入（无资源/脚本报错）
+godot --headless --editor --path . --quit
+
+# 2. 静态引用与项目结构
+python tools/verify_references.py
+python tests/integration_layout_test.py
+
+# 3. 前院结构契约
+& './tests/3d/front_yard/front_yard_background_structure_contract_test.ps1'
+& './tests/3d/front_yard/front_yard_cell_bounds_contract_test.ps1'
+
+# 4. 一键整合验证（加 -Capture 出图形截图）
+./tools/verify_integration.ps1 -GodotPath '<godot.exe>' -PythonPath '<python.exe>'
+```
+
+最近一次完整验证（详见 [验收报告](docs/maintenance/integration_validation_report.md)）：
+
+| 检查 | 结果 |
+| --- | --- |
+| 严格导入 + 主场景 | 通过，无资源与脚本报错 |
+| 静态引用 | 795 条资源链接、531 个 UID，无错误 |
+| 2D 流程 | 717 项检查，4 关全部进入战斗 |
+| 2D 真实渲染 | 721 项检查（含截图） |
+| 前院契约 | 14 项契约全部通过 |
+| 草叶运行时 | 6 个 chunk、1756 个实例 |
+| ECSmini | 11 个脚本 + 24 组配置通过 |
+| 整合结论 | `PASS: integration (14 FrontYard contracts)` |
+
+这些检查覆盖加载、场景接口、启动战斗、输入路由与视觉；**不**覆盖完整通关、数值平衡、导出构建、其它平台和长时间性能。
+
+## 整合记录
+
+- 2026-11-13 把 2D 与 3D 两个工程合并进单一仓库：设计见 [整合设计](docs/superpowers/specs/2026-11-13-2d-3d-project-integration-design.md)，执行见 [整合计划](docs/superpowers/plans/2026-11-13-2d-3d-integration.md)，结果见 [验收报告](docs/maintenance/integration_validation_report.md)。
+- 搬迁清单与素材哈希：`docs/maintenance/integration_manifest.json`。
+- 合并前的完整工程与旧目录归档在项目外：`../_project_backups/pvz_warG_before_integration_20261113_164917/`。
+
+## 许可与致谢
+
+- 代码以 **Apache License 2.0** 开源，全文见 [LICENSE](LICENSE)，© 2026 lefengyao。
+- 游戏内「开源声明」与「创作者名单」两个入口在 `2d/src/levels/general/chose_map.gd`。
+- 作者：恋梓里 <https://space.bilibili.com/1986364363>；美术：石英suartz <https://space.bilibili.com/169529553>。
+- 美术、音乐与音效部分来自《植物大战僵尸》原作与网络素材（爱给网、耳聆网等），版权归各自作者所有；Apache-2.0 仅覆盖本项目代码。

@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://3d/scenes/maps/front_yard/FrontYard.tscn" id="1_yard"]
+[ext_resource type="Script" path="res://3d/src/managers/EcsFrontYardDemo.gd" id="2_demo"]
+[ext_resource type="Script" path="res://addons/ecsmini/runtime/ecs_runner.gd" id="3_runner"]
+
+[node name="EcsFrontYardDemo" type="Node3D"]
+
+[node name="FrontYard" parent="." instance=ExtResource("1_yard")]
+
+[node name="Presentation" type="Node3D" parent="."]
+
+[node name="PlantVisuals" type="Node3D" parent="Presentation"]
+
+[node name="ZombieVisuals" type="Node3D" parent="Presentation"]
+
+[node name="Manager" type="Node" parent="."]
+
+[node name="DemoController" type="Node" parent="Manager"]
+script = ExtResource("2_demo")
+
+[node name="EcsRunner" type="Node" parent="Manager/DemoController"]
+script = ExtResource("3_runner")
+use_physics_process = true
+separate_presentation = true
+
+[node name="DemoUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="DemoHeader" type="PanelContainer" parent="DemoUI"]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -405.0
+offset_top = 28.0
+offset_right = 405.0
+offset_bottom = 166.0
+grow_horizontal = 2
+
+[node name="HeaderContent" type="VBoxContainer" parent="DemoUI/DemoHeader"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Instructions" type="Label" parent="DemoUI/DemoHeader/HeaderContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "ECS FrontYard demo: click a lawn cell to add / remove a green plant"
+
+[node name="Description" type="Label" parent="DemoUI/DemoHeader/HeaderContent"]
+layout_mode = 2
+text = "Red capsules move along each row. Placeholder visuals; no combat rules."
+
+[node name="Controls" type="HBoxContainer" parent="DemoUI/DemoHeader/HeaderContent"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PauseButton" type="Button" parent="DemoUI/DemoHeader/HeaderContent/Controls"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Pause"
+
+[node name="ResetButton" type="Button" parent="DemoUI/DemoHeader/HeaderContent/Controls"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Reset demo"
+
+[node name="SettingsButton" type="Button" parent="DemoUI/DemoHeader/HeaderContent/Controls"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Settings"
+
+[connection signal="pressed" from="DemoUI/DemoHeader/HeaderContent/Controls/PauseButton" to="Manager/DemoController" method="_on_pause_pressed"]
+[connection signal="pressed" from="DemoUI/DemoHeader/HeaderContent/Controls/ResetButton" to="Manager/DemoController" method="_on_reset_pressed"]
+[connection signal="pressed" from="DemoUI/DemoHeader/HeaderContent/Controls/SettingsButton" to="Manager/DemoController" method="_on_settings_pressed"]

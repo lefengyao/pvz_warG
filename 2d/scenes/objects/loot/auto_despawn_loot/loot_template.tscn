@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b6wwv505jcgwg"]
+
+[ext_resource type="Script" uid="uid://dbfjscxnode64" path="res://2d/src/objects/loot/auto_despawn_loot/loot_template.gd" id="1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbgrl"]
+
+[node name="LootTemplate" type="RigidBody2D" unique_id=651677952]
+gravity_scale = 0.5
+script = ExtResource("1")
+
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=1524798828]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=382285947]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_gbgrl")
+
+[node name="Timer" type="Timer" parent="." unique_id=1717308895]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

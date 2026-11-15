@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bw5e238ur3cqc"]
+
+[ext_resource type="Script" uid="uid://caavnhue0tvai" path="res://2d/src/zombies/front_yard/pole_vaulting_zombie/pole.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://bvhgpi7gh310t" path="res://shared/assets/audio/zombies/front_yard/pole_vaulting_zombie/chang_mao.mp3" id="2"]
+[ext_resource type="Texture2D" uid="uid://eaul25n8ww18" path="res://2d/assets/textures/zombies/front_yard/pole_vaulting_zombie/zombie.png" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wlag"]
+size = Vector2(140, 4)
+
+[sub_resource type="Animation" id="Animation_gw80h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_v0d8w"]
+resource_name = "stop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.4398712]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmoxk"]
+_data = {
+&"RESET": SubResource("Animation_gw80h"),
+&"stop": SubResource("Animation_v0d8w")
+}
+
+[node name="Pole" type="Area2D" unique_id=2057407226]
+scale = Vector2(2, 2)
+collision_mask = 3
+script = ExtResource("1")
+speed = -1000
+attack = 350
+changmao = ExtResource("2")
+metadata/_custom_type_script = "uid://dg3k2lk0cjowl"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1739358318]
+rotation = 1.5779102
+texture = ExtResource("3")
+region_enabled = true
+region_rect = Rect2(133, 1, 4, 141)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=121080871]
+shape = SubResource("RectangleShape2D_4wlag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1274930769]
+libraries/ = SubResource("AnimationLibrary_tmoxk")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

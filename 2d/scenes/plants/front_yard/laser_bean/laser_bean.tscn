@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://cx4ebr0c07u0l"]
+
+[ext_resource type="PackedScene" uid="uid://m6pqrlt43bib" path="res://2d/scenes/plants/template/plant_template.tscn" id="1"]
+[ext_resource type="Script" uid="uid://crqiaiekvm2i5" path="res://2d/src/plants/front_yard/laser_bean/laser_pean.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dsbydkh6qf3f8" path="res://2d/scenes/projectiles/laser/laser.tscn" id="3"]
+[ext_resource type="Script" uid="uid://7v0430fpqluj" path="res://shared/src/characters/general_character.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://bvtaryjw0co5p" path="res://2d/assets/textures/plants/front_yard/laser_bean/motherlandpean.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c5wrqsoucrfyd" path="res://2d/assets/textures/plants/front_yard/laser_bean/111416061051_0laser pean.png" id="6"]
+[ext_resource type="Script" uid="uid://dqsbeoddvfftq" path="res://2d/src/plants/front_yard/laser_bean/idle.gd" id="7"]
+[ext_resource type="Script" uid="uid://q58w7xhhct22" path="res://2d/src/plants/front_yard/laser_bean/attack.gd" id="8"]
+[ext_resource type="AudioStream" uid="uid://8jbtaknl4euk" path="res://shared/assets/audio/plants/front_yard/magic_pea/激光枪发射声_耳聆网.wav" id="9"]
+[ext_resource type="PackedScene" uid="uid://dsbydkh6qf3f8" path="res://2d/scenes/projectiles/laser/laser.tscn" id="10"]
+
+[sub_resource type="Resource" id="Resource_15n33"]
+script = ExtResource("4")
+resource_local_to_scene = true
+character_name = "激光豆"
+bullet = ExtResource("3")
+attack_speed_constant_value = 1.0
+attack_object = "zombie"
+metadata/_custom_type_script = "uid://7v0430fpqluj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so2ha"]
+atlas = ExtResource("5")
+region = Rect2(98, 100, 86, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5revy"]
+atlas = ExtResource("6")
+region = Rect2(24, 38, 43, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4vb2"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iidhw"]
+atlas = ExtResource("6")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks7t2"]
+atlas = ExtResource("6")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3cr0"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85pb5"]
+atlas = ExtResource("6")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_so2ha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4vb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iidhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks7t2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3cr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85pb5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1f5ie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/RayCast2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3g323"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.10471976, 0.0, -0.0837758, 0.10471976]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/RayCast2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.10471976, 0.0, 0.0837758, -0.10471976]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StateMachine/ATTACK")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.56666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_h8j6g"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.04598621, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/RayCast2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.045378562, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t34jn"]
+_data = {
+&"RESET": SubResource("Animation_1f5ie"),
+&"attack": SubResource("Animation_3g323"),
+&"idle": SubResource("Animation_h8j6g")
+}
+
+[node name="Node2D" unique_id=1764957335 instance=ExtResource("1")]
+script = ExtResource("2")
+character = SubResource("Resource_15n33")
+sun_num = 175
+cool_time = 7.5
+tex = SubResource("AtlasTexture_so2ha")
+tex2 = SubResource("AtlasTexture_5revy")
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1058331434]
+position = Vector2(1.1761856, -8.483074)
+sprite_frames = SubResource("SpriteFrames_so2ha")
+animation = &"idle"
+offset = Vector2(-0.50644326, -38.522408)
+
+[node name="Marker2D" parent="AnimatedSprite2D" index="0" unique_id=1675633331]
+position = Vector2(2.8238142, -25.516926)
+rotation = -0.05117606
+
+[node name="RayCast2D" parent="AnimatedSprite2D" index="1" unique_id=308278255]
+position = Vector2(-1.1761856, -21.016924)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3" unique_id=1371449430]
+libraries/ = SubResource("AnimationLibrary_t34jn")
+
+[node name="IDLE" parent="StateMachine" parent_id_path=PackedInt32Array(1856342367) index="0" unique_id=1539279902]
+script = ExtResource("7")
+
+[node name="ATTACK" parent="StateMachine" parent_id_path=PackedInt32Array(1856342367) index="1" unique_id=2061731070]
+script = ExtResource("8")
+laser_sfx = ExtResource("9")
+bullet2 = ExtResource("10")

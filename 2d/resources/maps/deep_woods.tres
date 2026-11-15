@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MapInfo" format=3 uid="uid://bywb87nlass47"]
+
+[ext_resource type="Script" uid="uid://7cvd05503t47" path="res://2d/src/data/map_info.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dguqbky7vl0do" path="res://2d/assets/textures/levels/deep_woods/darkmap.png" id="2_bg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg"]
+atlas = ExtResource("2_bg")
+region = Rect2(267.688, 326.00946, 452.24573, 492.3404)
+
+[resource]
+script = ExtResource("1_script")
+display_name = "森林深处"
+background = SubResource("AtlasTexture_bg")
+locked = true

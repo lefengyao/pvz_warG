@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://di7twok843wyx"]
+
+[ext_resource type="Texture2D" uid="uid://bxqrecoemj7ka" path="res://2d/assets/textures/zombies/front_yard/weilong/Image_1775107216177_933.png" id="1"]
+[ext_resource type="Script" uid="uid://cl3x1l1svc122" path="res://2d/src/zombies/front_yard/weilong/c_4.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://brxh2o1sfs7mf" path="res://shared/assets/audio/zombies/front_yard/weilong/c4_.wav" id="3"]
+[ext_resource type="PackedScene" uid="uid://dpm3ve1vrwi03" path="res://2d/scenes/projectiles/bomb/1_cell_bomb/1_cell_bomb.tscn" id="4"]
+
+[sub_resource type="Animation" id="Animation_enqbo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.15294118)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:show_behind_parent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1yyiy"]
+resource_name = "bomb"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.25, 3.5, 3.75, 3.86, 3.99, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 0.15294118), Color(1, 0, 0, 1), Color(1, 1, 1, 0.15294118), Color(1, 0, 0, 1), Color(1, 1, 1, 0.15294118), Color(1, 0, 0, 1), Color(1, 1, 1, 0.15294118), Color(1, 0, 0, 1), Color(1, 1, 1, 0.15294118), Color(1, 0, 0, 1), Color(1, 0, 0, 0.9647059), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:show_behind_parent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.99),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"dead"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwceg"]
+_data = {
+&"RESET": SubResource("Animation_enqbo"),
+&"bomb": SubResource("Animation_1yyiy")
+}
+
+[node name="C4" type="Sprite2D" unique_id=1990833878]
+modulate = Color(1, 1, 1, 0.15294118)
+self_modulate = Color(0.97797257, 0, 0.08650106, 1)
+texture = ExtResource("1")
+region_enabled = true
+region_rect = Rect2(40, 57, 26, 29)
+script = ExtResource("2")
+c4_sfx = ExtResource("3")
+bullet = ExtResource("4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=143853816]
+libraries/ = SubResource("AnimationLibrary_dwceg")
+autoplay = &"bomb"

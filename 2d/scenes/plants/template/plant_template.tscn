@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://m6pqrlt43bib"]
+
+[ext_resource type="Script" uid="uid://dg3k2lk0cjowl" path="res://2d/src/plants/template/plant_template.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://myr5j1a40a4a" path="res://shared/assets/audio/general_music_zombie/gulp.wav" id="2"]
+[ext_resource type="Script" uid="uid://dwfiofsaierhq" path="res://shared/src/state_machine/state_machine.gd" id="3"]
+[ext_resource type="Script" uid="uid://h0bp13rp74f3" path="res://2d/src/plants/template/normal_idle.gd" id="4"]
+[ext_resource type="Script" uid="uid://cv8ppbe00oxv0" path="res://2d/src/plants/template/normal_attack.gd" id="5"]
+
+[sub_resource type="Gradient" id="Gradient_m21u1"]
+offsets = PackedFloat32Array(0, 0.525974, 0.766234)
+colors = PackedColorArray(0.113049, 0.113049, 0.113049, 1, 0.0882484, 0.0882484, 0.0882484, 0.52963, 0.0605303, 0.0605303, 0.0605303, 0.00392157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nq8gf"]
+gradient = SubResource("Gradient_m21u1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.9)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m21u1"]
+size = Vector2(39, 48.5)
+
+[node name="Node2D" type="Area2D" unique_id=1764957335 groups=["plant"]]
+scale = Vector2(2, 2)
+collision_mask = 2
+script = ExtResource("1")
+ate_sfx = ExtResource("2")
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=1390495280]
+position = Vector2(0, -9)
+scale = Vector2(1, 0.421875)
+texture = SubResource("GradientTexture2D_nq8gf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1058331434]
+
+[node name="Marker2D" type="Marker2D" parent="AnimatedSprite2D" unique_id=1675633331]
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D" unique_id=308278255]
+position = Vector2(-7, 3)
+target_position = Vector2(600, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=80226984]
+position = Vector2(0, -29.25)
+shape = SubResource("RectangleShape2D_m21u1")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1856342367 node_paths=PackedStringArray("owner_root")]
+script = ExtResource("3")
+owner_root = NodePath("..")
+
+[node name="IDLE" type="Node" parent="StateMachine" unique_id=1539279902]
+script = ExtResource("4")
+
+[node name="ATTACK" type="Node" parent="StateMachine" unique_id=2061731070]
+script = ExtResource("5")

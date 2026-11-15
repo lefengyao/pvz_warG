@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" uid="uid://b4kv0yxrdmoj" path="res://2d/src/autoload/settings.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bfuabvwtk8wbv" path="res://2d/scenes/ui/in_game_setting.tscn" id="2_panel"]
+
+[node name="Settings" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_script")
+
+[node name="InGameSetting" parent="." instance=ExtResource("2_panel")]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://addons/ecsmini/examples/advanced/lab_controller.gd" id="1_controller"]
+[ext_resource type="Script" path="res://addons/ecsmini/examples/advanced/lab_presentation.gd" id="2_presentation"]
+[ext_resource type="Script" path="res://addons/ecsmini/examples/advanced/lab_controls.gd" id="3_controls"]
+[ext_resource type="Script" path="res://addons/ecsmini/examples/advanced/lab_observations.gd" id="4_observations"]
+
+[node name="AdvancedEcsLab" type="Node2D"]
+
+[node name="SimulationModule" type="Node" parent="."]
+
+[node name="LabController" type="Node" parent="SimulationModule"]
+script = ExtResource("1_controller")
+
+[node name="LabUI" type="CanvasLayer" parent="."]
+
+[node name="WindowLayout" type="Control" parent="LabUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LabLayout" type="VBoxContainer" parent="LabUI/WindowLayout"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 600.0
+offset_bottom = 250.0
+theme_override_constants/separation = 8
+
+[node name="HeaderModule" type="Label" parent="LabUI/WindowLayout/LabLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "ECSmini Advanced Lab"
+
+[node name="ContentModule" type="VBoxContainer" parent="LabUI/WindowLayout/LabLayout"]
+layout_mode = 2
+
+[node name="SimulationStage" type="Node2D" parent="LabUI/WindowLayout/LabLayout/ContentModule"]
+
+[node name="PresentationModule" type="Node2D" parent="LabUI/WindowLayout/LabLayout/ContentModule/SimulationStage"]
+script = ExtResource("2_presentation")
+
+[node name="ControlsModule" type="VBoxContainer" parent="LabUI/WindowLayout/LabLayout/ContentModule"]
+layout_mode = 2
+theme_override_constants/separation = 6
+script = ExtResource("3_controls")
+
+[node name="Status" type="Label" parent="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule"]
+layout_mode = 2
+text = "Paused"
+
+[node name="CommandButtons" type="HBoxContainer" parent="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="StepButton" type="Button" parent="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons"]
+layout_mode = 2
+text = "Step"
+
+[node name="RunButton" type="Button" parent="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons"]
+layout_mode = 2
+text = "Run"
+
+[node name="PauseButton" type="Button" parent="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons"]
+layout_mode = 2
+text = "Pause"
+
+[node name="ResetButton" type="Button" parent="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons"]
+layout_mode = 2
+text = "Reset"
+
+[node name="ObservationsModule" type="VBoxContainer" parent="LabUI/WindowLayout/LabLayout/ContentModule"]
+layout_mode = 2
+theme_override_constants/separation = 4
+script = ExtResource("4_observations")
+
+[node name="ObservationText" type="Label" parent="LabUI/WindowLayout/LabLayout/ContentModule/ObservationsModule"]
+layout_mode = 2
+text = "Rows: 4  Followers: 28"
+
+[connection signal="pressed" from="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons/StepButton" to="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule" method="_on_step_pressed"]
+[connection signal="pressed" from="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons/RunButton" to="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule" method="_on_run_pressed"]
+[connection signal="pressed" from="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons/PauseButton" to="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule" method="_on_pause_pressed"]
+[connection signal="pressed" from="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule/CommandButtons/ResetButton" to="LabUI/WindowLayout/LabLayout/ContentModule/ControlsModule" method="_on_reset_pressed"]

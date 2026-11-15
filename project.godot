@@ -11,26 +11,25 @@ config_version=5
 [application]
 
 config/name="pvz_warG"
-run/main_scene="res://scenes/levels/chose_map.tscn"
-config/features=PackedStringArray("4.7", "Mobile")
+run/main_scene="res://2d/scenes/levels/chose_map.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://assets/textures/icon.svg"
+config/icon="res://2d/assets/textures/icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"
+buses/default_bus_layout="res://shared/resources/audio/default_bus_layout.tres"
 
 [autoload]
 
-Audiomanager="*res://src/autoload/audiomanager.gd"
-Globalmanager="*res://src/autoload/globalmanager.gd"
-GenerateCards="*res://src/autoload/generate_cards.gd"
-GameProgressBus="*res://src/autoload/game_progress_bus.gd"
-EventBus="*res://src/autoload/event_bus.gd"
-Settings="*res://scenes/ui/settings.tscn"
-ScreenFade="*res://scenes/ui/screen_fade.tscn"
-SceneTransition="*res://src/ui/scene_transition.gd"
-MCPRuntime="*uid://73bwgc6ttcqg"
+Audiomanager="*res://shared/src/audio/audiomanager.gd"
+Globalmanager="*res://2d/src/autoload/globalmanager.gd"
+GenerateCards="*res://2d/src/autoload/generate_cards.gd"
+GameProgressBus="*res://2d/src/autoload/game_progress_bus.gd"
+EventBus="*res://shared/src/events/event_bus.gd"
+Settings="*res://2d/scenes/ui/settings.tscn"
+ScreenFade="*res://shared/scenes/ui/screen_fade.tscn"
+SceneTransition="*res://shared/src/ui/scene_transition.gd"
 
 [display]
 
@@ -49,7 +48,7 @@ text_editor/behavior/indent/size=4
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg")
+enabled=PackedStringArray("res://addons/ecsmini/plugin.cfg", "res://addons/pixel_art_filter/plugin.cfg")
 
 [global_group]
 
@@ -62,7 +61,7 @@ trap=""
 [gui]
 
 common/snap_controls_to_pixels=false
-theme/custom_font="res://assets/fonts/Silver.ttf"
+theme/custom_font="res://shared/assets/fonts/Silver.ttf"
 
 [physics]
 

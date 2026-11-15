@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ctnw1dr66hfws"]
+
+[ext_resource type="PackedScene" uid="uid://dw5tca7f1fupw" path="res://3d/assets/environment/House/house_windows_fixed.glb" id="1_37kl0"]
+
+[node name="Node3D" type="Node3D" unique_id=1229771927]
+
+[node name="house_windows_fixed" parent="." unique_id=1916421222 instance=ExtResource("1_37kl0")]

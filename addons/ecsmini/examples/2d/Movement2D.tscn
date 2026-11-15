@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/ecsmini/examples/2d/movement_2d_demo.gd" id="1_demo"]
+[ext_resource type="Script" path="res://addons/ecsmini/runtime/ecs_runner.gd" id="2_runner"]
+
+[node name="Movement2D" type="Node2D"]
+
+[node name="Presentation" type="Node2D" parent="."]
+
+[node name="PawnVisuals" type="Node2D" parent="Presentation"]
+
+[node name="Manager" type="Node" parent="."]
+
+[node name="DemoController" type="Node" parent="Manager"]
+script = ExtResource("1_demo")
+
+[node name="EcsRunner" type="Node" parent="Manager/DemoController"]
+script = ExtResource("2_runner")
+
+[node name="DemoUI" type="CanvasLayer" parent="."]
+
+[node name="ExampleHeader" type="PanelContainer" parent="DemoUI"]
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 700.0
+offset_bottom = 160.0
+
+[node name="HeaderContent" type="VBoxContainer" parent="DemoUI/ExampleHeader"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Instructions" type="Label" parent="DemoUI/ExampleHeader/HeaderContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "ECSmini 2D: 12 data entities, 12 visual nodes"
+
+[node name="Controls" type="HBoxContainer" parent="DemoUI/ExampleHeader/HeaderContent"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PauseButton" type="Button" parent="DemoUI/ExampleHeader/HeaderContent/Controls"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Pause"
+
+[node name="ResetButton" type="Button" parent="DemoUI/ExampleHeader/HeaderContent/Controls"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Reset"
+
+[connection signal="pressed" from="DemoUI/ExampleHeader/HeaderContent/Controls/PauseButton" to="Manager/DemoController" method="_on_pause_pressed"]
+[connection signal="pressed" from="DemoUI/ExampleHeader/HeaderContent/Controls/ResetButton" to="Manager/DemoController" method="_on_reset_pressed"]

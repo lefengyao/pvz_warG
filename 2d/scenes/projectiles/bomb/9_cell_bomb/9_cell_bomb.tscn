@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dvnjf31xlwdot"]
+
+[ext_resource type="PackedScene" uid="uid://dpm3ve1vrwi03" path="res://2d/scenes/projectiles/bomb/1_cell_bomb/1_cell_bomb.tscn" id="1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je7qn"]
+radius = 92.086914
+
+[node name="Node2D" unique_id=2069210543 instance=ExtResource("1")]
+scale = Vector2(2.1, 2.1)
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1682147230]
+scale = Vector2(1.1228398, 1.1228398)
+frame = 4
+frame_progress = 0.9382316
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=807330379]
+shape = SubResource("CircleShape2D_je7qn")

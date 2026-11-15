@@ -11,3 +11,7 @@ exports/
 tools/logs/
 .codex/sessions/
 .specloom/
+
+# 编辑器插件（Godot MCP 桥接），本机开发用，不含许可证，不进版本库
+addons/godot_mcp/
+override.cfg

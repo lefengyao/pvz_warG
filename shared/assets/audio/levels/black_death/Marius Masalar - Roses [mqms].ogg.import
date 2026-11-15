@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cokm1pptp2xxk"
+path="res://.godot/imported/Marius Masalar - Roses [mqms].ogg-bf8afeedd8b26c65bbe86c2e6a4a14f2.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/assets/audio/levels/black_death/Marius Masalar - Roses [mqms].ogg"
+dest_files=["res://.godot/imported/Marius Masalar - Roses [mqms].ogg-bf8afeedd8b26c65bbe86c2e6a4a14f2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
